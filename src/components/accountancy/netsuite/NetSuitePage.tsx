@@ -215,7 +215,7 @@ const NetSuitePage: React.FC = () => {
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-3">
-                      <div className={`p-2 rounded-lg ${
+                      <div className={\`p-2 rounded-lg ${
                         mapping.direction === 'push' ? 'bg-[var(--success-light)] text-[var(--success-dark)]' :
                         mapping.direction === 'pull' ? 'bg-[var(--info-light)] text-[var(--info-dark)]' :
                         'bg-[var(--warning-light)] text-[var(--warning-dark)]'
@@ -225,7 +225,7 @@ const NetSuitePage: React.FC = () => {
                       <div>
                         <div className="flex items-center space-x-2">
                           <h3 className="font-medium">{mapping.name}</h3>
-                          <div className={`p-1 rounded ${
+                          <div className={\`p-1 rounded ${
                             mapping.direction === 'push' ? 'bg-[var(--success-light)] text-[var(--success-dark)]' :
                             mapping.direction === 'pull' ? 'bg-[var(--info-light)] text-[var(--info-dark)]' :
                             'bg-[var(--warning-light)] text-[var(--warning-dark)]'
