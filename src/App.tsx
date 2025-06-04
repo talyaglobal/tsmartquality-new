@@ -20,7 +20,9 @@ import WarehouseInventory from './components/warehouse/WarehouseInventory';
 import LocationsPage from './components/warehouse/locations/LocationsPage';
 import ShelvesPage from './components/warehouse/shelves/ShelvesPage';
 import IntegrationsPage from './components/warehouse/integrations/IntegrationsPage';
-// ... rest of the imports
+import CoursesPage from './components/academy/CoursesPage';
+import CertificationsPage from './components/academy/CertificationsPage';
+import EnrollmentsPage from './components/academy/EnrollmentsPage';
 
 export default function App() {
   // Check if user is authenticated
@@ -53,11 +55,15 @@ export default function App() {
             <Route path="/warehouse/locations" element={<LocationsPage />} />
             <Route path="/warehouse/shelves" element={<ShelvesPage />} />
             <Route path="/warehouse/integrations" element={<IntegrationsPage />} />
-            {/* ... rest of the routes */}
+            
+            {/* Academy routes */}
+            <Route path="/academy/courses" element={<CoursesPage />} />
+            <Route path="/academy/certifications" element={<CertificationsPage />} />
+            <Route path="/academy/enrollments" element={<EnrollmentsPage />} />
           </Route>
         ) : (
           // Redirect to home page if not authenticated
-          <Route path="*" element={<Navigate to="/\" replace />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
         )}
       </Routes>
     </Router>

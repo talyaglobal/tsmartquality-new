@@ -1,6 +1,7 @@
 import React from 'react';
 import { Filter, X } from 'lucide-react';
 import Button from '../../ui/Button';
+import Input from '../../ui/Input';
 
 interface ShelvesFiltersProps {
   onFilterChange: (filters: any) => void;
@@ -37,8 +38,42 @@ const ShelvesFilters: React.FC<ShelvesFiltersProps> = ({ onFilterChange }) => {
             <option value="A">Zone A</option>
             <option value="B">Zone B</option>
             <option value="C">Zone C</option>
+            <option value="D">Zone D</option>
           </select>
         </div>
+
+        <div>
+          <label className="block text-sm font-medium text-[var(--text-secondary)] mb-1">
+            Aisle
+          </label>
+          <select
+            className="w-full border border-[var(--divider)] rounded-md p-2"
+            onChange={(e) => onFilterChange({ aisle: e.target.value })}
+          >
+            <option value="">All Aisles</option>
+            {[...Array(10)].map((_, i) => (
+              <option key={i} value={`${(i + 1).toString().padStart(2, '0')}`}>
+                Aisle {(i + 1).toString().padStart(2, '0')}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-[var(--text-secondary)] mb-1">
+            Level
+          </label>
+          <select
+            className="w-full border border-[var(--divider)] rounded-md p-2"
+            onChange={(e) => onFilterChange({ level: e.target.value })}
+          >
+            <option value="">All Levels</option>
+            {[...Array(5)].map((_, i) => (
+              <option key={i} value={i + 1}>Level {i + 1}</option>
+            ))}
+          </select>
+        </div>
+
         <div>
           <label className="block text-sm font-medium text-[var(--text-secondary)] mb-1">
             Status
@@ -51,8 +86,11 @@ const ShelvesFilters: React.FC<ShelvesFiltersProps> = ({ onFilterChange }) => {
             <option value="available">Available</option>
             <option value="full">Full</option>
             <option value="maintenance">Maintenance</option>
+            <option value="reserved">Reserved</option>
+            <option value="blocked">Blocked</option>
           </select>
         </div>
+
         <div>
           <label className="block text-sm font-medium text-[var(--text-secondary)] mb-1">
             Utilization
@@ -62,12 +100,44 @@ const ShelvesFilters: React.FC<ShelvesFiltersProps> = ({ onFilterChange }) => {
             onChange={(e) => onFilterChange({ utilization: e.target.value })}
           >
             <option value="">All</option>
-            <option value="low">Low (0-50%)</option>
-            <option value="medium">Medium (51-75%)</option>
+            <option value="empty">Empty (0%)</option>
+            <option value="low">Low (1-25%)</option>
+            <option value="medium">Medium (26-75%)</option>
             <option value="high">High (76-90%)</option>
             <option value="critical">Critical (>90%)</option>
           </select>
         </div>
+
+        <div>
+          <label className="block text-sm font-medium text-[var(--text-secondary)] mb-1">
+            Last Inspection
+          </label>
+          <select
+            className="w-full border border-[var(--divider)] rounded-md p-2"
+            onChange={(e) => onFilterChange({ inspection: e.target.value })}
+          >
+            <option value="">All Time</option>
+            <option value="today">Today</option>
+            <option value="week">This Week</option>
+            <option value="month">This Month</option>
+            <option value="overdue">Overdue</option>
+          </select>
+        </div>
+      </div>
+
+      <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <Input
+          label="Capacity Range (Min)"
+          type="number"
+          placeholder="Minimum capacity"
+          onChange={(e) => onFilterChange({ minCapacity: e.target.value })}
+        />
+        <Input
+          label="Capacity Range (Max)"
+          type="number"
+          placeholder="Maximum capacity"
+          onChange={(e) => onFilterChange({ maxCapacity: e.target.value })}
+        />
       </div>
     </div>
   );

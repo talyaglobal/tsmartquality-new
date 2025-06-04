@@ -67,7 +67,7 @@ const Sidebar: React.FC = () => {
           </div>
         )}
         <button
-          className="p-2 rounded-md hover:bg-[#7367F0] hover:bg-opacity-10 text-[var(--text-secondary)] hover:text-[#7367F0] transition-colors duration-200"
+          className="p-2 rounded-md hover:bg-[var(--primary-main)] hover:bg-opacity-10 text-[var(--text-secondary)] hover:text-[var(--primary-main)] transition-colors duration-200"
           onClick={() => setCollapsed(!collapsed)}
         >
           <Menu size={20} />
@@ -121,54 +121,26 @@ const Sidebar: React.FC = () => {
           />
 
           <NavItem
-            icon={<Layers size={20} />}
-            label="Palletizator"
-            active={isActive('/palletizator')}
-          >
-            <NavItem
-              icon={<Package size={20} />}
-              label="100x120 Pallet"
-              active={isActive('/palletizator/100x120')}
-              onClick={() => navigate('/palletizator/100x120')}
-            />
-            <NavItem
-              icon={<Package size={20} />}
-              label="80x120 Pallet"
-              active={isActive('/palletizator/80x120')}
-              onClick={() => navigate('/palletizator/80x120')}
-            />
-            <NavItem
-              icon={<Package size={20} />}
-              label="Floor Load"
-              active={isActive('/palletizator/floor')}
-              onClick={() => navigate('/palletizator/floor')}
-            />
-          </NavItem>
-
-          <NavItem
-            icon={<Utensils size={20} />}
-            label="Recipes"
-            active={isActive('/recipes')}
-            onClick={() => navigate('/recipes')}
-          />
-          <NavItem
             icon={<FileText size={20} />}
             label="Documents"
             active={isActive('/documents')}
             onClick={() => navigate('/documents')}
           />
+
           <NavItem
             icon={<AlertTriangle size={20} />}
             label="Complaints"
             active={isActive('/complaints')}
             onClick={() => navigate('/complaints')}
           />
+
           <NavItem
             icon={<ClipboardCheck size={20} />}
             label="Audits"
             active={isActive('/audits')}
             onClick={() => navigate('/audits')}
           />
+
           <NavItem
             icon={<Users size={20} />}
             label="Suppliers"
@@ -184,23 +156,29 @@ const Sidebar: React.FC = () => {
           </div>
 
           <NavItem
-            icon={<BookOpen size={20} />}
-            label="Courses"
-            active={isActive('/academy/courses')}
-            onClick={() => navigate('/academy/courses')}
-          />
-          <NavItem
-            icon={<Award size={20} />}
-            label="Certifications"
-            active={isActive('/academy/certifications')}
-            onClick={() => navigate('/academy/certifications')}
-          />
-          <NavItem
-            icon={<UserPlus size={20} />}
-            label="Enrollments"
-            active={isActive('/academy/enrollments')}
-            onClick={() => navigate('/academy/enrollments')}
-          />
+            icon={<GraduationCap size={20} />}
+            label="Academy"
+            defaultExpanded={true}
+          >
+            <NavItem
+              icon={<BookOpen size={18} />}
+              label="Courses"
+              active={isActive('/academy/courses')}
+              onClick={() => navigate('/academy/courses')}
+            />
+            <NavItem
+              icon={<Award size={18} />}
+              label="Certifications"
+              active={isActive('/academy/certifications')}
+              onClick={() => navigate('/academy/certifications')}
+            />
+            <NavItem
+              icon={<UserPlus size={18} />}
+              label="Enrollments"
+              active={isActive('/academy/enrollments')}
+              onClick={() => navigate('/academy/enrollments')}
+            />
+          </NavItem>
         </div>
 
         {/* Digital Assets Section */}
