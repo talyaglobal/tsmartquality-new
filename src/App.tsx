@@ -24,6 +24,7 @@ import IntegrationsPage from './components/warehouse/integrations/IntegrationsPa
 import CoursesPage from './components/academy/CoursesPage';
 import CertificationsPage from './components/academy/CertificationsPage';
 import EnrollmentsPage from './components/academy/EnrollmentsPage';
+import QualityScorePage from './components/quality/QualityScorePage';
 
 export default function App() {
   // Check if user is authenticated
@@ -41,6 +42,7 @@ export default function App() {
         {isAuthenticated ? (
           <Route element={<Layout />}>
             <Route path="/dashboard" element={<DashboardPage />} />
+            <Route path="/quality-score" element={<QualityScorePage />} />
             <Route path="/products" element={<ProductPortal />} />
             <Route path="/products/dashboard" element={<ProductDashboard />} />
             <Route path="/services" element={<ServicesPage />} />
@@ -64,7 +66,7 @@ export default function App() {
           </Route>
         ) : (
           // Redirect to home page if not authenticated
-          <Route path="*" element={<Navigate to="/\" replace />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
         )}
 
         {/* 404 Not Found route */}
