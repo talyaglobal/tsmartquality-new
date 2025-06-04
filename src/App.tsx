@@ -4,6 +4,7 @@ import Layout from './components/layout/Layout';
 import LandingPage from './components/auth/LandingPage';
 import SignInPage from './components/auth/SignInPage';
 import SignUpPage from './components/auth/SignUpPage';
+import NotFoundPage from './components/NotFoundPage';
 import ProductPortal from './components/products/ProductPortal';
 import ProductDashboard from './components/products/dashboard/ProductDashboard';
 import ServicesPage from './components/services/ServicesPage';
@@ -65,6 +66,9 @@ export default function App() {
           // Redirect to home page if not authenticated
           <Route path="*" element={<Navigate to="/" replace />} />
         )}
+
+        {/* 404 Not Found route */}
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </Router>
   );
