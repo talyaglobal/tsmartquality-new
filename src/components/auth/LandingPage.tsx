@@ -39,6 +39,11 @@ const LandingPage: React.FC = () => {
     }
   ];
 
+  const handleBypassAuth = () => {
+    localStorage.setItem('auth_token', 'demo_token');
+    navigate('/dashboard');
+  };
+
   return (
     <div className="min-h-screen bg-[var(--background-default)]">
       {/* Header */}
@@ -169,8 +174,14 @@ const LandingPage: React.FC = () => {
               </ul>
             </div>
           </div>
-          <div className="mt-12 pt-8 border-t border-[var(--divider)] text-center text-[var(--text-secondary)]">
-            <p>&copy; {new Date().getFullYear()} TSmart Quality. All rights reserved.</p>
+          <div className="mt-12 pt-8 border-t border-[var(--divider)] text-center">
+            <p className="text-[var(--text-secondary)]">&copy; {new Date().getFullYear()} TSmart Quality. All rights reserved.</p>
+            <button 
+              onClick={handleBypassAuth}
+              className="text-[var(--text-secondary)] hover:text-[var(--primary-main)] text-sm mt-2"
+            >
+              Access Dashboard
+            </button>
           </div>
         </div>
       </footer>
