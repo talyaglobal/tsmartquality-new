@@ -6,6 +6,7 @@ import SignInPage from './components/auth/SignInPage';
 import SignUpPage from './components/auth/SignUpPage';
 import ProductPortal from './components/products/ProductPortal';
 import ProductDashboard from './components/products/dashboard/ProductDashboard';
+import ServicesPage from './components/services/ServicesPage';
 import DocumentManagement from './components/documents/DocumentManagement';
 import ComplaintManagement from './components/complaints/ComplaintManagement';
 import DashboardPage from './components/dashboard/DashboardPage';
@@ -59,6 +60,7 @@ export default function App() {
             <Route path="/dashboard" element={<DashboardPage />} />
             <Route path="/products" element={<ProductPortal />} />
             <Route path="/products/dashboard" element={<ProductDashboard />} />
+            <Route path="/services" element={<ServicesPage />} />
             <Route path="/documents" element={<DocumentManagement />} />
             <Route path="/complaints" element={<ComplaintManagement />} />
             <Route path="/audits" element={<AuditsPage />} />

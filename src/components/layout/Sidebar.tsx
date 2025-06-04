@@ -11,13 +11,15 @@ import {
   MessageSquare,
   Image,
   Warehouse,
-  ShoppingCart
+  ShoppingCart,
+  Wrench
 } from 'lucide-react';
 import { NavItem } from '../ui/NavItem';
 
 const navigation = [
   { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
   { name: 'Products', href: '/products', icon: Package },
+  { name: 'Services', href: '/services', icon: Wrench },
   { name: 'Suppliers', href: '/suppliers', icon: Users },
   { name: 'Documents', href: '/documents', icon: FileText },
   { name: 'Warehouse', href: '/warehouse', icon: Warehouse },
