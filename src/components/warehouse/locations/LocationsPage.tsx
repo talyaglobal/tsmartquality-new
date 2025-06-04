@@ -1,7 +1,7 @@
 import React from 'react';
 import Card from '../../ui/Card';
 import Button from '../../ui/Button';
-import { Input } from '../../ui/Input';
+import Input from '../../ui/Input';
 import { Plus, Search } from 'lucide-react';
 
 const LocationsPage = () => {
