@@ -37,7 +37,7 @@ import {
   DollarSign,
   BookOpenCheck,
   LayoutDashboard,
-  Wrench
+  Target
 } from 'lucide-react';
 import { NavItem } from '../ui/NavItem';
 
@@ -90,6 +90,12 @@ const Sidebar: React.FC = () => {
               label="Quality Dashboard"
               active={isActive('/dashboard')}
               onClick={() => navigate('/dashboard')}
+            />
+            <NavItem
+              icon={<Target size={18} />}
+              label="Quality Score"
+              active={isActive('/quality-score')}
+              onClick={() => navigate('/quality-score')}
             />
             <NavItem
               icon={<LineChart size={18} />}
