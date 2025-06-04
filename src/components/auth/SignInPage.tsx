@@ -15,6 +15,11 @@ const SignInPage: React.FC = () => {
     navigate('/dashboard');
   };
 
+  const handleBypassAuth = () => {
+    localStorage.setItem('auth_token', 'demo_token');
+    navigate('/dashboard');
+  };
+
   return (
     <div className="min-h-screen bg-[var(--background-default)] flex items-center justify-center p-6">
       <div className="w-full max-w-[400px]">
@@ -66,6 +71,16 @@ const SignInPage: React.FC = () => {
             <Button type="submit" className="w-full">
               Sign In
             </Button>
+
+            <div className="text-center">
+              <button
+                type="button"
+                onClick={handleBypassAuth}
+                className="text-sm text-[var(--text-secondary)] hover:text-[var(--primary-main)]"
+              >
+                Access Dashboard Demo
+              </button>
+            </div>
           </form>
         </Card>
 
