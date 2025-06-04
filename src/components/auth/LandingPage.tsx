@@ -47,12 +47,12 @@ const LandingPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-[var(--background-default)]">
       {/* Header */}
-      <header className="bg-[var(--background-paper)] border-b border-[var(--divider)] py-4">
+      <header className="bg-[var(--background-paper)] border-b border-[var(--divider)] py-6">
         <div className="container mx-auto px-6">
           <div className="flex justify-between items-center">
             <div className="flex items-center">
-              <Box className="text-[var(--primary-main)] w-8 h-8" />
-              <h1 className="text-[var(--primary-main)] font-bold ml-2">TSmart Quality</h1>
+              <Box className="text-[var(--primary-main)] w-12 h-12" />
+              <h1 className="text-[var(--primary-main)] text-2xl font-bold ml-3">TSmart Quality</h1>
             </div>
             <div className="space-x-4">
               <Button variant="outline" onClick={() => navigate('/login')}>
@@ -130,7 +130,7 @@ const LandingPage: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
               <div className="flex items-center mb-4">
-                <Box className="text-[var(--primary-main)] w-6 h-6" />
+                <Box className="text-[var(--primary-main)] w-8 h-8" />
                 <h3 className="text-[var(--primary-main)] font-bold ml-2">TSmart Quality</h3>
               </div>
               <p className="text-[var(--text-secondary)]">
