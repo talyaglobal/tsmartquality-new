@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import Layout from './components/layout/Layout'
 import LandingPage from './components/auth/LandingPage'
 import SignInPage from './components/auth/SignInPage'
+import SignUpPage from './components/auth/SignUpPage'
 import ProductPortal from './components/products/ProductPortal'
 import ProductDashboard from './components/products/dashboard/ProductDashboard'
 import DocumentManagement from './components/documents/DocumentManagement'
@@ -41,11 +42,12 @@ function App() {
         {/* Public routes */}
         <Route path="/landing" element={<LandingPage />} />
         <Route path="/login" element={<SignInPage />} />
+        <Route path="/register" element={<SignUpPage />} />
         
         {/* Protected routes */}
         {isAuthenticated ? (
           <Route element={<Layout />}>
-            <Route path="/" element={<Navigate to="/dashboard\" replace />} />
+            <Route path="/" element={<Navigate to="/dashboard" replace />} />
             <Route path="/dashboard" element={<DashboardPage />} />
             <Route path="/products" element={<ProductPortal />} />
             <Route path="/products/dashboard" element={<ProductDashboard />} />
@@ -76,7 +78,7 @@ function App() {
           </Route>
         ) : (
           // Redirect to login page if not authenticated
-          <Route path="*" element={<Navigate to="/login\" replace />} />
+          <Route path="*" element={<Navigate to="/login" replace />} />
         )}
       </Routes>
     </Router>
