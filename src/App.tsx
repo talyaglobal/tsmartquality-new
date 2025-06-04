@@ -2,6 +2,7 @@ import React from 'react'
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import Layout from './components/layout/Layout'
 import LandingPage from './components/auth/LandingPage'
+import SignInPage from './components/auth/SignInPage'
 import ProductPortal from './components/products/ProductPortal'
 import ProductDashboard from './components/products/dashboard/ProductDashboard'
 import DocumentManagement from './components/documents/DocumentManagement'
@@ -39,6 +40,7 @@ function App() {
       <Routes>
         {/* Public routes */}
         <Route path="/landing" element={<LandingPage />} />
+        <Route path="/login" element={<SignInPage />} />
         
         {/* Protected routes */}
         {isAuthenticated ? (
@@ -73,8 +75,8 @@ function App() {
             <Route path="/ecommerce/shopify" element={<ShopifyPage />} />
           </Route>
         ) : (
-          // Redirect to landing page if not authenticated
-          <Route path="*" element={<Navigate to="/landing" replace />} />
+          // Redirect to login page if not authenticated
+          <Route path="*" element={<Navigate to="/login" replace />} />
         )}
       </Routes>
     </Router>
