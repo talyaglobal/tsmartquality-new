@@ -1,12 +1,9 @@
 import React, { useState } from 'react';
+import { Outlet } from 'react-router-dom';
 import Sidebar from './Sidebar';
 import Header from './Header';
 
-interface LayoutProps {
-  children: React.ReactNode;
-}
-
-const Layout: React.FC<LayoutProps> = ({ children }) => {
+const Layout: React.FC = () => {
   const [darkMode, setDarkMode] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(true);
 
@@ -29,7 +26,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         <Header toggleSidebar={toggleSidebar} />
         
         <main className="flex-1 overflow-y-auto p-6 bg-[var(--background-default)]">
-          {children}
+          <Outlet />
         </main>
       </div>
     </div>

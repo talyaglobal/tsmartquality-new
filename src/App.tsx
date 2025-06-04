@@ -42,41 +42,39 @@ function App() {
         
         {/* Protected routes */}
         {isAuthenticated ? (
-          <Route element={<Layout>
-            <Routes>
-              <Route path="/\" element={<Navigate to="/dashboard\" replace />} />
-              <Route path="/dashboard" element={<DashboardPage />} />
-              <Route path="/products" element={<ProductPortal />} />
-              <Route path="/products/dashboard" element={<ProductDashboard />} />
-              <Route path="/documents" element={<DocumentManagement />} />
-              <Route path="/complaints" element={<ComplaintManagement />} />
-              <Route path="/audits" element={<AuditsPage />} />
-              <Route path="/suppliers" element={<SuppliersPage />} />
-              <Route path="/recipes" element={<RecipesPage />} />
-              <Route path="/settings" element={<SettingsPage />} />
-              <Route path="/warehouse" element={<WarehousePage />} />
-              <Route path="/warehouse/stock" element={<WarehouseStock />} />
-              <Route path="/warehouse/inventory" element={<WarehouseInventory />} />
-              <Route path="/warehouse/locations" element={<LocationsPage />} />
-              <Route path="/warehouse/locations/shelves" element={<ShelvesPage />} />
-              <Route path="/warehouse/integrations" element={<IntegrationsPage />} />
-              <Route path="/assets/photos" element={<PhotosPage />} />
-              <Route path="/assets/photos/boxes" element={<BoxPhotosPage />} />
-              <Route path="/assets/photos/products" element={<ProductPhotosPage />} />
-              <Route path="/assets/videos" element={<VideosPage />} />
-              <Route path="/assets/labels/products" element={<ProductLabelsPage />} />
-              <Route path="/palletizator/100x120" element={<PalletCalculator />} />
-              <Route path="/palletizator/80x120" element={<Pallet80x120Calculator />} />
-              <Route path="/palletizator/floor" element={<FloorLoadCalculator />} />
-              <Route path="/academy/courses" element={<CoursesPage />} />
-              <Route path="/academy/certifications" element={<CertificationsPage />} />
-              <Route path="/academy/enrollments" element={<EnrollmentsPage />} />
-              <Route path="/ecommerce/shopify" element={<ShopifyPage />} />
-            </Routes>
-          </Layout>} />
+          <Route element={<Layout />}>
+            <Route path="/" element={<Navigate to="/dashboard" replace />} />
+            <Route path="/dashboard" element={<DashboardPage />} />
+            <Route path="/products" element={<ProductPortal />} />
+            <Route path="/products/dashboard" element={<ProductDashboard />} />
+            <Route path="/documents" element={<DocumentManagement />} />
+            <Route path="/complaints" element={<ComplaintManagement />} />
+            <Route path="/audits" element={<AuditsPage />} />
+            <Route path="/suppliers" element={<SuppliersPage />} />
+            <Route path="/recipes" element={<RecipesPage />} />
+            <Route path="/settings" element={<SettingsPage />} />
+            <Route path="/warehouse" element={<WarehousePage />} />
+            <Route path="/warehouse/stock" element={<WarehouseStock />} />
+            <Route path="/warehouse/inventory" element={<WarehouseInventory />} />
+            <Route path="/warehouse/locations" element={<LocationsPage />} />
+            <Route path="/warehouse/locations/shelves" element={<ShelvesPage />} />
+            <Route path="/warehouse/integrations" element={<IntegrationsPage />} />
+            <Route path="/assets/photos" element={<PhotosPage />} />
+            <Route path="/assets/photos/boxes" element={<BoxPhotosPage />} />
+            <Route path="/assets/photos/products" element={<ProductPhotosPage />} />
+            <Route path="/assets/videos" element={<VideosPage />} />
+            <Route path="/assets/labels/products" element={<ProductLabelsPage />} />
+            <Route path="/palletizator/100x120" element={<PalletCalculator />} />
+            <Route path="/palletizator/80x120" element={<Pallet80x120Calculator />} />
+            <Route path="/palletizator/floor" element={<FloorLoadCalculator />} />
+            <Route path="/academy/courses" element={<CoursesPage />} />
+            <Route path="/academy/certifications" element={<CertificationsPage />} />
+            <Route path="/academy/enrollments" element={<EnrollmentsPage />} />
+            <Route path="/ecommerce/shopify" element={<ShopifyPage />} />
+          </Route>
         ) : (
           // Redirect to landing page if not authenticated
-          <Route path="*" element={<Navigate to="/landing\" replace />} />
+          <Route path="*" element={<Navigate to="/landing" replace />} />
         )}
       </Routes>
     </Router>

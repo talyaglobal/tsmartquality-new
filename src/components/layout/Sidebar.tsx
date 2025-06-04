@@ -75,6 +75,9 @@ const Sidebar: React.FC<SidebarProps> = ({ darkMode, toggleDarkMode }) => {
       <div className="flex-1 py-4 overflow-y-auto">
         {/* Dashboards Section */}
         <div className="mb-6">
+          <div className="px-4 mb-2">
+            <span className="text-xs font-medium text-[var(--text-secondary)] uppercase">Dashboards</span>
+          </div>
           <NavItem
             icon={<LayoutDashboard size={20} />}
             label="Dashboards"
