@@ -45,7 +45,7 @@ export const NavItem: React.FC<NavItemProps> = ({
         <span className="font-medium flex-1">{label}</span>
         {children && (
           <ChevronDown
-            size={18}
+            size={16}
             className={`transform transition-transform duration-200 ${expanded ? 'rotate-180' : ''}`}
           />
         )}
