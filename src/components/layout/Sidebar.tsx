@@ -43,9 +43,14 @@ import { NavItem } from '../ui/NavItem';
 
 const Sidebar: React.FC = () => {
   const [collapsed, setCollapsed] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+
+  const toggleTheme = () => {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', newTheme);
+  };
 
   const isActive = (path: string) => location.pathname === path;
 
@@ -372,13 +377,13 @@ const Sidebar: React.FC = () => {
 
       <div className="p-4 border-t border-[var(--divider)]">
         <button
-          className="flex items-center w-full p-2 rounded-md hover:bg-[#7367F0] hover:bg-opacity-10 text-[var(--text-secondary)] hover:text-[#7367F0] transition-colors duration-200"
-          onClick={() => {
-            setDarkMode(!darkMode);
-            document.documentElement.classList.toggle('dark');
-          }}
+          className="flex items-center w-full p-2 rounded-md hover:bg-[var(--primary-main)] hover:bg-opacity-10 text-[var(--text-secondary)] hover:text-[var(--primary-main)] transition-colors duration-200"
+          onClick={toggleTheme}
         >
-          {darkMode ? <Sun size={20} /> : <Moon size={20} />}
+          {document.documentElement.getAttribute('data-theme') === 'dark' ? 
+            <Sun size={20} /> : 
+            <Moon size={20} />
+          }
           {!collapsed && <span className="ml-2">Theme</span>}
         </button>
       </div>
