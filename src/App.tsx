@@ -40,14 +40,13 @@ function App() {
     <Router>
       <Routes>
         {/* Public routes */}
-        <Route path="/landing" element={<LandingPage />} />
+        <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<SignInPage />} />
         <Route path="/register" element={<SignUpPage />} />
         
         {/* Protected routes */}
         {isAuthenticated ? (
           <Route element={<Layout />}>
-            <Route path="/" element={<Navigate to="/dashboard\" replace />} />
             <Route path="/dashboard" element={<DashboardPage />} />
             <Route path="/products" element={<ProductPortal />} />
             <Route path="/products/dashboard" element={<ProductDashboard />} />
@@ -77,8 +76,8 @@ function App() {
             <Route path="/ecommerce/shopify" element={<ShopifyPage />} />
           </Route>
         ) : (
-          // Redirect to login page if not authenticated
-          <Route path="*" element={<Navigate to="/login\" replace />} />
+          // Redirect to landing page if not authenticated
+          <Route path="*" element={<Navigate to="/" replace />} />
         )}
       </Routes>
     </Router>
