@@ -104,7 +104,7 @@ const ShelvesFilters: React.FC<ShelvesFiltersProps> = ({ onFilterChange }) => {
             <option value="low">Low (1-25%)</option>
             <option value="medium">Medium (26-75%)</option>
             <option value="high">High (76-90%)</option>
-            <option value="critical">Critical (>90%)</option>
+            <option value="critical">Critical (&gt;90%)</option>
           </select>
         </div>
 
