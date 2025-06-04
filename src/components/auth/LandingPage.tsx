@@ -58,9 +58,6 @@ const LandingPage: React.FC = () => {
               <Button variant="outline" onClick={() => navigate('/login')}>
                 Sign In
               </Button>
-              <Button onClick={() => navigate('/register')}>
-                Get Started
-              </Button>
             </div>
           </div>
         </div>
@@ -116,12 +113,6 @@ const LandingPage: React.FC = () => {
             Join thousands of companies using TSmart Quality to streamline their quality processes and ensure product excellence.
           </p>
           <div className="space-x-4">
-            <Button
-              size="lg"
-              onClick={() => navigate('/register')}
-            >
-              Get Started Now
-            </Button>
             <Button
               variant="outline"
               size="lg"
