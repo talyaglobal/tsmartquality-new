@@ -32,6 +32,8 @@ import CoursesPage from './components/academy/CoursesPage'
 import CertificationsPage from './components/academy/CertificationsPage'
 import EnrollmentsPage from './components/academy/EnrollmentsPage'
 import ShopifyPage from './components/ecommerce/shopify/ShopifyPage'
+import WooCommercePage from './components/ecommerce/woocommerce/WooCommercePage'
+import AmazonPage from './components/ecommerce/amazon/AmazonPage'
 
 function App() {
   // Check if user is authenticated
@@ -76,10 +78,12 @@ function App() {
             <Route path="/academy/certifications" element={<CertificationsPage />} />
             <Route path="/academy/enrollments" element={<EnrollmentsPage />} />
             <Route path="/ecommerce/shopify" element={<ShopifyPage />} />
+            <Route path="/ecommerce/woocommerce" element={<WooCommercePage />} />
+            <Route path="/ecommerce/amazon" element={<AmazonPage />} />
           </Route>
         ) : (
           // Redirect to landing page if not authenticated
-          <Route path="*" element={<Navigate to="/\" replace />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
         )}
       </Routes>
     </Router>
