@@ -34,6 +34,8 @@ import EnrollmentsPage from './components/academy/EnrollmentsPage'
 import ShopifyPage from './components/ecommerce/shopify/ShopifyPage'
 import WooCommercePage from './components/ecommerce/woocommerce/WooCommercePage'
 import AmazonPage from './components/ecommerce/amazon/AmazonPage'
+import QuickBooksPage from './components/accountancy/quickbooks/QuickBooksPage'
+import NetSuitePage from './components/accountancy/netsuite/NetSuitePage'
 
 function App() {
   // Check if user is authenticated
@@ -80,10 +82,12 @@ function App() {
             <Route path="/ecommerce/shopify" element={<ShopifyPage />} />
             <Route path="/ecommerce/woocommerce" element={<WooCommercePage />} />
             <Route path="/ecommerce/amazon" element={<AmazonPage />} />
+            <Route path="/accountancy/quickbooks" element={<QuickBooksPage />} />
+            <Route path="/accountancy/netsuite" element={<NetSuitePage />} />
           </Route>
         ) : (
           // Redirect to landing page if not authenticated
-          <Route path="*" element={<Navigate to="/\" replace />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
         )}
       </Routes>
     </Router>
