@@ -9,6 +9,7 @@ interface NavItemProps {
   onClick?: () => void;
   children?: React.ReactNode;
   defaultExpanded?: boolean;
+  collapsed?: boolean;
 }
 
 export const NavItem: React.FC<NavItemProps> = ({
@@ -17,7 +18,8 @@ export const NavItem: React.FC<NavItemProps> = ({
   active,
   onClick,
   children,
-  defaultExpanded = false
+  defaultExpanded = false,
+  collapsed = false
 }) => {
   const [expanded, setExpanded] = useState(defaultExpanded);
 
@@ -37,20 +39,25 @@ export const NavItem: React.FC<NavItemProps> = ({
           {
             'bg-[var(--primary-main)] text-white': active,
             'text-[var(--text-secondary)] hover:bg-[var(--primary-light)] hover:bg-opacity-5 hover:text-[var(--primary-main)]': !active,
+            'justify-center': collapsed
           }
         )}
         onClick={handleClick}
       >
-        <span className="mr-3">{icon}</span>
-        <span className="font-medium flex-1">{label}</span>
-        {children && (
-          <ChevronDown
-            size={16}
-            className={`transform transition-transform duration-200 ${expanded ? 'rotate-180' : ''}`}
-          />
+        <span className={collapsed ? '' : 'mr-3'}>{icon}</span>
+        {!collapsed && (
+          <>
+            <span className="font-medium flex-1">{label}</span>
+            {children && (
+              <ChevronDown
+                size={16}
+                className={`transform transition-transform duration-200 ${expanded ? 'rotate-180' : ''}`}
+              />
+            )}
+          </>
         )}
       </div>
-      {children && (
+      {children && !collapsed && (
         <div
           className={classNames(
             'ml-4 pl-4 border-l border-[var(--divider)] overflow-hidden transition-all duration-200',
