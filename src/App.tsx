@@ -13,6 +13,7 @@ import ComplaintManagement from './components/complaints/ComplaintManagement';
 import DashboardPage from './components/dashboard/DashboardPage';
 import AuditsPage from './components/audits/AuditsPage';
 import SuppliersPage from './components/suppliers/SuppliersPage';
+import CustomersPage from './components/customers/CustomersPage';
 import SettingsPage from './components/settings/SettingsPage';
 import RecipesPage from './components/recipes/RecipesPage';
 import WarehousePage from './components/warehouse/WarehousePage';
@@ -25,6 +26,7 @@ import CoursesPage from './components/academy/CoursesPage';
 import CertificationsPage from './components/academy/CertificationsPage';
 import EnrollmentsPage from './components/academy/EnrollmentsPage';
 import QualityScorePage from './components/quality/QualityScorePage';
+import WarningsPage from './components/warnings/WarningsPage';
 
 export default function App() {
   // Check if user is authenticated
@@ -48,8 +50,10 @@ export default function App() {
             <Route path="/services" element={<ServicesPage />} />
             <Route path="/documents" element={<DocumentManagement />} />
             <Route path="/complaints" element={<ComplaintManagement />} />
+            <Route path="/warnings" element={<WarningsPage />} />
             <Route path="/audits" element={<AuditsPage />} />
             <Route path="/suppliers" element={<SuppliersPage />} />
+            <Route path="/customers" element={<CustomersPage />} />
             <Route path="/recipes" element={<RecipesPage />} />
             <Route path="/settings" element={<SettingsPage />} />
             <Route path="/warehouse" element={<WarehousePage />} />
@@ -66,7 +70,7 @@ export default function App() {
           </Route>
         ) : (
           // Redirect to home page if not authenticated
-          <Route path="*" element={<Navigate to="/\" replace />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
         )}
 
         {/* 404 Not Found route */}
