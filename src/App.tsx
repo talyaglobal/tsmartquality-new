@@ -36,6 +36,7 @@ import WooCommercePage from './components/ecommerce/woocommerce/WooCommercePage'
 import AmazonPage from './components/ecommerce/amazon/AmazonPage'
 import QuickBooksPage from './components/accountancy/quickbooks/QuickBooksPage'
 import NetSuitePage from './components/accountancy/netsuite/NetSuitePage'
+import TSmartBooksPage from './components/accountancy/tsmartbooks/TSmartBooksPage'
 
 function App() {
   // Check if user is authenticated
@@ -65,7 +66,7 @@ function App() {
             <Route path="/warehouse/stock" element={<WarehouseStock />} />
             <Route path="/warehouse/inventory" element={<WarehouseInventory />} />
             <Route path="/warehouse/locations" element={<LocationsPage />} />
-            <Route path="/warehouse/locations/shelves" element={<ShelvesPage />} />
+            <Route path="/warehouse/shelves" element={<ShelvesPage />} />
             <Route path="/warehouse/integrations" element={<IntegrationsPage />} />
             <Route path="/assets/photos" element={<PhotosPage />} />
             <Route path="/assets/photos/boxes" element={<BoxPhotosPage />} />
@@ -84,6 +85,7 @@ function App() {
             <Route path="/ecommerce/amazon" element={<AmazonPage />} />
             <Route path="/accountancy/quickbooks" element={<QuickBooksPage />} />
             <Route path="/accountancy/netsuite" element={<NetSuitePage />} />
+            <Route path="/accountancy/tsmartbooks" element={<TSmartBooksPage />} />
           </Route>
         ) : (
           // Redirect to landing page if not authenticated

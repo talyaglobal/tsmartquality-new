@@ -284,26 +284,28 @@ const Sidebar: React.FC<SidebarProps> = ({ darkMode, toggleDarkMode }) => {
               active={isActive('/warehouse/inventory')}
               onClick={() => navigate('/warehouse/inventory')}
             />
-            <NavItem
-              icon={<MapPin size={20} />}
-              label="Locations"
-              active={isActive('/warehouse/locations')}
-              onClick={() => navigate('/warehouse/locations')}
-            >
-              <NavItem
-                icon={<Grid size={20} />}
-                label="Shelves"
-                active={isActive('/warehouse/locations/shelves')}
-                onClick={() => navigate('/warehouse/locations/shelves')}
-              />
-            </NavItem>
-            <NavItem
-              icon={<Link2 size={20} />}
-              label="Integrations"
-              active={isActive('/warehouse/integrations')}
-              onClick={() => navigate('/warehouse/integrations')}
-            />
           </NavItem>
+
+          <NavItem
+            icon={<MapPin size={20} />}
+            label="Locations"
+            active={isActive('/warehouse/locations')}
+            onClick={() => navigate('/warehouse/locations')}
+          />
+
+          <NavItem
+            icon={<Grid size={20} />}
+            label="Shelves"
+            active={isActive('/warehouse/shelves')}
+            onClick={() => navigate('/warehouse/shelves')}
+          />
+
+          <NavItem
+            icon={<Link2 size={20} />}
+            label="Integrations"
+            active={isActive('/warehouse/integrations')}
+            onClick={() => navigate('/warehouse/integrations')}
+          />
         </div>
 
         {/* E-Commerce Section */}
