@@ -13,27 +13,27 @@ const LandingPage: React.FC = () => {
       description: 'Comprehensive tools for managing product quality throughout the lifecycle'
     },
     {
-      icon: <CheckCircle className="text-[var(--success-main)]\" size={32} />,
+      icon: <CheckCircle className="text-[var(--success-main)]" size={32} />,
       title: 'Audit & Compliance',
       description: 'Streamlined audit processes and compliance tracking'
     },
     {
-      icon: <Shield className="text-[var(--warning-main)]\" size={32} />,
+      icon: <Shield className="text-[var(--warning-main)]" size={32} />,
       title: 'Document Control',
       description: 'Centralized document management and version control'
     },
     {
-      icon: <Users className="text-[var(--info-main)]\" size={32} />,
+      icon: <Users className="text-[var(--info-main)]" size={32} />,
       title: 'Supplier Management',
       description: 'Efficient supplier qualification and performance monitoring'
     },
     {
-      icon: <BarChart2 className="text-[var(--error-main)]\" size={32} />,
+      icon: <BarChart2 className="text-[var(--error-main)]" size={32} />,
       title: 'Analytics & Reporting',
       description: 'Advanced analytics and customizable reporting tools'
     },
     {
-      icon: <Award className="text-[var(--primary-main)]\" size={32} />,
+      icon: <Award className="text-[var(--primary-main)]" size={32} />,
       title: 'Training & Certification',
       description: 'Employee training management and certification tracking'
     }
@@ -72,13 +72,15 @@ const LandingPage: React.FC = () => {
           <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
             Streamline your quality processes, ensure compliance, and drive continuous improvement with our comprehensive quality management system.
           </p>
-          <Button 
-            size="lg"
-            onClick={() => navigate('/register')}
-            className="bg-white text-[var(--primary-main)] hover:bg-opacity-90"
-          >
-            Start Free Trial
-          </Button>
+          <div className="flex justify-center">
+            <Button 
+              size="lg"
+              onClick={() => navigate('/register')}
+              className="bg-white text-[var(--primary-main)] hover:bg-opacity-90"
+            >
+              Start Free Trial
+            </Button>
+          </div>
         </div>
       </section>
 
