@@ -22,6 +22,7 @@ import IntegrationsPage from './components/warehouse/integrations/IntegrationsPa
 import PhotosPage from './components/assets/photos/PhotosPage'
 import BoxPhotosPage from './components/assets/photos/box/BoxPhotosPage'
 import ProductPhotosPage from './components/assets/photos/products/ProductPhotosPage'
+import PalletPhotosPage from './components/assets/photos/pallets/PalletPhotosPage'
 import VideosPage from './components/assets/videos/VideosPage'
 import ProductLabelsPage from './components/assets/labels/products/ProductLabelsPage'
 import PalletCalculator from './components/palletizator/PalletCalculator'
@@ -65,6 +66,7 @@ function App() {
             <Route path="/assets/photos" element={<PhotosPage />} />
             <Route path="/assets/photos/boxes" element={<BoxPhotosPage />} />
             <Route path="/assets/photos/products" element={<ProductPhotosPage />} />
+            <Route path="/assets/photos/pallets" element={<PalletPhotosPage />} />
             <Route path="/assets/videos" element={<VideosPage />} />
             <Route path="/assets/labels/products" element={<ProductLabelsPage />} />
             <Route path="/palletizator/100x120" element={<PalletCalculator />} />
@@ -77,7 +79,7 @@ function App() {
           </Route>
         ) : (
           // Redirect to landing page if not authenticated
-          <Route path="*" element={<Navigate to="/\" replace />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
         )}
       </Routes>
     </Router>
