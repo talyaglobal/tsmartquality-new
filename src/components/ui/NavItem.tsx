@@ -33,7 +33,7 @@ export const NavItem: React.FC<NavItemProps> = ({
     <div>
       <div
         className={classNames(
-          'flex items-center py-3 px-4 rounded-md cursor-pointer transition-all duration-200 mb-1',
+          'flex items-center py-2 px-4 rounded-md cursor-pointer transition-all duration-200 mb-1',
           {
             'bg-[var(--primary-main)] text-white': active,
             'text-[var(--text-secondary)] hover:bg-[var(--primary-light)] hover:bg-opacity-5 hover:text-[var(--primary-main)]': !active,
@@ -45,7 +45,7 @@ export const NavItem: React.FC<NavItemProps> = ({
         <span className="font-medium flex-1">{label}</span>
         {children && (
           <ChevronDown
-            size={20}
+            size={18}
             className={`transform transition-transform duration-200 ${expanded ? 'rotate-180' : ''}`}
           />
         )}
@@ -53,10 +53,10 @@ export const NavItem: React.FC<NavItemProps> = ({
       {children && (
         <div
           className={classNames(
-            'ml-8 space-y-1 overflow-hidden transition-all duration-200',
+            'ml-4 pl-4 border-l border-[var(--divider)] overflow-hidden transition-all duration-200',
             {
               'max-h-0 opacity-0': !expanded,
-              'max-h-[1000px] opacity-100': expanded
+              'max-h-[500px] opacity-100': expanded
             }
           )}
         >
