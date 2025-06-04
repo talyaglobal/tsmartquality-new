@@ -25,6 +25,8 @@ import ProductPhotosPage from './components/assets/photos/products/ProductPhotos
 import PalletPhotosPage from './components/assets/photos/pallets/PalletPhotosPage'
 import VideosPage from './components/assets/videos/VideosPage'
 import ProductLabelsPage from './components/assets/labels/products/ProductLabelsPage'
+import BoxLabelsPage from './components/assets/labels/box/BoxLabelsPage'
+import PalletLabelsPage from './components/assets/labels/pallets/PalletLabelsPage'
 import PalletCalculator from './components/palletizator/PalletCalculator'
 import Pallet80x120Calculator from './components/palletizator/Pallet80x120Calculator'
 import FloorLoadCalculator from './components/palletizator/FloorLoadCalculator'
@@ -74,6 +76,8 @@ function App() {
             <Route path="/assets/photos/pallets" element={<PalletPhotosPage />} />
             <Route path="/assets/videos" element={<VideosPage />} />
             <Route path="/assets/labels/products" element={<ProductLabelsPage />} />
+            <Route path="/assets/labels/boxes" element={<BoxLabelsPage />} />
+            <Route path="/assets/labels/pallets" element={<PalletLabelsPage />} />
             <Route path="/palletizator/100x120" element={<PalletCalculator />} />
             <Route path="/palletizator/80x120" element={<Pallet80x120Calculator />} />
             <Route path="/palletizator/floor" element={<FloorLoadCalculator />} />
@@ -89,7 +93,7 @@ function App() {
           </Route>
         ) : (
           // Redirect to landing page if not authenticated
-          <Route path="*" element={<Navigate to="/\" replace />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
         )}
       </Routes>
     </Router>

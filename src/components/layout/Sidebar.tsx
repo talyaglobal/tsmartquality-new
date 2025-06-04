@@ -237,7 +237,6 @@ const Sidebar: React.FC<SidebarProps> = ({ darkMode, toggleDarkMode }) => {
             icon={<Sticker size={20} />}
             label="Labels"
             active={isActive('/assets/labels')}
-            onClick={() => navigate('/assets/labels')}
           >
             <NavItem
               icon={<QrCode size={20} />}
