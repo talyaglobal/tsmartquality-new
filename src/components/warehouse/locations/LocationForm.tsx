@@ -1,76 +1,67 @@
-import React from 'react'
-import { useForm } from 'react-hook-form'
-import Input from '../../ui/Input'
-import Button from '../../ui/Button'
+import React from 'react';
+import { useForm } from 'react-hook-form';
+import Input from '../../ui/Input';
+import Button from '../../ui/Button';
 
 interface LocationFormData {
-  name: string
-  code: string
-  address: string
-  city: string
-  state: string
-  country: string
-  postalCode: string
-  latitude: string
-  longitude: string
-  capacity: number
-  type: string
-  manager: string
-  phone: string
-  email: string
+  name: string;
+  code: string;
+  type: string;
+  address: string;
+  city: string;
+  state: string;
+  country: string;
+  postalCode: string;
+  latitude: string;
+  longitude: string;
+  capacity: number;
+  manager: string;
+  phone: string;
+  email: string;
 }
 
 interface LocationFormProps {
-  onSubmit: (data: LocationFormData) => void
-  initialData?: Partial<LocationFormData>
-  onCancel: () => void
+  onSubmit: (data: LocationFormData) => void;
+  initialData?: Partial<LocationFormData>;
+  onCancel: () => void;
 }
 
 const LocationForm: React.FC<LocationFormProps> = ({ onSubmit, initialData, onCancel }) => {
   const { register, handleSubmit, formState: { errors } } = useForm<LocationFormData>({
     defaultValues: initialData
-  })
+  });
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <Input
-          label="Warehouse Name"
+          label="Location Name"
           error={errors.name?.message}
-          {...register('name', { required: 'Warehouse name is required' })}
+          {...register('name', { required: 'Location name is required' })}
         />
         <Input
-          label="Warehouse Code"
+          label="Location Code"
           error={errors.code?.message}
-          {...register('code', { required: 'Warehouse code is required' })}
+          {...register('code', { required: 'Location code is required' })}
         />
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div>
-          <label className="block text-sm font-medium text-[var(--text-secondary)] mb-1">
-            Warehouse Type
-          </label>
-          <select
-            className="w-full border border-[var(--divider)] rounded-md p-2"
-            {...register('type', { required: 'Warehouse type is required' })}
-          >
-            <option value="">Select Type</option>
-            <option value="distribution">Distribution Center</option>
-            <option value="fulfillment">Fulfillment Center</option>
-            <option value="storage">Storage Facility</option>
-            <option value="cross-dock">Cross-dock Facility</option>
-          </select>
-          {errors.type && (
-            <p className="mt-1 text-sm text-[var(--error-main)]">{errors.type.message}</p>
-          )}
-        </div>
-        <Input
-          label="Storage Capacity (sqft)"
-          type="number"
-          error={errors.capacity?.message}
-          {...register('capacity', { required: 'Capacity is required' })}
-        />
+      <div>
+        <label className="block text-sm font-medium text-[var(--text-secondary)] mb-1">
+          Location Type
+        </label>
+        <select
+          className="w-full border border-[var(--divider)] rounded-md p-2"
+          {...register('type', { required: 'Location type is required' })}
+        >
+          <option value="">Select Type</option>
+          <option value="distribution">Distribution Center</option>
+          <option value="fulfillment">Fulfillment Center</option>
+          <option value="warehouse">Warehouse</option>
+        </select>
+        {errors.type && (
+          <p className="mt-1 text-sm text-[var(--error-main)]">{errors.type.message}</p>
+        )}
       </div>
 
       <Input
@@ -117,22 +108,29 @@ const LocationForm: React.FC<LocationFormProps> = ({ onSubmit, initialData, onCa
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <Input
-          label="Warehouse Manager"
+          label="Storage Capacity (sq ft)"
+          type="number"
+          error={errors.capacity?.message}
+          {...register('capacity', { required: 'Capacity is required' })}
+        />
+        <Input
+          label="Manager Name"
           error={errors.manager?.message}
           {...register('manager', { required: 'Manager name is required' })}
         />
         <Input
-          label="Phone"
+          label="Contact Phone"
           error={errors.phone?.message}
           {...register('phone', { required: 'Phone is required' })}
         />
-        <Input
-          label="Email"
-          type="email"
-          error={errors.email?.message}
-          {...register('email', { required: 'Email is required' })}
-        />
       </div>
+
+      <Input
+        label="Contact Email"
+        type="email"
+        error={errors.email?.message}
+        {...register('email', { required: 'Email is required' })}
+      />
 
       <div className="flex justify-end space-x-2">
         <Button variant="outline" type="button" onClick={onCancel}>
@@ -143,7 +141,7 @@ const LocationForm: React.FC<LocationFormProps> = ({ onSubmit, initialData, onCa
         </Button>
       </div>
     </form>
-  )
-}
+  );
+};
 
-export default LocationForm
+export default LocationForm;
