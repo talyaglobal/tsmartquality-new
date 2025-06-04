@@ -4,22 +4,16 @@ import Sidebar from './Sidebar';
 import Header from './Header';
 
 const Layout: React.FC = () => {
-  const [darkMode, setDarkMode] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(true);
-
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-    document.documentElement.classList.toggle('dark');
-  };
 
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
   };
 
   return (
-    <div className="flex h-screen overflow-hidden">
+    <div className="flex h-screen overflow-hidden bg-[var(--background-default)]">
       <div className={`${sidebarOpen ? 'block' : 'hidden'} md:block`}>
-        <Sidebar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+        <Sidebar />
       </div>
       
       <div className="flex-1 flex flex-col overflow-hidden">

@@ -43,7 +43,7 @@
   }
 
   /* Dark mode colors */
-  .dark {
+  :root[data-theme="dark"] {
     --background-default: #25293C;
     --background-paper: #2F3349;
     --text-primary: rgba(255, 255, 255, 0.9);
@@ -61,7 +61,7 @@
 
 @layer components {
   .card {
-    @apply bg-white rounded-lg shadow-sm p-6 dark:bg-[var(--background-paper)];
+    @apply bg-[var(--background-paper)] rounded-lg shadow-sm p-6;
   }
 
   .btn-primary {
@@ -72,7 +72,23 @@
     @apply bg-[var(--secondary-main)] hover:bg-[var(--secondary-dark)] text-white py-2 px-4 rounded-md transition-colors;
   }
 
+  .btn-success {
+    @apply bg-[var(--success-main)] hover:bg-[var(--success-dark)] text-white py-2 px-4 rounded-md transition-colors;
+  }
+
+  .btn-danger {
+    @apply bg-[var(--error-main)] hover:bg-[var(--error-dark)] text-white py-2 px-4 rounded-md transition-colors;
+  }
+
+  .btn-warning {
+    @apply bg-[var(--warning-main)] hover:bg-[var(--warning-dark)] text-white py-2 px-4 rounded-md transition-colors;
+  }
+
+  .btn-info {
+    @apply bg-[var(--info-main)] hover:bg-[var(--info-dark)] text-white py-2 px-4 rounded-md transition-colors;
+  }
+
   .input-field {
-    @apply border border-gray-300 rounded-md py-2 px-3 focus:ring-2 focus:ring-[var(--primary-light)] focus:border-[var(--primary-main)] outline-none transition-all;
+    @apply border border-[var(--divider)] rounded-md py-2 px-3 focus:ring-2 focus:ring-[var(--primary-light)] focus:border-[var(--primary-main)] outline-none transition-all;
   }
 }
