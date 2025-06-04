@@ -49,15 +49,14 @@ export default function App() {
     <Router>
       <Routes>
         {/* Public routes */}
-        <Route path="/landing" element={<LandingPage />} />
+        <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<SignInPage />} />
         <Route path="/register" element={<SignUpPage />} />
         
         {/* Protected routes */}
         {isAuthenticated ? (
           <Route element={<Layout />}>
-            <Route path="/" element={<Navigate to="/dashboard\" replace />} />
-            <Route path="/dashboard\" element={<DashboardPage />} />
+            <Route path="/dashboard" element={<DashboardPage />} />
             <Route path="/products" element={<ProductPortal />} />
             <Route path="/products/dashboard" element={<ProductDashboard />} />
             <Route path="/services" element={<ServicesPage />} />
@@ -95,8 +94,8 @@ export default function App() {
             <Route path="/accountancy/tsmartbooks" element={<TSmartBooksPage />} />
           </Route>
         ) : (
-          // Redirect to landing page if not authenticated
-          <Route path="*" element={<Navigate to="/landing\" replace />} />
+          // Redirect to home page if not authenticated
+          <Route path="*" element={<Navigate to="/" replace />} />
         )}
       </Routes>
     </Router>
