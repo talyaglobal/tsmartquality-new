@@ -13,7 +13,7 @@ const LandingPage: React.FC = () => {
       description: 'Comprehensive tools for managing product quality throughout the lifecycle'
     },
     {
-      icon: <CheckCircle className="text-[var(--success-main)]\" size={32} />,
+      icon: <CheckCircle className="text-[var(--success-main)]" size={32} />,
       title: 'Audit & Compliance',
       description: 'Streamlined audit processes and compliance tracking'
     },
@@ -23,7 +23,7 @@ const LandingPage: React.FC = () => {
       description: 'Centralized document management and version control'
     },
     {
-      icon: <Users className="text-[var(--info-main)]\" size={32} />,
+      icon: <Users className="text-[var(--info-main)]" size={32} />,
       title: 'Supplier Management',
       description: 'Efficient supplier qualification and performance monitoring'
     },
@@ -33,7 +33,7 @@ const LandingPage: React.FC = () => {
       description: 'Advanced analytics and customizable reporting tools'
     },
     {
-      icon: <Award className="text-[var(--primary-main)]\" size={32} />,
+      icon: <Award className="text-[var(--primary-main)]" size={32} />,
       title: 'Training & Certification',
       description: 'Employee training management and certification tracking'
     }
@@ -58,6 +58,9 @@ const LandingPage: React.FC = () => {
               <Button variant="outline" onClick={() => navigate('/login')}>
                 Sign In
               </Button>
+              <Button onClick={handleBypassAuth}>
+                Access Dashboard
+              </Button>
             </div>
           </div>
         </div>
@@ -72,13 +75,21 @@ const LandingPage: React.FC = () => {
           <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
             Streamline your quality processes, ensure compliance, and drive continuous improvement with our comprehensive quality management system.
           </p>
-          <div className="flex justify-center">
+          <div className="flex justify-center space-x-4">
             <Button 
               size="lg"
               onClick={() => navigate('/register')}
               className="bg-white text-[var(--primary-main)] hover:bg-opacity-90"
             >
               Start Free Trial
+            </Button>
+            <Button 
+              size="lg"
+              variant="outline"
+              onClick={handleBypassAuth}
+              className="border-white text-white hover:bg-white hover:bg-opacity-10"
+            >
+              Access Dashboard
             </Button>
           </div>
         </div>
@@ -118,9 +129,9 @@ const LandingPage: React.FC = () => {
             <Button
               variant="outline"
               size="lg"
-              onClick={() => navigate('/contact')}
+              onClick={handleBypassAuth}
             >
-              Contact Sales
+              Access Dashboard
             </Button>
           </div>
         </div>
@@ -169,12 +180,6 @@ const LandingPage: React.FC = () => {
           </div>
           <div className="mt-12 pt-8 border-t border-[var(--divider)] text-center">
             <p className="text-[var(--text-secondary)]">&copy; {new Date().getFullYear()} TSmart Quality. All rights reserved.</p>
-            <button 
-              onClick={handleBypassAuth}
-              className="text-[var(--text-secondary)] hover:text-[var(--primary-main)] text-sm mt-2"
-            >
-              Access Dashboard
-            </button>
           </div>
         </div>
       </footer>
