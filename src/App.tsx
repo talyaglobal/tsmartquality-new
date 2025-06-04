@@ -43,7 +43,7 @@ function App() {
         {/* Protected routes */}
         {isAuthenticated ? (
           <Route element={<Layout />}>
-            <Route path="/" element={<Navigate to="/dashboard\" replace />} />
+            <Route path="/" element={<Navigate to="/dashboard" replace />} />
             <Route path="/dashboard" element={<DashboardPage />} />
             <Route path="/products" element={<ProductPortal />} />
             <Route path="/products/dashboard" element={<ProductDashboard />} />
@@ -74,7 +74,7 @@ function App() {
           </Route>
         ) : (
           // Redirect to landing page if not authenticated
-          <Route path="*" element={<Navigate to="/landing\" replace />} />
+          <Route path="*" element={<Navigate to="/landing" replace />} />
         )}
       </Routes>
     </Router>
