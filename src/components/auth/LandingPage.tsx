@@ -124,7 +124,7 @@ const LandingPage: React.FC = () => {
             <Button 
               size="lg"
               onClick={() => navigate('/register')}
-              className="bg-white text-[var(--primary-main)] hover:bg-opacity-90 px-8"
+              className="bg-white text-[var(--primary-main)] hover:bg-white hover:bg-opacity-90 px-8"
             >
               Start Free Trial
             </Button>
