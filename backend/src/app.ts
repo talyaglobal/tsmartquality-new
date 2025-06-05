@@ -5,13 +5,19 @@ import compression from 'compression';
 import morgan from 'morgan';
 import { z } from 'zod';
 import path from 'path';
+import config from './config';
 
 // Initialize express app
 const app: Express = express();
 
 // Middleware
 app.use(helmet()); // Security headers
-app.use(cors()); // Enable CORS
+
+// Configure CORS based on environment settings
+app.use(cors({
+  origin: config.corsOrigin,
+  credentials: true
+})); // Enable CORS
 app.use(compression()); // Compress responses
 app.use(express.json()); // Parse JSON bodies
 app.use(express.urlencoded({ extended: true })); // Parse URL-encoded bodies
@@ -29,13 +35,22 @@ app.get('/health', (req: Request, res: Response) => {
 // Import routes here as they are developed
 // Example: app.use('/api/products', productRoutes);
 
+// Custom error interface for better type handling
+interface ApiError extends Error {
+  statusCode?: number;
+  details?: any;
+}
+
 // Error handling middleware
-app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+app.use((err: ApiError, req: Request, res: Response, next: NextFunction) => {
   console.error(err.stack);
-  res.status(500).json({
+  
+  const statusCode = err.statusCode || 500;
+  
+  res.status(statusCode).json({
     error: {
-      message: 'An unexpected error occurred',
-      details: process.env.NODE_ENV === 'development' ? err.message : undefined
+      message: err.message || 'An unexpected error occurred',
+      details: config.nodeEnv === 'development' ? err.details || err.stack : undefined
     }
   });
 });
