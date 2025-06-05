@@ -40,7 +40,12 @@ import {
   Wrench,
   Bell,
   UserCheck,
-  CheckSquare
+  CheckSquare,
+  Book,
+  ShoppingCart,
+  Clipboard,
+  FileSpreadsheet,
+  FileCheck
 } from 'lucide-react';
 import { NavItem } from '../ui/NavItem';
 
@@ -132,10 +137,44 @@ const Sidebar: React.FC<SidebarProps> = ({ collapsed, onToggle }) => {
           <NavItem
             icon={<FileText size={18} />}
             label="Documents"
-            active={isActive('/documents')}
-            onClick={() => navigate('/documents')}
             collapsed={collapsed}
-          />
+          >
+            <NavItem
+              icon={<Book size={16} />}
+              label="Quality Handbook"
+              active={isActive('/documents/quality-handbook')}
+              onClick={() => navigate('/documents/quality-handbook')}
+              collapsed={collapsed}
+            />
+            <NavItem
+              icon={<ShoppingCart size={16} />}
+              label="Sales Specs"
+              active={isActive('/documents/sales-specs')}
+              onClick={() => navigate('/documents/sales-specs')}
+              collapsed={collapsed}
+            />
+            <NavItem
+              icon={<Clipboard size={16} />}
+              label="Buying Specs"
+              active={isActive('/documents/buying-specs')}
+              onClick={() => navigate('/documents/buying-specs')}
+              collapsed={collapsed}
+            />
+            <NavItem
+              icon={<FileSpreadsheet size={16} />}
+              label="Recipe & Norm"
+              active={isActive('/documents/recipe-norm')}
+              onClick={() => navigate('/documents/recipe-norm')}
+              collapsed={collapsed}
+            />
+            <NavItem
+              icon={<FileCheck size={16} />}
+              label="JSVSRP"
+              active={isActive('/documents/jsvsrp')}
+              onClick={() => navigate('/documents/jsvsrp')}
+              collapsed={collapsed}
+            />
+          </NavItem>
           <NavItem
             icon={<AlertTriangle size={18} />}
             label="Complaints"

@@ -59,6 +59,11 @@ import QualityScorePage from './components/quality/QualityScorePage'
 import WarningsPage from './components/warnings/WarningsPage'
 import ServicesPage from './components/services/ServicesPage'
 import TasksPage from './components/tasks/TasksPage'
+import QualityHandbookPage from './components/documents/QualityHandbookPage'
+import SalesSpecsPage from './components/documents/SalesSpecsPage'
+import BuyingSpecsPage from './components/documents/BuyingSpecsPage'
+import RecipeNormPage from './components/documents/RecipeNormPage'
+import JsvsrpPage from './components/documents/JsvsrpPage'
 
 function App() {
   // Check if user is authenticated
@@ -89,12 +94,17 @@ function App() {
         {/* Protected routes */}
         {isAuthenticated ? (
           <Route element={<Layout />}>
-            <Route path="/" element={<Navigate to="/dashboard\" replace />} />
+            <Route path="/" element={<Navigate to="/dashboard" replace />} />
             <Route path="/dashboard" element={<DashboardPage />} />
             <Route path="/quality-score" element={<QualityScorePage />} />
             <Route path="/products" element={<ProductPortal />} />
             <Route path="/products/dashboard" element={<ProductDashboard />} />
             <Route path="/documents" element={<DocumentManagement />} />
+            <Route path="/documents/quality-handbook" element={<QualityHandbookPage />} />
+            <Route path="/documents/sales-specs" element={<SalesSpecsPage />} />
+            <Route path="/documents/buying-specs" element={<BuyingSpecsPage />} />
+            <Route path="/documents/recipe-norm" element={<RecipeNormPage />} />
+            <Route path="/documents/jsvsrp" element={<JsvsrpPage />} />
             <Route path="/complaints" element={<ComplaintManagement />} />
             <Route path="/warnings" element={<WarningsPage />} />
             <Route path="/tasks" element={<TasksPage />} />
@@ -147,7 +157,7 @@ function App() {
           </Route>
         ) : (
           // Redirect to landing page if not authenticated
-          <Route path="*" element={<Navigate to="/landing\" replace />} />
+          <Route path="*" element={<Navigate to="/landing" replace />} />
         )}
         
         {/* 404 page */}
