@@ -320,6 +320,13 @@ const LandingPage: React.FC = () => {
             >
               View Demo
             </Button>
+            <Button
+              size="lg"
+              onClick={() => navigate('/register')}
+              className="bg-white text-[var(--primary-main)] hover:bg-opacity-90 px-8"
+            >
+              Sign Up
+            </Button>
           </div>
         </div>
       </section>
