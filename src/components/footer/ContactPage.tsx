@@ -1,13 +1,44 @@
-import React from 'react';
-import { Mail, Phone, MapPin, MessageSquare } from 'lucide-react';
+import React, { useState } from 'react';
+import { Mail, Phone, MapPin, MessageSquare, Send } from 'lucide-react';
 import Card from '../ui/Card';
 import Button from '../ui/Button';
 import Input from '../ui/Input';
 
 const ContactPage: React.FC = () => {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    subject: '',
+    message: ''
+  });
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
+    setIsLoading(true);
+    
+    // Simulate API call
+    setTimeout(() => {
+      console.log('Form submitted:', formData);
+      setIsLoading(false);
+      // Reset form
+      setFormData({
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+        subject: '',
+        message: ''
+      });
+      // Show success message (in a real app)
+    }, 1000);
   };
 
   const contactInfo = [
@@ -62,35 +93,54 @@ const ContactPage: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <Input
                 label="First Name"
+                name="firstName"
+                value={formData.firstName}
+                onChange={handleChange}
                 required
               />
               <Input
                 label="Last Name"
+                name="lastName"
+                value={formData.lastName}
+                onChange={handleChange}
                 required
               />
             </div>
             <Input
               label="Email"
               type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
               required
             />
             <Input
               label="Phone"
               type="tel"
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
             />
             <Input
               label="Subject"
+              name="subject"
+              value={formData.subject}
+              onChange={handleChange}
               required
             />
             <Input
               label="Message"
               multiline
               rows={4}
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
               required
             />
             <Button
               type="submit"
-              icon={<MessageSquare size={20} />}
+              icon={<Send size={20} />}
+              loading={isLoading}
             >
               Send Message
             </Button>
@@ -119,8 +169,31 @@ const ContactPage: React.FC = () => {
                   Yes, we can customize our platform to meet your specific needs. Contact our sales team to discuss your requirements.
                 </p>
               </div>
+              <div>
+                <h3 className="font-semibold mb-2">Is there a free trial available?</h3>
+                <p className="text-[var(--text-secondary)]">
+                  Yes, we offer a 14-day free trial with full access to all features. No credit card required.
+                </p>
+              </div>
             </div>
           </Card>
+          
+          <div className="mt-8">
+            <Card>
+              <div className="flex items-center space-x-4">
+                <div className="p-3 rounded-full bg-[var(--primary-light)] text-[var(--primary-dark)]">
+                  <MessageSquare size={24} />
+                </div>
+                <div>
+                  <h3 className="font-semibold">Live Chat Support</h3>
+                  <p className="text-[var(--text-secondary)]">Our team is available Monday-Friday, 9am-5pm PT</p>
+                </div>
+              </div>
+              <Button className="w-full mt-4">
+                Start Live Chat
+              </Button>
+            </Card>
+          </div>
         </div>
       </div>
     </div>

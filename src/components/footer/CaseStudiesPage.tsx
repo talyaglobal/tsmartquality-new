@@ -2,8 +2,11 @@ import React from 'react';
 import { ArrowRight, Building, CheckCircle, TrendingUp } from 'lucide-react';
 import Card from '../ui/Card';
 import Button from '../ui/Button';
+import { useNavigate } from 'react-router-dom';
 
 const CaseStudiesPage: React.FC = () => {
+  const navigate = useNavigate();
+  
   const caseStudies = [
     {
       id: '1',
@@ -107,6 +110,23 @@ const CaseStudiesPage: React.FC = () => {
             </div>
           </Card>
         ))}
+      </div>
+      
+      <div className="mt-16 text-center">
+        <Card>
+          <h2 className="text-2xl font-bold mb-4">Ready to Achieve Similar Results?</h2>
+          <p className="text-[var(--text-secondary)] mb-6 max-w-2xl mx-auto">
+            Join the growing list of companies that have transformed their quality management processes with TSmart Quality.
+          </p>
+          <div className="flex justify-center space-x-4">
+            <Button variant="outline" onClick={() => navigate('/contact')}>
+              Contact Us
+            </Button>
+            <Button onClick={() => navigate('/register')}>
+              Start Free Trial
+            </Button>
+          </div>
+        </Card>
       </div>
     </div>
   );

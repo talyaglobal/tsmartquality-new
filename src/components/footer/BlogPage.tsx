@@ -31,6 +31,33 @@ const BlogPage: React.FC = () => {
       author: 'Michael Brown',
       date: '2024-03-13',
       category: 'Innovation'
+    },
+    {
+      id: '4',
+      title: 'Implementing HACCP in Food Manufacturing',
+      excerpt: 'A comprehensive guide to implementing Hazard Analysis Critical Control Points in food production.',
+      image: 'https://images.pexels.com/photos/8850731/pexels-photo-8850731.jpeg',
+      author: 'Emily Davis',
+      date: '2024-03-12',
+      category: 'Food Safety'
+    },
+    {
+      id: '5',
+      title: 'Quality Management System Documentation: Best Practices',
+      excerpt: 'How to create and maintain effective quality management system documentation.',
+      image: 'https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg',
+      author: 'David Wilson',
+      date: '2024-03-10',
+      category: 'Documentation'
+    },
+    {
+      id: '6',
+      title: 'Measuring and Improving Quality KPIs',
+      excerpt: 'Strategies for defining, measuring, and continuously improving quality key performance indicators.',
+      image: 'https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg',
+      author: 'Jennifer Lee',
+      date: '2024-03-08',
+      category: 'Performance'
     }
   ];
 
@@ -43,7 +70,7 @@ const BlogPage: React.FC = () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {posts.map((post) => (
           <Card key={post.id} className="overflow-hidden">
             <img
@@ -77,6 +104,25 @@ const BlogPage: React.FC = () => {
             </div>
           </Card>
         ))}
+      </div>
+      
+      <div className="mt-16 text-center">
+        <Card>
+          <h2 className="text-2xl font-bold mb-4">Subscribe to Our Newsletter</h2>
+          <p className="text-[var(--text-secondary)] mb-6 max-w-2xl mx-auto">
+            Get the latest quality management insights delivered directly to your inbox.
+          </p>
+          <div className="flex flex-col md:flex-row justify-center md:space-x-4 space-y-4 md:space-y-0">
+            <input
+              type="email"
+              placeholder="Enter your email"
+              className="border border-[var(--divider)] rounded-md px-4 py-2 md:w-64"
+            />
+            <Button>
+              Subscribe
+            </Button>
+          </div>
+        </Card>
       </div>
     </div>
   );

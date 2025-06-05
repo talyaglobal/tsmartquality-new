@@ -58,21 +58,38 @@ const TermsPage: React.FC = () => {
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold mb-4">7. Termination</h2>
+              <h2 className="text-2xl font-bold mb-4">7. Subscription and Billing</h2>
+              <p className="text-[var(--text-secondary)]">
+                Some aspects of the Service may be provided for a fee. You will be required to select a payment plan and provide accurate billing information. By submitting such information, you grant us the right to provide the information to third parties for purposes of facilitating payment.
+              </p>
+              <p className="text-[var(--text-secondary)] mt-2">
+                Subscription fees are billed in advance on a monthly or annual basis. There will be no refunds for partial months of service, or for periods in which your account remains open but you do not use the Service.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-bold mb-4">8. Termination</h2>
               <p className="text-[var(--text-secondary)]">
                 We may terminate or suspend your account and bar access to the Service immediately, without prior notice or liability, under our sole discretion, for any reason whatsoever.
               </p>
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold mb-4">8. Changes to Terms</h2>
+              <h2 className="text-2xl font-bold mb-4">9. Limitation of Liability</h2>
+              <p className="text-[var(--text-secondary)]">
+                In no event shall TSmart Quality, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from your access to or use of or inability to access or use the Service.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-bold mb-4">10. Changes to Terms</h2>
               <p className="text-[var(--text-secondary)]">
                 We reserve the right to modify these terms at any time. We will notify users of any changes by posting the new Terms of Service on this page.
               </p>
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold mb-4">9. Contact Us</h2>
+              <h2 className="text-2xl font-bold mb-4">11. Contact Us</h2>
               <p className="text-[var(--text-secondary)]">
                 If you have any questions about these Terms, please contact us at legal@tsmartquality.com.
               </p>
@@ -85,7 +102,7 @@ const TermsPage: React.FC = () => {
               <h3 className="font-semibold">Last Updated</h3>
             </div>
             <p className="text-[var(--text-secondary)]">
-              These terms were last updated on March 15, 2024.
+              These terms were last updated on April 1, 2024.
             </p>
           </div>
         </Card>

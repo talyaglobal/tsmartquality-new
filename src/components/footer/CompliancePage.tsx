@@ -1,8 +1,12 @@
 import React from 'react';
 import { Shield, CheckCircle, AlertCircle } from 'lucide-react';
 import Card from '../ui/Card';
+import Button from '../ui/Button';
+import { useNavigate } from 'react-router-dom';
 
 const CompliancePage: React.FC = () => {
+  const navigate = useNavigate();
+  
   const complianceFrameworks = [
     {
       name: 'ISO 9001:2015',
@@ -24,6 +28,13 @@ const CompliancePage: React.FC = () => {
       status: 'In Progress',
       lastAudit: 'N/A',
       nextAudit: '2024-06-01'
+    },
+    {
+      name: 'BRC Global Standard',
+      description: 'British Retail Consortium standard for food safety.',
+      status: 'Certified',
+      lastAudit: '2023-11-10',
+      nextAudit: '2024-11-10'
     }
   ];
 
@@ -47,6 +58,16 @@ const CompliancePage: React.FC = () => {
         'Allergen management',
         'Labeling compliance'
       ]
+    },
+    {
+      name: 'ISO Standards',
+      description: 'International Organization for Standardization requirements.',
+      requirements: [
+        'Quality management system',
+        'Document control',
+        'Management responsibility',
+        'Continuous improvement'
+      ]
     }
   ];
 
@@ -61,7 +82,7 @@ const CompliancePage: React.FC = () => {
 
       <div className="mb-12">
         <h2 className="text-2xl font-semibold mb-6">Certification Status</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {complianceFrameworks.map((framework, index) => (
             <Card key={index}>
               <div className="flex items-start">
@@ -98,9 +119,9 @@ const CompliancePage: React.FC = () => {
         </div>
       </div>
 
-      <div>
+      <div className="mb-12">
         <h2 className="text-2xl font-semibold mb-6">Regulatory Compliance</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {regulations.map((regulation, index) => (
             <Card key={index}>
               <h3 className="text-xl font-semibold mb-4">{regulation.name}</h3>
@@ -120,13 +141,41 @@ const CompliancePage: React.FC = () => {
         </div>
       </div>
 
+      <div className="mb-12">
+        <h2 className="text-2xl font-semibold mb-6">How Our Platform Helps You Stay Compliant</h2>
+        <Card>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+              <h3 className="text-xl font-semibold mb-4">Document Management</h3>
+              <ul className="list-disc list-inside space-y-2 text-[var(--text-secondary)]">
+                <li>Centralized document control</li>
+                <li>Version tracking and history</li>
+                <li>Approval workflows</li>
+                <li>Automatic document expiration notifications</li>
+                <li>Audit trail for all document activities</li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-xl font-semibold mb-4">Quality Control</h3>
+              <ul className="list-disc list-inside space-y-2 text-[var(--text-secondary)]">
+                <li>Inspection and testing records</li>
+                <li>Non-conformance tracking</li>
+                <li>Corrective and preventive actions (CAPA)</li>
+                <li>Quality metrics and reporting</li>
+                <li>Supplier quality management</li>
+              </ul>
+            </div>
+          </div>
+        </Card>
+      </div>
+
       <div className="mt-12 text-center">
         <Card>
           <h2 className="text-2xl font-semibold mb-4">Need More Information?</h2>
           <p className="text-[var(--text-secondary)] mb-6">
             Contact our compliance team for detailed information about our certifications and regulatory compliance.
           </p>
-          <Button>Contact Compliance Team</Button>
+          <Button onClick={() => navigate('/contact')}>Contact Compliance Team</Button>
         </Card>
       </div>
     </div>

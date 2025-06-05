@@ -2,8 +2,11 @@ import React from 'react';
 import { Check, X } from 'lucide-react';
 import Card from '../ui/Card';
 import Button from '../ui/Button';
+import { useNavigate } from 'react-router-dom';
 
 const PricingPage: React.FC = () => {
+  const navigate = useNavigate();
+  
   const plans = [
     {
       name: 'Starter',
@@ -108,6 +111,7 @@ const PricingPage: React.FC = () => {
             <Button
               variant={plan.popular ? 'primary' : 'outline'}
               className="w-full"
+              onClick={() => navigate('/register')}
             >
               Get Started
             </Button>
@@ -122,7 +126,7 @@ const PricingPage: React.FC = () => {
             <p className="text-[var(--text-secondary)] mb-6">
               Contact us for custom pricing and features tailored to your organization's needs.
             </p>
-            <Button variant="outline">
+            <Button variant="outline" onClick={() => navigate('/contact')}>
               Contact Sales
             </Button>
           </div>

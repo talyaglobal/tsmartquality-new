@@ -1,8 +1,12 @@
 import React from 'react';
 import { Shield, Lock, Key, Server, Users, FileText } from 'lucide-react';
 import Card from '../ui/Card';
+import Button from '../ui/Button';
+import { useNavigate } from 'react-router-dom';
 
 const SecurityPage: React.FC = () => {
+  const navigate = useNavigate();
+  
   const securityFeatures = [
     {
       icon: <Shield className="text-[var(--primary-main)]" size={32} />,
@@ -85,6 +89,12 @@ const SecurityPage: React.FC = () => {
                 Regular security assessments, penetration testing, and vulnerability scanning to ensure application security.
               </p>
             </div>
+            <div>
+              <h3 className="font-semibold mb-2">Data Protection</h3>
+              <p className="text-[var(--text-secondary)]">
+                Comprehensive data protection measures including encryption, access controls, and regular backups.
+              </p>
+            </div>
           </div>
         </Card>
 
@@ -101,6 +111,20 @@ const SecurityPage: React.FC = () => {
               </div>
             ))}
           </div>
+          
+          <div className="mt-8">
+            <h3 className="font-semibold mb-2">Regulatory Compliance</h3>
+            <p className="text-[var(--text-secondary)] mb-4">
+              Our platform is designed to help you meet regulatory requirements in your industry, including:
+            </p>
+            <ul className="list-disc pl-6 text-[var(--text-secondary)] space-y-1">
+              <li>FDA 21 CFR Part 11</li>
+              <li>EU GMP Annex 11</li>
+              <li>ISO 9001:2015</li>
+              <li>FSSC 22000</li>
+              <li>BRC Global Standard for Food Safety</li>
+            </ul>
+          </div>
         </Card>
       </div>
 
@@ -112,12 +136,15 @@ const SecurityPage: React.FC = () => {
               Download our security documentation or request a security assessment report.
             </p>
             <div className="flex justify-center space-x-4">
-              <button className="px-6 py-2 bg-[var(--primary-main)] text-white rounded-lg hover:bg-[var(--primary-dark)] transition-colors">
+              <Button>
                 Download Security Whitepaper
-              </button>
-              <button className="px-6 py-2 border border-[var(--primary-main)] text-[var(--primary-main)] rounded-lg hover:bg-[var(--primary-light)] hover:bg-opacity-10 transition-colors">
+              </Button>
+              <Button 
+                variant="outline"
+                onClick={() => navigate('/contact')}
+              >
                 Request Security Assessment
-              </button>
+              </Button>
             </div>
           </div>
         </Card>

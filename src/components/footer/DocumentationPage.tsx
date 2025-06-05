@@ -3,8 +3,11 @@ import { Book, FileText, Video, Code, Search } from 'lucide-react';
 import Card from '../ui/Card';
 import Button from '../ui/Button';
 import Input from '../ui/Input';
+import { useNavigate } from 'react-router-dom';
 
 const DocumentationPage: React.FC = () => {
+  const navigate = useNavigate();
+  
   const sections = [
     {
       title: 'Getting Started',
@@ -94,7 +97,7 @@ const DocumentationPage: React.FC = () => {
               Can't find what you're looking for? Our support team is here to help.
             </p>
             <div className="flex justify-center space-x-4">
-              <Button variant="outline">
+              <Button variant="outline" onClick={() => navigate('/contact')}>
                 Contact Support
               </Button>
               <Button>

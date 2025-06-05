@@ -2,8 +2,11 @@ import React from 'react';
 import { Briefcase, MapPin, Clock, DollarSign } from 'lucide-react';
 import Card from '../ui/Card';
 import Button from '../ui/Button';
+import { useNavigate } from 'react-router-dom';
 
 const CareersPage: React.FC = () => {
+  const navigate = useNavigate();
+  
   const jobs = [
     {
       id: '1',
@@ -12,7 +15,7 @@ const CareersPage: React.FC = () => {
       location: 'San Francisco, CA',
       type: 'Full-time',
       salary: '$120,000 - $150,000',
-      description: 'We are seeking an experienced Quality Engineer to join our growing team...'
+      description: 'We are seeking an experienced Quality Engineer to join our growing team. You will be responsible for developing and implementing quality assurance standards, testing methodologies, and continuous improvement initiatives.'
     },
     {
       id: '2',
@@ -21,7 +24,7 @@ const CareersPage: React.FC = () => {
       location: 'New York, NY',
       type: 'Full-time',
       salary: '$130,000 - $160,000',
-      description: 'Looking for a seasoned QA Manager to lead our quality assurance team...'
+      description: 'Looking for a seasoned QA Manager to lead our quality assurance team. You will oversee quality control processes, manage a team of QA specialists, and ensure compliance with industry standards and regulations.'
     },
     {
       id: '3',
@@ -30,7 +33,16 @@ const CareersPage: React.FC = () => {
       location: 'Remote',
       type: 'Full-time',
       salary: '$100,000 - $140,000',
-      description: 'Join our development team to build cutting-edge quality management solutions...'
+      description: 'Join our development team to build cutting-edge quality management solutions. You will work on feature development, system architecture, and integration with various enterprise systems.'
+    },
+    {
+      id: '4',
+      title: 'Product Manager - Quality Solutions',
+      department: 'Product',
+      location: 'Chicago, IL',
+      type: 'Full-time',
+      salary: '$110,000 - $145,000',
+      description: 'Lead the product strategy for our quality management solutions. You will work closely with customers, engineering teams, and stakeholders to define product roadmaps and deliver exceptional user experiences.'
     }
   ];
 
@@ -111,6 +123,18 @@ const CareersPage: React.FC = () => {
             </Card>
           ))}
         </div>
+      </div>
+      
+      <div className="mt-16 text-center">
+        <Card>
+          <h2 className="text-2xl font-bold mb-4">Don't See the Right Fit?</h2>
+          <p className="text-[var(--text-secondary)] mb-6 max-w-2xl mx-auto">
+            We're always looking for talented individuals to join our team. Send us your resume and we'll keep you in mind for future opportunities.
+          </p>
+          <Button onClick={() => navigate('/contact')}>
+            Contact Us
+          </Button>
+        </Card>
       </div>
     </div>
   );

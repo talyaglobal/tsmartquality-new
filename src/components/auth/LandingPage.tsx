@@ -18,42 +18,42 @@ const LandingPage: React.FC = () => {
       description: 'Comprehensive tools for managing product quality throughout the lifecycle'
     },
     {
-      icon: <CheckCircle className="text-[var(--success-main)]\" size={32} />,
+      icon: <CheckCircle className="text-[var(--success-main)]" size={32} />,
       title: 'Audit & Compliance',
       description: 'Streamlined audit processes and compliance tracking'
     },
     {
-      icon: <Shield className="text-[var(--warning-main)]\" size={32} />,
+      icon: <Shield className="text-[var(--warning-main)]" size={32} />,
       title: 'Document Control',
       description: 'Centralized document management and version control'
     },
     {
-      icon: <Users className="text-[var(--info-main)]\" size={32} />,
+      icon: <Users className="text-[var(--info-main)]" size={32} />,
       title: 'Supplier Management',
       description: 'Efficient supplier qualification and performance monitoring'
     },
     {
-      icon: <BarChart2 className="text-[var(--error-main)]\" size={32} />,
+      icon: <BarChart2 className="text-[var(--error-main)]" size={32} />,
       title: 'Analytics & Reporting',
       description: 'Advanced analytics and customizable reporting tools'
     },
     {
-      icon: <Award className="text-[var(--primary-main)]\" size={32} />,
+      icon: <Award className="text-[var(--primary-main)]" size={32} />,
       title: 'Training & Certification',
       description: 'Employee training management and certification tracking'
     },
     {
-      icon: <Boxes className="text-[var(--success-main)]\" size={32} />,
+      icon: <Boxes className="text-[var(--success-main)]" size={32} />,
       title: 'Warehouse Management',
       description: 'Complete warehouse and inventory control system'
     },
     {
-      icon: <Truck className="text-[var(--warning-main)]\" size={32} />,
+      icon: <Truck className="text-[var(--warning-main)]" size={32} />,
       title: 'Logistics Integration',
       description: 'Seamless integration with logistics and shipping systems'
     },
     {
-      icon: <BookOpen className="text-[var(--info-main)]\" size={32} />,
+      icon: <BookOpen className="text-[var(--info-main)]" size={32} />,
       title: 'Quality Academy',
       description: 'Built-in learning management system for quality training'
     }
@@ -237,7 +237,7 @@ const LandingPage: React.FC = () => {
                   <span>Email support</span>
                 </li>
               </ul>
-              <Button className="w-full">Get Started</Button>
+              <Button className="w-full" onClick={() => navigate('/register')}>Get Started</Button>
             </div>
             
             {/* Professional Plan */}
@@ -273,7 +273,7 @@ const LandingPage: React.FC = () => {
                   <span>Priority email & phone support</span>
                 </li>
               </ul>
-              <Button className="w-full">Get Started</Button>
+              <Button className="w-full" onClick={() => navigate('/register')}>Get Started</Button>
             </div>
             
             {/* Enterprise Plan */}
@@ -306,7 +306,7 @@ const LandingPage: React.FC = () => {
                   <span>24/7 dedicated support</span>
                 </li>
               </ul>
-              <Button className="w-full">Contact Sales</Button>
+              <Button className="w-full" onClick={() => navigate('/contact')}>Contact Sales</Button>
             </div>
           </div>
         </div>
@@ -357,28 +357,52 @@ const LandingPage: React.FC = () => {
             <div>
               <h4 className="font-semibold mb-4">Product</h4>
               <ul className="space-y-2 text-[var(--text-secondary)]">
-                <li className="hover:text-[var(--primary-main)] cursor-pointer">Features</li>
-                <li className="hover:text-[var(--primary-main)] cursor-pointer">Pricing</li>
-                <li className="hover:text-[var(--primary-main)] cursor-pointer">Case Studies</li>
-                <li className="hover:text-[var(--primary-main)] cursor-pointer">Documentation</li>
+                <li className="hover:text-[var(--primary-main)] cursor-pointer">
+                  <a href="/features">Features</a>
+                </li>
+                <li className="hover:text-[var(--primary-main)] cursor-pointer">
+                  <a href="/pricing">Pricing</a>
+                </li>
+                <li className="hover:text-[var(--primary-main)] cursor-pointer">
+                  <a href="/case-studies">Case Studies</a>
+                </li>
+                <li className="hover:text-[var(--primary-main)] cursor-pointer">
+                  <a href="/documentation">Documentation</a>
+                </li>
               </ul>
             </div>
             <div>
               <h4 className="font-semibold mb-4">Company</h4>
               <ul className="space-y-2 text-[var(--text-secondary)]">
-                <li className="hover:text-[var(--primary-main)] cursor-pointer">About Us</li>
-                <li className="hover:text-[var(--primary-main)] cursor-pointer">Careers</li>
-                <li className="hover:text-[var(--primary-main)] cursor-pointer">Blog</li>
-                <li className="hover:text-[var(--primary-main)] cursor-pointer">Contact</li>
+                <li className="hover:text-[var(--primary-main)] cursor-pointer">
+                  <a href="/about">About Us</a>
+                </li>
+                <li className="hover:text-[var(--primary-main)] cursor-pointer">
+                  <a href="/careers">Careers</a>
+                </li>
+                <li className="hover:text-[var(--primary-main)] cursor-pointer">
+                  <a href="/blog">Blog</a>
+                </li>
+                <li className="hover:text-[var(--primary-main)] cursor-pointer">
+                  <a href="/contact">Contact</a>
+                </li>
               </ul>
             </div>
             <div>
               <h4 className="font-semibold mb-4">Legal</h4>
               <ul className="space-y-2 text-[var(--text-secondary)]">
-                <li className="hover:text-[var(--primary-main)] cursor-pointer">Privacy Policy</li>
-                <li className="hover:text-[var(--primary-main)] cursor-pointer">Terms of Service</li>
-                <li className="hover:text-[var(--primary-main)] cursor-pointer">Security</li>
-                <li className="hover:text-[var(--primary-main)] cursor-pointer">Compliance</li>
+                <li className="hover:text-[var(--primary-main)] cursor-pointer">
+                  <a href="/privacy">Privacy Policy</a>
+                </li>
+                <li className="hover:text-[var(--primary-main)] cursor-pointer">
+                  <a href="/terms">Terms of Service</a>
+                </li>
+                <li className="hover:text-[var(--primary-main)] cursor-pointer">
+                  <a href="/security">Security</a>
+                </li>
+                <li className="hover:text-[var(--primary-main)] cursor-pointer">
+                  <a href="/compliance">Compliance</a>
+                </li>
               </ul>
             </div>
           </div>

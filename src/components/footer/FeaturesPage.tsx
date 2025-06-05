@@ -2,8 +2,11 @@ import React from 'react';
 import { Shield, Users, FileText, AlertTriangle, BarChart2, Award, Settings, Box } from 'lucide-react';
 import Card from '../ui/Card';
 import Button from '../ui/Button';
+import { useNavigate } from 'react-router-dom';
 
 const FeaturesPage: React.FC = () => {
+  const navigate = useNavigate();
+  
   const features = [
     {
       icon: <Shield className="text-[var(--primary-main)]" size={32} />,
@@ -125,10 +128,10 @@ const FeaturesPage: React.FC = () => {
               Experience the power of TSmart Quality firsthand with our free trial.
             </p>
             <div className="flex justify-center space-x-4">
-              <Button variant="outline">
+              <Button variant="outline" onClick={() => navigate('/contact')}>
                 Schedule Demo
               </Button>
-              <Button>
+              <Button onClick={() => navigate('/register')}>
                 Start Free Trial
               </Button>
             </div>
