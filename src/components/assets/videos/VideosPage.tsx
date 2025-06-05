@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
-import { Plus, Upload, Search, Video, Play, Pause, Download, Trash2, Edit } from 'lucide-react';
+import { Plus, Search, Video, Play, Pause, Download, Trash2, Edit, Upload } from 'lucide-react';
 import Card from '../../ui/Card';
 import Button from '../../ui/Button';
 import Input from '../../ui/Input';
 
 interface Video {
   id: string;
-  url: string;
   title: string;
   description: string;
+  url: string;
+  thumbnail: string;
   duration: string;
   size: string;
   uploadedAt: string;
@@ -26,9 +27,10 @@ const VideosPage: React.FC = () => {
   const videos: Video[] = [
     {
       id: '1',
-      url: 'https://example.com/video1.mp4',
       title: 'Product Manufacturing Process',
       description: 'Step-by-step manufacturing process video',
+      url: 'https://example.com/video1.mp4',
+      thumbnail: 'https://images.pexels.com/photos/3862130/pexels-photo-3862130.jpeg',
       duration: '2:30',
       size: '15.4 MB',
       uploadedAt: '2024-03-15',
@@ -38,9 +40,10 @@ const VideosPage: React.FC = () => {
     },
     {
       id: '2',
-      url: 'https://example.com/video2.mp4',
       title: 'Quality Control Process',
       description: 'Quality control and inspection procedures',
+      url: 'https://example.com/video2.mp4',
+      thumbnail: 'https://images.pexels.com/photos/3862132/pexels-photo-3862132.jpeg',
       duration: '3:45',
       size: '22.7 MB',
       uploadedAt: '2024-03-14',
@@ -93,10 +96,12 @@ const VideosPage: React.FC = () => {
               key={video.id}
               className="bg-[var(--background-paper)] rounded-lg shadow overflow-hidden"
             >
-              <div className="relative aspect-video bg-black">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <Video size={48} className="text-white opacity-50" />
-                </div>
+              <div className="relative aspect-video">
+                <img
+                  src={video.thumbnail}
+                  alt={video.title}
+                  className="w-full h-full object-cover"
+                />
                 <button
                   className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 opacity-0 hover:opacity-100 transition-opacity"
                   onClick={() => setPlaying(video.id === playing ? null : video.id)}
