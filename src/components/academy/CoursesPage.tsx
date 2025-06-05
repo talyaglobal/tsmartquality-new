@@ -128,9 +128,9 @@ const CoursesPage: React.FC = () => {
                 </label>
                 <select className="w-full border border-[var(--divider)] rounded-md p-2">
                   <option value="">Any Duration</option>
-                  <option value="short">Short (< 5 hours)</option>
+                  <option value="short">Short (&lt; 5 hours)</option>
                   <option value="medium">Medium (5-10 hours)</option>
-                  <option value="long">Long (> 10 hours)</option>
+                  <option value="long">Long (&gt; 10 hours)</option>
                 </select>
               </div>
               <div>
