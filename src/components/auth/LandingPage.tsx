@@ -103,9 +103,6 @@ const LandingPage: React.FC = () => {
               <Button variant="outline" onClick={() => navigate('/login')}>
                 Sign In
               </Button>
-              <Button onClick={() => navigate('/apply')}>
-                Apply Now
-              </Button>
             </div>
           </div>
         </div>
