@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Save, Bell, Moon, Globe, Lock, Shield, Mail, Palette } from 'lucide-react';
+import { Save, Bell, Moon, Globe, Lock, Shield, Mail, Palette, Sun } from 'lucide-react';
 import Card from '../ui/Card';
 import Button from '../ui/Button';
 import Input from '../ui/Input';
