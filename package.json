@@ -1,7 +1,7 @@
 {
   "name": "tsmart-quality",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -13,6 +13,7 @@
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.0",
     "@mui/material": "^5.15.12",
+    "@react-oauth/google": "^0.12.1",
     "@tanstack/react-query": "^5.25.0",
     "@tanstack/react-table": "^8.13.2",
     "axios": "^1.6.7",
@@ -24,8 +25,7 @@
     "react-dropzone": "^14.2.3",
     "react-hook-form": "^7.51.0",
     "react-router-dom": "^6.22.3",
-    "recharts": "^2.12.2",
-    "@react-oauth/google": "^0.12.1"
+    "recharts": "^2.12.2"
   },
   "devDependencies": {
     "@types/node": "^20.11.24",

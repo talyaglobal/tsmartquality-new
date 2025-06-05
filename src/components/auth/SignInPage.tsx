@@ -1,18 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Mail, Lock, Box } from 'lucide-react';
+import { Mail, Lock, Box, Eye, EyeOff } from 'lucide-react';
 import Button from '../ui/Button';
 import Input from '../ui/Input';
 import Card from '../ui/Card';
 
 const SignInPage: React.FC = () => {
   const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [rememberMe, setRememberMe] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Store demo token and redirect to dashboard
-    localStorage.setItem('auth_token', 'demo_token');
-    navigate('/dashboard');
+    setIsLoading(true);
+    
+    // Simulate API call
+    setTimeout(() => {
+      // Store demo token and redirect to dashboard
+      localStorage.setItem('auth_token', 'demo_token');
+      navigate('/dashboard');
+      setIsLoading(false);
+    }, 1000);
   };
 
   const handleBypassAuth = () => {
@@ -41,22 +52,37 @@ const SignInPage: React.FC = () => {
               type="email"
               placeholder="Enter your email"
               startIcon={<Mail size={20} />}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               required
             />
 
-            <Input
-              label="Password"
-              type="password"
-              placeholder="Enter your password"
-              startIcon={<Lock size={20} />}
-              required
-            />
+            <div className="relative">
+              <Input
+                label="Password"
+                type={showPassword ? "text" : "password"}
+                placeholder="Enter your password"
+                startIcon={<Lock size={20} />}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+              <button
+                type="button"
+                className="absolute right-3 top-9 text-[var(--text-secondary)]"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+              </button>
+            </div>
 
             <div className="flex items-center justify-between">
               <label className="flex items-center">
                 <input
                   type="checkbox"
                   className="w-4 h-4 rounded border-[var(--divider)] text-[var(--primary-main)] focus:ring-[var(--primary-main)]"
+                  checked={rememberMe}
+                  onChange={(e) => setRememberMe(e.target.checked)}
                 />
                 <span className="ml-2 text-sm">Remember me</span>
               </label>
@@ -68,7 +94,11 @@ const SignInPage: React.FC = () => {
               </button>
             </div>
 
-            <Button type="submit" className="w-full">
+            <Button 
+              type="submit" 
+              className="w-full"
+              loading={isLoading}
+            >
               Sign In
             </Button>
 
