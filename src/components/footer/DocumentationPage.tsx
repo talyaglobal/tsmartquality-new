@@ -21,7 +21,7 @@ const DocumentationPage: React.FC = () => {
     },
     {
       title: 'User Guides',
-      icon: <FileText className="text-[var(--success-main)]" size={24} />,
+      icon: <FileText className="text-[var(--success-main)]\" size={24} />,
       items: [
         'Dashboard Overview',
         'Quality Management',
@@ -41,7 +41,7 @@ const DocumentationPage: React.FC = () => {
     },
     {
       title: 'API Reference',
-      icon: <Code className="text-[var(--info-main)]" size={24} />,
+      icon: <Code className="text-[var(--info-main)]\" size={24} />,
       items: [
         'Authentication',
         'Endpoints',

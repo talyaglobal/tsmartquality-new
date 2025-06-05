@@ -53,7 +53,7 @@ const CareersPage: React.FC = () => {
       description: 'Industry-leading compensation packages'
     },
     {
-      icon: <Clock className="text-[var(--success-main)]" size={32} />,
+      icon: <Clock className="text-[var(--success-main)]\" size={32} />,
       title: 'Flexible Hours',
       description: 'Work-life balance is important to us'
     },

@@ -18,7 +18,7 @@ const LandingPage: React.FC = () => {
       description: 'Comprehensive tools for managing product quality throughout the lifecycle'
     },
     {
-      icon: <CheckCircle className="text-[var(--success-main)]" size={32} />,
+      icon: <CheckCircle className="text-[var(--success-main)]\" size={32} />,
       title: 'Audit & Compliance',
       description: 'Streamlined audit processes and compliance tracking'
     },
@@ -28,7 +28,7 @@ const LandingPage: React.FC = () => {
       description: 'Centralized document management and version control'
     },
     {
-      icon: <Users className="text-[var(--info-main)]" size={32} />,
+      icon: <Users className="text-[var(--info-main)]\" size={32} />,
       title: 'Supplier Management',
       description: 'Efficient supplier qualification and performance monitoring'
     },
@@ -38,7 +38,7 @@ const LandingPage: React.FC = () => {
       description: 'Advanced analytics and customizable reporting tools'
     },
     {
-      icon: <Award className="text-[var(--primary-main)]" size={32} />,
+      icon: <Award className="text-[var(--primary-main)]\" size={32} />,
       title: 'Training & Certification',
       description: 'Employee training management and certification tracking'
     },
@@ -48,7 +48,7 @@ const LandingPage: React.FC = () => {
       description: 'Complete warehouse and inventory control system'
     },
     {
-      icon: <Truck className="text-[var(--warning-main)]" size={32} />,
+      icon: <Truck className="text-[var(--warning-main)]\" size={32} />,
       title: 'Logistics Integration',
       description: 'Seamless integration with logistics and shipping systems'
     },

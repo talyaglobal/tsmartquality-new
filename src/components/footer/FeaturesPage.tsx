@@ -19,7 +19,7 @@ const FeaturesPage: React.FC = () => {
       ]
     },
     {
-      icon: <Users className="text-[var(--success-main)]" size={32} />,
+      icon: <Users className="text-[var(--success-main)]\" size={32} />,
       title: 'Supplier Management',
       description: 'Streamline supplier relationships and ensure quality standards.',
       benefits: [
@@ -39,7 +39,7 @@ const FeaturesPage: React.FC = () => {
       ]
     },
     {
-      icon: <AlertTriangle className="text-[var(--warning-main)]" size={32} />,
+      icon: <AlertTriangle className="text-[var(--warning-main)]\" size={32} />,
       title: 'Complaint Management',
       description: 'Efficiently handle and resolve quality-related complaints.',
       benefits: [
@@ -59,7 +59,7 @@ const FeaturesPage: React.FC = () => {
       ]
     },
     {
-      icon: <Award className="text-[var(--primary-main)]" size={32} />,
+      icon: <Award className="text-[var(--primary-main)]\" size={32} />,
       title: 'Certification Management',
       description: 'Track and manage quality certifications and compliance.',
       benefits: [
@@ -79,7 +79,7 @@ const FeaturesPage: React.FC = () => {
       ]
     },
     {
-      icon: <Box className="text-[var(--info-main)]" size={32} />,
+      icon: <Box className="text-[var(--info-main)]\" size={32} />,
       title: 'Inventory Quality',
       description: 'Ensure quality throughout your inventory management.',
       benefits: [

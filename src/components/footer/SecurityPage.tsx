@@ -14,7 +14,7 @@ const SecurityPage: React.FC = () => {
       description: 'All data is encrypted at rest and in transit using industry-standard encryption protocols.'
     },
     {
-      icon: <Lock className="text-[var(--success-main)]" size={32} />,
+      icon: <Lock className="text-[var(--success-main)]\" size={32} />,
       title: 'Access Control',
       description: 'Role-based access control ensures users only access authorized information.'
     },
@@ -24,7 +24,7 @@ const SecurityPage: React.FC = () => {
       description: 'Multi-factor authentication and single sign-on options for enhanced security.'
     },
     {
-      icon: <Server className="text-[var(--info-main)]" size={32} />,
+      icon: <Server className="text-[var(--info-main)]\" size={32} />,
       title: 'Infrastructure',
       description: 'Secure cloud infrastructure with regular security audits and monitoring.'
     },
@@ -34,7 +34,7 @@ const SecurityPage: React.FC = () => {
       description: 'Comprehensive user management with detailed audit logs and activity tracking.'
     },
     {
-      icon: <FileText className="text-[var(--primary-main)]" size={32} />,
+      icon: <FileText className="text-[var(--primary-main)]\" size={32} />,
       title: 'Compliance',
       description: 'Adherence to international security standards and regulations.'
     }
