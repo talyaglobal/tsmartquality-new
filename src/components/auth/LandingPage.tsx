@@ -103,8 +103,8 @@ const LandingPage: React.FC = () => {
               <Button variant="outline" onClick={() => navigate('/login')}>
                 Sign In
               </Button>
-              <Button onClick={() => navigate('/register')}>
-                Sign Up
+              <Button onClick={() => navigate('/apply')}>
+                Apply Now
               </Button>
             </div>
           </div>
@@ -123,7 +123,7 @@ const LandingPage: React.FC = () => {
           <div className="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-6">
             <Button 
               size="lg"
-              onClick={() => navigate('/register')}
+              onClick={() => navigate('/apply')}
               className="bg-white text-[var(--primary-dark)] hover:bg-white hover:bg-opacity-90 px-8 font-bold"
             >
               Start Free Trial
@@ -237,7 +237,7 @@ const LandingPage: React.FC = () => {
                   <span>Email support</span>
                 </li>
               </ul>
-              <Button className="w-full" onClick={() => navigate('/register')}>Get Started</Button>
+              <Button className="w-full" onClick={() => navigate('/apply')}>Get Started</Button>
             </div>
             
             {/* Professional Plan */}
@@ -273,7 +273,7 @@ const LandingPage: React.FC = () => {
                   <span>Priority email & phone support</span>
                 </li>
               </ul>
-              <Button className="w-full" onClick={() => navigate('/register')}>Get Started</Button>
+              <Button className="w-full" onClick={() => navigate('/apply')}>Get Started</Button>
             </div>
             
             {/* Enterprise Plan */}
@@ -324,7 +324,7 @@ const LandingPage: React.FC = () => {
           <div className="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-6">
             <Button
               size="lg"
-              onClick={() => navigate('/register')}
+              onClick={() => navigate('/apply')}
               className="bg-white text-[var(--primary-dark)] hover:bg-opacity-90 px-8 font-bold"
             >
               Start Free Trial

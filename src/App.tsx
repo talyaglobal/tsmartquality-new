@@ -4,9 +4,22 @@ import Layout from './components/layout/Layout'
 import LandingPage from './components/auth/LandingPage'
 import SignInPage from './components/auth/SignInPage'
 import SignUpPage from './components/auth/SignUpPage'
+import ApplyNowPage from './components/auth/ApplyNowPage'
 import ProductPortal from './components/products/ProductPortal'
 import ProductDashboard from './components/products/dashboard/ProductDashboard'
 import DocumentManagement from './components/documents/DocumentManagement'
+import QualityHandbookPage from './components/documents/QualityHandbookPage'
+import SalesSpecsPage from './components/documents/SalesSpecsPage'
+import BuyingSpecsPage from './components/documents/BuyingSpecsPage'
+import RecipeNormPage from './components/documents/RecipeNormPage'
+import JsvsrpPage from './components/documents/JsvsrpPage'
+import HaccpPage from './components/documents/HaccpPage'
+import AcceptanceFormsPage from './components/documents/AcceptanceFormsPage'
+import FlowChartPage from './components/documents/FlowChartPage'
+import BrochuresPage from './components/documents/BrochuresPage'
+import CataloguesPage from './components/documents/CataloguesPage'
+import CertificationsDocPage from './components/documents/CertificationsDocPage'
+import AuditReportsPage from './components/documents/AuditReportsPage'
 import ComplaintManagement from './components/complaints/ComplaintManagement'
 import DashboardPage from './components/dashboard/DashboardPage'
 import AuditsPage from './components/audits/AuditsPage'
@@ -59,18 +72,6 @@ import QualityScorePage from './components/quality/QualityScorePage'
 import WarningsPage from './components/warnings/WarningsPage'
 import ServicesPage from './components/services/ServicesPage'
 import TasksPage from './components/tasks/TasksPage'
-import QualityHandbookPage from './components/documents/QualityHandbookPage'
-import SalesSpecsPage from './components/documents/SalesSpecsPage'
-import BuyingSpecsPage from './components/documents/BuyingSpecsPage'
-import RecipeNormPage from './components/documents/RecipeNormPage'
-import JsvsrpPage from './components/documents/JsvsrpPage'
-import HaccpPage from './components/documents/HaccpPage'
-import AcceptanceFormsPage from './components/documents/AcceptanceFormsPage'
-import FlowChartPage from './components/documents/FlowChartPage'
-import BrochuresPage from './components/documents/BrochuresPage'
-import CataloguesPage from './components/documents/CataloguesPage'
-import CertificationsDocPage from './components/documents/CertificationsDocPage'
-import AuditReportsPage from './components/documents/AuditReportsPage'
 
 function App() {
   // Check if user is authenticated
@@ -84,6 +85,7 @@ function App() {
         <Route path="/landing" element={<LandingPage />} />
         <Route path="/login" element={<SignInPage />} />
         <Route path="/register" element={<SignUpPage />} />
+        <Route path="/apply" element={<ApplyNowPage />} />
         
         {/* Footer pages */}
         <Route path="/features" element={<FeaturesPage />} />
@@ -171,7 +173,7 @@ function App() {
           </Route>
         ) : (
           // Redirect to landing page if not authenticated
-          <Route path="*" element={<Navigate to="/\" replace />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
         )}
         
         {/* 404 page */}

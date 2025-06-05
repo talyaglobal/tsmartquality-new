@@ -45,11 +45,11 @@ const ContactPage: React.FC = () => {
     {
       icon: <Mail className="text-[var(--primary-main)]\" size={24} />,
       title: 'Email',
-      content: 'contact@tsmartquality.com',
-      link: 'mailto:contact@tsmartquality.com'
+      content: 'info@tsmart.ai',
+      link: 'mailto:info@tsmart.ai'
     },
     {
-      icon: <Phone className="text-[var(--success-main)]" size={24} />,
+      icon: <Phone className="text-[var(--success-main)]\" size={24} />,
       title: 'Phone',
       content: '+1 (555) 123-4567',
       link: 'tel:+15551234567'
