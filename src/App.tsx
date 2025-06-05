@@ -103,8 +103,12 @@ function App() {
         
         {/* Protected routes */}
         {isAuthenticated ? (
-          <Route element={<Layout />}>
-            <Route path="/dashboard" element={<DashboardPage />} />
+          <>
+            {/* Default route - redirect to dashboard */}
+            <Route path="/" element={<Navigate to="/dashboard" replace />} />
+            
+            <Route element={<Layout />}>
+              <Route path="/dashboard" element={<DashboardPage />} />
             <Route path="/quality-score" element={<QualityScorePage />} />
             <Route path="/products" element={<ProductPortal />} />
             <Route path="/products/dashboard" element={<ProductDashboard />} />
@@ -170,10 +174,11 @@ function App() {
             <Route path="/accountancy/quickbooks" element={<QuickBooksPage />} />
             <Route path="/accountancy/netsuite" element={<NetSuitePage />} />
             <Route path="/accountancy/tsmartbooks" element={<TSmartBooksPage />} />
-          </Route>
+            </Route>
+          </>
         ) : (
           // Redirect to landing page if not authenticated
-          <Route path="*" element={<Navigate to="/\" replace />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
         )}
         
         {/* 404 page */}
