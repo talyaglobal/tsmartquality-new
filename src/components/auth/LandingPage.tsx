@@ -120,13 +120,6 @@ const LandingPage: React.FC = () => {
           <div className="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-6">
             <Button 
               size="lg"
-              onClick={() => navigate('/apply')}
-              className="bg-white text-[var(--primary-main)] hover:bg-white hover:bg-opacity-90 px-8 font-bold"
-            >
-              Start Free Trial
-            </Button>
-            <Button 
-              size="lg"
               variant="outline"
               onClick={handleBypassAuth}
               className="border-white text-white hover:bg-white hover:bg-opacity-10 px-8"
@@ -319,13 +312,6 @@ const LandingPage: React.FC = () => {
             Join thousands of companies using TSmart Quality to streamline their quality processes and ensure product excellence.
           </p>
           <div className="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-6">
-            <Button
-              size="lg"
-              onClick={() => navigate('/apply')}
-              className="bg-white text-[var(--primary-main)] hover:bg-white hover:bg-opacity-90 px-8 font-bold"
-            >
-              Start Free Trial
-            </Button>
             <Button
               size="lg"
               variant="outline"
