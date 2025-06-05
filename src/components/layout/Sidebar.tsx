@@ -85,206 +85,179 @@ const Sidebar: React.FC<SidebarProps> = ({ collapsed, onToggle }) => {
       {/* Navigation */}
       <div className="flex-1 py-4 overflow-y-auto">
         {/* Dashboards Section */}
-        <div className="mb-6">
-          <div className="px-4 mb-2">
-            <span className="text-xs font-medium text-[var(--text-secondary)] uppercase">
-              {!collapsed && 'Dashboards'}
-            </span>
-          </div>
+        <NavItem
+          icon={<LayoutDashboard size={20} />}
+          label="Dashboards"
+          collapsed={collapsed}
+          defaultExpanded={true}
+        >
           <NavItem
-            icon={<LayoutDashboard size={20} />}
-            label="Dashboards"
+            icon={<BarChart2 size={18} />}
+            label="Quality Dashboard"
+            active={isActive('/dashboard')}
+            onClick={() => navigate('/dashboard')}
             collapsed={collapsed}
-            defaultExpanded={true}
-          >
-            <NavItem
-              icon={<BarChart2 size={18} />}
-              label="Quality Dashboard"
-              active={isActive('/dashboard')}
-              onClick={() => navigate('/dashboard')}
-              collapsed={collapsed}
-            />
-            <NavItem
-              icon={<LineChart size={18} />}
-              label="Quality Score"
-              active={isActive('/quality-score')}
-              onClick={() => navigate('/quality-score')}
-              collapsed={collapsed}
-            />
-          </NavItem>
-        </div>
+          />
+          <NavItem
+            icon={<LineChart size={18} />}
+            label="Quality Score"
+            active={isActive('/quality-score')}
+            onClick={() => navigate('/quality-score')}
+            collapsed={collapsed}
+          />
+        </NavItem>
 
         {/* Main Navigation */}
-        <div className="mb-6">
-          <div className="px-4 mb-2">
-            <span className="text-xs font-medium text-[var(--text-secondary)] uppercase">
-              {!collapsed && 'Main'}
-            </span>
-          </div>
-
+        <NavItem
+          icon={<Layers size={20} />}
+          label="Main"
+          collapsed={collapsed}
+          defaultExpanded={true}
+        >
           <NavItem
-            icon={<Box size={20} />}
+            icon={<Box size={18} />}
             label="Products"
             active={isActive('/products')}
             onClick={() => navigate('/products')}
             collapsed={collapsed}
           />
-
           <NavItem
-            icon={<Wrench size={20} />}
+            icon={<Wrench size={18} />}
             label="Services"
             active={isActive('/services')}
             onClick={() => navigate('/services')}
             collapsed={collapsed}
           />
-
           <NavItem
-            icon={<FileText size={20} />}
+            icon={<FileText size={18} />}
             label="Documents"
             active={isActive('/documents')}
             onClick={() => navigate('/documents')}
             collapsed={collapsed}
           />
-
           <NavItem
-            icon={<AlertTriangle size={20} />}
+            icon={<AlertTriangle size={18} />}
             label="Complaints"
             active={isActive('/complaints')}
             onClick={() => navigate('/complaints')}
             collapsed={collapsed}
           />
-
           <NavItem
-            icon={<Bell size={20} />}
+            icon={<Bell size={18} />}
             label="Warnings"
             active={isActive('/warnings')}
             onClick={() => navigate('/warnings')}
             collapsed={collapsed}
           />
-
           <NavItem
-            icon={<CheckSquare size={20} />}
+            icon={<CheckSquare size={18} />}
             label="Tasks"
             active={isActive('/tasks')}
             onClick={() => navigate('/tasks')}
             collapsed={collapsed}
           />
-
           <NavItem
-            icon={<ClipboardCheck size={20} />}
+            icon={<ClipboardCheck size={18} />}
             label="Audits"
             active={isActive('/audits')}
             onClick={() => navigate('/audits')}
             collapsed={collapsed}
           />
-
           <NavItem
-            icon={<Users size={20} />}
+            icon={<Users size={18} />}
             label="Suppliers"
             active={isActive('/suppliers')}
             onClick={() => navigate('/suppliers')}
             collapsed={collapsed}
           />
-
           <NavItem
-            icon={<UserCheck size={20} />}
+            icon={<UserCheck size={18} />}
             label="Customers"
             active={isActive('/customers')}
             onClick={() => navigate('/customers')}
             collapsed={collapsed}
           />
-
           <NavItem
-            icon={<Utensils size={20} />}
+            icon={<Utensils size={18} />}
             label="Recipes"
             active={isActive('/recipes')}
             onClick={() => navigate('/recipes')}
             collapsed={collapsed}
           />
-        </div>
+        </NavItem>
 
         {/* Warehouse Section */}
-        <div className="mb-6">
-          <div className="px-4 mb-2">
-            <span className="text-xs font-medium text-[var(--text-secondary)] uppercase">
-              {!collapsed && 'Warehouse'}
-            </span>
-          </div>
-
+        <NavItem
+          icon={<Warehouse size={20} />}
+          label="Warehouse"
+          collapsed={collapsed}
+          defaultExpanded={true}
+        >
           <NavItem
-            icon={<Warehouse size={20} />}
-            label="Warehouse"
-            active={isActive('/warehouse')}
-            onClick={() => navigate('/warehouse')}
+            icon={<Boxes size={18} />}
+            label="Stock Management"
+            active={isActive('/warehouse/stock')}
+            onClick={() => navigate('/warehouse/stock')}
             collapsed={collapsed}
-          >
-            <NavItem
-              icon={<Boxes size={18} />}
-              label="Stock Management"
-              active={isActive('/warehouse/stock')}
-              onClick={() => navigate('/warehouse/stock')}
-              collapsed={collapsed}
-            />
-            <NavItem
-              icon={<PackageSearch size={18} />}
-              label="Inventory Control"
-              active={isActive('/warehouse/inventory')}
-              onClick={() => navigate('/warehouse/inventory')}
-              collapsed={collapsed}
-            />
-            <NavItem
-              icon={<MapPin size={18} />}
-              label="Locations"
-              active={isActive('/warehouse/locations')}
-              onClick={() => navigate('/warehouse/locations')}
-              collapsed={collapsed}
-            />
-            <NavItem
-              icon={<Grid size={18} />}
-              label="Shelves"
-              active={isActive('/warehouse/shelves')}
-              onClick={() => navigate('/warehouse/shelves')}
-              collapsed={collapsed}
-            />
-            <NavItem
-              icon={<Link2 size={18} />}
-              label="Integrations"
-              active={isActive('/warehouse/integrations')}
-              onClick={() => navigate('/warehouse/integrations')}
-              collapsed={collapsed}
-            />
-          </NavItem>
-        </div>
+          />
+          <NavItem
+            icon={<PackageSearch size={18} />}
+            label="Inventory Control"
+            active={isActive('/warehouse/inventory')}
+            onClick={() => navigate('/warehouse/inventory')}
+            collapsed={collapsed}
+          />
+          <NavItem
+            icon={<MapPin size={18} />}
+            label="Locations"
+            active={isActive('/warehouse/locations')}
+            onClick={() => navigate('/warehouse/locations')}
+            collapsed={collapsed}
+          />
+          <NavItem
+            icon={<Grid size={18} />}
+            label="Shelves"
+            active={isActive('/warehouse/shelves')}
+            onClick={() => navigate('/warehouse/shelves')}
+            collapsed={collapsed}
+          />
+          <NavItem
+            icon={<Link2 size={18} />}
+            label="Integrations"
+            active={isActive('/warehouse/integrations')}
+            onClick={() => navigate('/warehouse/integrations')}
+            collapsed={collapsed}
+          />
+        </NavItem>
 
         {/* Digital Assets */}
-        <div className="mb-6">
-          <div className="px-4 mb-2">
-            <span className="text-xs font-medium text-[var(--text-secondary)] uppercase">
-              {!collapsed && 'Digital Assets'}
-            </span>
-          </div>
-
+        <NavItem
+          icon={<Image size={20} />}
+          label="Digital Assets"
+          collapsed={collapsed}
+          defaultExpanded={true}
+        >
           <NavItem
-            icon={<Image size={20} />}
+            icon={<Image size={18} />}
             label="Photos"
             collapsed={collapsed}
           >
             <NavItem
-              icon={<Box size={18} />}
+              icon={<Box size={16} />}
               label="Product Photos"
               active={isActive('/assets/photos/products')}
               onClick={() => navigate('/assets/photos/products')}
               collapsed={collapsed}
             />
             <NavItem
-              icon={<Package size={18} />}
+              icon={<Package size={16} />}
               label="Box Photos"
               active={isActive('/assets/photos/boxes')}
               onClick={() => navigate('/assets/photos/boxes')}
               collapsed={collapsed}
             />
             <NavItem
-              icon={<Boxes size={18} />}
+              icon={<Boxes size={16} />}
               label="Pallet Photos"
               active={isActive('/assets/photos/pallets')}
               onClick={() => navigate('/assets/photos/pallets')}
@@ -293,7 +266,7 @@ const Sidebar: React.FC<SidebarProps> = ({ collapsed, onToggle }) => {
           </NavItem>
 
           <NavItem
-            icon={<Video size={20} />}
+            icon={<Video size={18} />}
             label="Videos"
             active={isActive('/assets/videos')}
             onClick={() => navigate('/assets/videos')}
@@ -301,132 +274,123 @@ const Sidebar: React.FC<SidebarProps> = ({ collapsed, onToggle }) => {
           />
 
           <NavItem
-            icon={<Sticker size={20} />}
+            icon={<Sticker size={18} />}
             label="Labels"
             collapsed={collapsed}
           >
             <NavItem
-              icon={<QrCode size={18} />}
+              icon={<QrCode size={16} />}
               label="Product Labels"
               active={isActive('/assets/labels/products')}
               onClick={() => navigate('/assets/labels/products')}
               collapsed={collapsed}
             />
             <NavItem
-              icon={<Box size={18} />}
+              icon={<Box size={16} />}
               label="Box Labels"
               active={isActive('/assets/labels/boxes')}
               onClick={() => navigate('/assets/labels/boxes')}
               collapsed={collapsed}
             />
             <NavItem
-              icon={<Package size={18} />}
+              icon={<Package size={16} />}
               label="Pallet Labels"
               active={isActive('/assets/labels/pallets')}
               onClick={() => navigate('/assets/labels/pallets')}
               collapsed={collapsed}
             />
           </NavItem>
-        </div>
+        </NavItem>
 
         {/* Academy */}
-        <div className="mb-6">
-          <div className="px-4 mb-2">
-            <span className="text-xs font-medium text-[var(--text-secondary)] uppercase">
-              {!collapsed && 'Academy'}
-            </span>
-          </div>
-
+        <NavItem
+          icon={<GraduationCap size={20} />}
+          label="Academy"
+          collapsed={collapsed}
+          defaultExpanded={true}
+        >
           <NavItem
-            icon={<BookOpen size={20} />}
+            icon={<BookOpen size={18} />}
             label="Courses"
             active={isActive('/academy/courses')}
             onClick={() => navigate('/academy/courses')}
             collapsed={collapsed}
           />
-
           <NavItem
-            icon={<Award size={20} />}
+            icon={<Award size={18} />}
             label="Certifications"
             active={isActive('/academy/certifications')}
             onClick={() => navigate('/academy/certifications')}
             collapsed={collapsed}
           />
-
           <NavItem
-            icon={<UserPlus size={20} />}
+            icon={<UserPlus size={18} />}
             label="Enrollments"
             active={isActive('/academy/enrollments')}
             onClick={() => navigate('/academy/enrollments')}
             collapsed={collapsed}
           />
-        </div>
+        </NavItem>
 
         {/* E-Commerce */}
-        <div className="mb-6">
-          <div className="px-4 mb-2">
-            <span className="text-xs font-medium text-[var(--text-secondary)] uppercase">
-              {!collapsed && 'E-Commerce'}
-            </span>
-          </div>
-
+        <NavItem
+          icon={<ShoppingBag size={20} />}
+          label="E-Commerce"
+          collapsed={collapsed}
+          defaultExpanded={true}
+        >
           <NavItem
-            icon={<ShoppingBag size={20} />}
+            icon={<ShoppingBag size={18} />}
             label="Shopify"
             active={isActive('/ecommerce/shopify')}
             onClick={() => navigate('/ecommerce/shopify')}
             collapsed={collapsed}
           />
-
           <NavItem
-            icon={<Store size={20} />}
+            icon={<Store size={18} />}
             label="WooCommerce"
             active={isActive('/ecommerce/woocommerce')}
             onClick={() => navigate('/ecommerce/woocommerce')}
             collapsed={collapsed}
           />
-
           <NavItem
-            icon={<ShoppingBasket size={20} />}
+            icon={<ShoppingBasket size={18} />}
             label="Amazon"
             active={isActive('/ecommerce/amazon')}
             onClick={() => navigate('/ecommerce/amazon')}
             collapsed={collapsed}
           />
-        </div>
+        </NavItem>
 
         {/* Accountancy */}
-        <div className="mb-6">
-          <div className="px-4 mb-2">
-            <span className="text-xs font-medium text-[var(--text-secondary)] uppercase">
-              {!collapsed && 'Accountancy'}
-            </span>
-          </div>
-
+        <NavItem
+          icon={<Calculator size={20} />}
+          label="Accountancy"
+          collapsed={collapsed}
+          defaultExpanded={true}
+        >
           <NavItem
-            icon={<Calculator size={20} />}
+            icon={<Calculator size={18} />}
             label="QuickBooks"
             active={isActive('/accountancy/quickbooks')}
             onClick={() => navigate('/accountancy/quickbooks')}
             collapsed={collapsed}
           />
-
           <NavItem
-            icon={<DollarSign size={20} />}
+            icon={<DollarSign size={18} />}
             label="NetSuite"
             active={isActive('/accountancy/netsuite')}
             onClick={() => navigate('/accountancy/netsuite')}
             collapsed={collapsed}
           />
-
           <NavItem
-            icon={<BookOpenCheck size={20} />}
+            icon={<BookOpenCheck size={18} />}
             label="TSmartBooks"
             active={isActive('/accountancy/tsmartbooks')}
             onClick={() => navigate('/accountancy/tsmartbooks')}
             collapsed={collapsed}
           />
-        </div>
+        </NavItem>
 
         {/* Settings */}
         <NavItem
