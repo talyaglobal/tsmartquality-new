@@ -23,7 +23,7 @@ const LandingPage: React.FC = () => {
       description: 'Streamlined audit processes and compliance tracking'
     },
     {
-      icon: <Shield className="text-[var(--warning-main)]" size={32} />,
+      icon: <Shield className="text-[var(--warning-main)]\" size={32} />,
       title: 'Document Control',
       description: 'Centralized document management and version control'
     },
@@ -33,7 +33,7 @@ const LandingPage: React.FC = () => {
       description: 'Efficient supplier qualification and performance monitoring'
     },
     {
-      icon: <BarChart2 className="text-[var(--error-main)]" size={32} />,
+      icon: <BarChart2 className="text-[var(--error-main)]\" size={32} />,
       title: 'Analytics & Reporting',
       description: 'Advanced analytics and customizable reporting tools'
     },
@@ -43,7 +43,7 @@ const LandingPage: React.FC = () => {
       description: 'Employee training management and certification tracking'
     },
     {
-      icon: <Boxes className="text-[var(--success-main)]" size={32} />,
+      icon: <Boxes className="text-[var(--success-main)]\" size={32} />,
       title: 'Warehouse Management',
       description: 'Complete warehouse and inventory control system'
     },
@@ -53,7 +53,7 @@ const LandingPage: React.FC = () => {
       description: 'Seamless integration with logistics and shipping systems'
     },
     {
-      icon: <BookOpen className="text-[var(--info-main)]" size={32} />,
+      icon: <BookOpen className="text-[var(--info-main)]\" size={32} />,
       title: 'Quality Academy',
       description: 'Built-in learning management system for quality training'
     }
