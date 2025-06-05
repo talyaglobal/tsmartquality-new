@@ -45,7 +45,15 @@ import {
   ShoppingCart,
   Clipboard,
   FileSpreadsheet,
-  FileCheck
+  FileCheck,
+  Utensils as UtensilsIcon,
+  BarChart,
+  FlaskConical,
+  Braces,
+  FileDigit,
+  FileCertificate,
+  ClipboardList,
+  FileBarChart
 } from 'lucide-react';
 import { NavItem } from '../ui/NavItem';
 
@@ -172,6 +180,55 @@ const Sidebar: React.FC<SidebarProps> = ({ collapsed, onToggle }) => {
               label="JSVSRP"
               active={isActive('/documents/jsvsrp')}
               onClick={() => navigate('/documents/jsvsrp')}
+              collapsed={collapsed}
+            />
+            <NavItem
+              icon={<FlaskConical size={16} />}
+              label="HACCP"
+              active={isActive('/documents/haccp')}
+              onClick={() => navigate('/documents/haccp')}
+              collapsed={collapsed}
+            />
+            <NavItem
+              icon={<ClipboardList size={16} />}
+              label="Acceptance Forms"
+              active={isActive('/documents/acceptance-forms')}
+              onClick={() => navigate('/documents/acceptance-forms')}
+              collapsed={collapsed}
+            />
+            <NavItem
+              icon={<Braces size={16} />}
+              label="Flow Charts"
+              active={isActive('/documents/flow-charts')}
+              onClick={() => navigate('/documents/flow-charts')}
+              collapsed={collapsed}
+            />
+            <NavItem
+              icon={<FileDigit size={16} />}
+              label="Brochures"
+              active={isActive('/documents/brochures')}
+              onClick={() => navigate('/documents/brochures')}
+              collapsed={collapsed}
+            />
+            <NavItem
+              icon={<FileBarChart size={16} />}
+              label="Catalogues"
+              active={isActive('/documents/catalogues')}
+              onClick={() => navigate('/documents/catalogues')}
+              collapsed={collapsed}
+            />
+            <NavItem
+              icon={<FileCertificate size={16} />}
+              label="Certifications"
+              active={isActive('/documents/certifications')}
+              onClick={() => navigate('/documents/certifications')}
+              collapsed={collapsed}
+            />
+            <NavItem
+              icon={<ClipboardCheck size={16} />}
+              label="Audit Reports"
+              active={isActive('/documents/audit-reports')}
+              onClick={() => navigate('/documents/audit-reports')}
               collapsed={collapsed}
             />
           </NavItem>

@@ -64,6 +64,13 @@ import SalesSpecsPage from './components/documents/SalesSpecsPage'
 import BuyingSpecsPage from './components/documents/BuyingSpecsPage'
 import RecipeNormPage from './components/documents/RecipeNormPage'
 import JsvsrpPage from './components/documents/JsvsrpPage'
+import HaccpPage from './components/documents/HaccpPage'
+import AcceptanceFormsPage from './components/documents/AcceptanceFormsPage'
+import FlowChartPage from './components/documents/FlowChartPage'
+import BrochuresPage from './components/documents/BrochuresPage'
+import CataloguesPage from './components/documents/CataloguesPage'
+import CertificationsDocPage from './components/documents/CertificationsDocPage'
+import AuditReportsPage from './components/documents/AuditReportsPage'
 
 function App() {
   // Check if user is authenticated
@@ -94,7 +101,7 @@ function App() {
         {/* Protected routes */}
         {isAuthenticated ? (
           <Route element={<Layout />}>
-            <Route path="/" element={<Navigate to="/dashboard\" replace />} />
+            <Route path="/" element={<Navigate to="/dashboard" replace />} />
             <Route path="/dashboard" element={<DashboardPage />} />
             <Route path="/quality-score" element={<QualityScorePage />} />
             <Route path="/products" element={<ProductPortal />} />
@@ -105,6 +112,13 @@ function App() {
             <Route path="/documents/buying-specs" element={<BuyingSpecsPage />} />
             <Route path="/documents/recipe-norm" element={<RecipeNormPage />} />
             <Route path="/documents/jsvsrp" element={<JsvsrpPage />} />
+            <Route path="/documents/haccp" element={<HaccpPage />} />
+            <Route path="/documents/acceptance-forms" element={<AcceptanceFormsPage />} />
+            <Route path="/documents/flow-charts" element={<FlowChartPage />} />
+            <Route path="/documents/brochures" element={<BrochuresPage />} />
+            <Route path="/documents/catalogues" element={<CataloguesPage />} />
+            <Route path="/documents/certifications" element={<CertificationsDocPage />} />
+            <Route path="/documents/audit-reports" element={<AuditReportsPage />} />
             <Route path="/complaints" element={<ComplaintManagement />} />
             <Route path="/warnings" element={<WarningsPage />} />
             <Route path="/tasks" element={<TasksPage />} />
@@ -157,7 +171,7 @@ function App() {
           </Route>
         ) : (
           // Redirect to landing page if not authenticated
-          <Route path="*" element={<Navigate to="/landing\" replace />} />
+          <Route path="*" element={<Navigate to="/landing" replace />} />
         )}
         
         {/* 404 page */}
