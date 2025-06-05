@@ -74,8 +74,11 @@ const Sidebar: React.FC<SidebarProps> = ({ collapsed, onToggle }) => {
             <h2 className="text-[var(--primary-main)] font-bold ml-2">TSmart Quality</h2>
           </div>
         )}
+        {collapsed && (
+          <Box className="text-[var(--primary-main)] w-8 h-8 mx-auto" />
+        )}
         <button
-          className="p-2 rounded-md hover:bg-[var(--primary-main)] hover:bg-opacity-10 text-[var(--text-secondary)] hover:text-[var(--primary-main)] transition-colors duration-200"
+          className={`p-2 rounded-md hover:bg-[var(--primary-main)] hover:bg-opacity-10 text-[var(--text-secondary)] hover:text-[var(--primary-main)] transition-colors duration-200 ${collapsed ? 'mx-auto' : ''}`}
           onClick={onToggle}
         >
           <Menu size={20} />
@@ -89,7 +92,6 @@ const Sidebar: React.FC<SidebarProps> = ({ collapsed, onToggle }) => {
           icon={<LayoutDashboard size={20} />}
           label="Dashboards"
           collapsed={collapsed}
-          defaultExpanded={true}
         >
           <NavItem
             icon={<BarChart2 size={18} />}
@@ -112,7 +114,6 @@ const Sidebar: React.FC<SidebarProps> = ({ collapsed, onToggle }) => {
           icon={<Layers size={20} />}
           label="Main"
           collapsed={collapsed}
-          defaultExpanded={true}
         >
           <NavItem
             icon={<Box size={18} />}
@@ -191,7 +192,6 @@ const Sidebar: React.FC<SidebarProps> = ({ collapsed, onToggle }) => {
           icon={<Warehouse size={20} />}
           label="Warehouse"
           collapsed={collapsed}
-          defaultExpanded={true}
         >
           <NavItem
             icon={<Boxes size={18} />}
@@ -217,8 +217,8 @@ const Sidebar: React.FC<SidebarProps> = ({ collapsed, onToggle }) => {
           <NavItem
             icon={<Grid size={18} />}
             label="Shelves"
-            active={isActive('/warehouse/shelves')}
-            onClick={() => navigate('/warehouse/shelves')}
+            active={isActive('/warehouse/locations/shelves')}
+            onClick={() => navigate('/warehouse/locations/shelves')}
             collapsed={collapsed}
           />
           <NavItem
@@ -235,7 +235,6 @@ const Sidebar: React.FC<SidebarProps> = ({ collapsed, onToggle }) => {
           icon={<Image size={20} />}
           label="Digital Assets"
           collapsed={collapsed}
-          defaultExpanded={true}
         >
           <NavItem
             icon={<Image size={18} />}
@@ -307,7 +306,6 @@ const Sidebar: React.FC<SidebarProps> = ({ collapsed, onToggle }) => {
           icon={<GraduationCap size={20} />}
           label="Academy"
           collapsed={collapsed}
-          defaultExpanded={true}
         >
           <NavItem
             icon={<BookOpen size={18} />}
@@ -337,7 +335,6 @@ const Sidebar: React.FC<SidebarProps> = ({ collapsed, onToggle }) => {
           icon={<ShoppingBag size={20} />}
           label="E-Commerce"
           collapsed={collapsed}
-          defaultExpanded={true}
         >
           <NavItem
             icon={<ShoppingBag size={18} />}
@@ -367,7 +364,6 @@ const Sidebar: React.FC<SidebarProps> = ({ collapsed, onToggle }) => {
           icon={<Calculator size={20} />}
           label="Accountancy"
           collapsed={collapsed}
-          defaultExpanded={true}
         >
           <NavItem
             icon={<Calculator size={18} />}
@@ -405,7 +401,7 @@ const Sidebar: React.FC<SidebarProps> = ({ collapsed, onToggle }) => {
       {/* Theme Toggle */}
       <div className="p-4 border-t border-[var(--divider)]">
         <button
-          className="flex items-center w-full p-2 rounded-md hover:bg-[var(--primary-main)] hover:bg-opacity-10 text-[var(--text-secondary)] hover:text-[var(--primary-main)] transition-colors duration-200"
+          className={`flex items-center p-2 rounded-md hover:bg-[var(--primary-main)] hover:bg-opacity-10 text-[var(--text-secondary)] hover:text-[var(--primary-main)] transition-colors duration-200 ${collapsed ? 'justify-center w-full' : 'w-full'}`}
           onClick={toggleTheme}
         >
           {document.documentElement.getAttribute('data-theme') === 'dark' ? 
