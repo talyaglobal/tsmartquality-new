@@ -51,13 +51,13 @@ const ContactPage: React.FC = () => {
     {
       icon: <Phone className="text-[var(--success-main)]\" size={24} />,
       title: 'Phone',
-      content: '+1 (555) 123-4567',
-      link: 'tel:+15551234567'
+      content: '+1 (201) 719-1777',
+      link: 'tel:+12017191777'
     },
     {
       icon: <MapPin className="text-[var(--error-main)]\" size={24} />,
       title: 'Address',
-      content: '123 Quality Street, San Francisco, CA 94105',
+      content: '17-09 Zink Pl UNIT 4, Fair Lawn, NJ 07410, United States',
       link: 'https://maps.google.com'
     }
   ];

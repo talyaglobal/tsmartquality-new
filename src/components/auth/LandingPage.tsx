@@ -124,7 +124,7 @@ const LandingPage: React.FC = () => {
             <Button 
               size="lg"
               onClick={() => navigate('/apply')}
-              className="bg-white text-[var(--primary-dark)] hover:bg-white hover:bg-opacity-90 px-8 font-bold"
+              className="bg-white text-[var(--primary-main)] hover:bg-white hover:bg-opacity-90 px-8 font-bold"
             >
               Start Free Trial
             </Button>
@@ -325,7 +325,7 @@ const LandingPage: React.FC = () => {
             <Button
               size="lg"
               onClick={() => navigate('/apply')}
-              className="bg-white text-[var(--primary-dark)] hover:bg-opacity-90 px-8 font-bold"
+              className="bg-white text-[var(--primary-main)] hover:bg-white hover:bg-opacity-90 px-8 font-bold"
             >
               Start Free Trial
             </Button>
