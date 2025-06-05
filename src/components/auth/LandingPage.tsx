@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Box, CheckCircle, Shield, Users, BarChart2, FileText, Award, Boxes, Truck, BookOpen, Star } from 'lucide-react';
+import { Box, CheckCircle, Shield, Users, BarChart2, FileText, Award, Boxes, Truck, BookOpen, Star, Linkedin, Youtube, Globe } from 'lucide-react';
 import Button from '../ui/Button';
 
 const LandingPage: React.FC = () => {
@@ -18,7 +18,7 @@ const LandingPage: React.FC = () => {
       description: 'Comprehensive tools for managing product quality throughout the lifecycle'
     },
     {
-      icon: <CheckCircle className="text-[var(--success-main)]\" size={32} />,
+      icon: <CheckCircle className="text-[var(--success-main)]" size={32} />,
       title: 'Audit & Compliance',
       description: 'Streamlined audit processes and compliance tracking'
     },
@@ -28,7 +28,7 @@ const LandingPage: React.FC = () => {
       description: 'Centralized document management and version control'
     },
     {
-      icon: <Users className="text-[var(--info-main)]\" size={32} />,
+      icon: <Users className="text-[var(--info-main)]" size={32} />,
       title: 'Supplier Management',
       description: 'Efficient supplier qualification and performance monitoring'
     },
@@ -38,7 +38,7 @@ const LandingPage: React.FC = () => {
       description: 'Advanced analytics and customizable reporting tools'
     },
     {
-      icon: <Award className="text-[var(--primary-main)]\" size={32} />,
+      icon: <Award className="text-[var(--primary-main)]" size={32} />,
       title: 'Training & Certification',
       description: 'Employee training management and certification tracking'
     },
@@ -48,7 +48,7 @@ const LandingPage: React.FC = () => {
       description: 'Complete warehouse and inventory control system'
     },
     {
-      icon: <Truck className="text-[var(--warning-main)]\" size={32} />,
+      icon: <Truck className="text-[var(--warning-main)]" size={32} />,
       title: 'Logistics Integration',
       description: 'Seamless integration with logistics and shipping systems'
     },
@@ -103,8 +103,8 @@ const LandingPage: React.FC = () => {
               <Button variant="outline" onClick={() => navigate('/login')}>
                 Sign In
               </Button>
-              <Button onClick={handleBypassAuth}>
-                Try Demo
+              <Button onClick={() => navigate('/register')}>
+                Sign Up
               </Button>
             </div>
           </div>
@@ -350,9 +350,20 @@ const LandingPage: React.FC = () => {
                 <Box className="text-[var(--primary-main)] w-8 h-8" />
                 <h3 className="text-[var(--primary-main)] font-bold ml-2">TSmart Quality</h3>
               </div>
-              <p className="text-[var(--text-secondary)]">
+              <p className="text-[var(--text-secondary)] mb-4">
                 Empowering quality excellence through intelligent solutions.
               </p>
+              <div className="flex space-x-4 mt-4">
+                <a href="https://www.linkedin.com/company/talya-smart/?viewAsMember=true" target="_blank" rel="noopener noreferrer" className="text-[var(--text-secondary)] hover:text-[var(--primary-main)]">
+                  <Linkedin size={24} />
+                </a>
+                <a href="https://www.youtube.com/@TalyaSmart" target="_blank" rel="noopener noreferrer" className="text-[var(--text-secondary)] hover:text-[var(--primary-main)]">
+                  <Youtube size={24} />
+                </a>
+                <a href="https://www.tsmart.ai" target="_blank" rel="noopener noreferrer" className="text-[var(--text-secondary)] hover:text-[var(--primary-main)]">
+                  <Globe size={24} />
+                </a>
+              </div>
             </div>
             <div>
               <h4 className="font-semibold mb-4">Product</h4>
@@ -408,6 +419,9 @@ const LandingPage: React.FC = () => {
           </div>
           <div className="mt-16 pt-8 border-t border-[var(--divider)] text-center">
             <p className="text-[var(--text-secondary)]">&copy; {new Date().getFullYear()} TSmart Quality. All rights reserved.</p>
+            <p className="text-[var(--text-secondary)] mt-2">
+              <a href="https://www.tsmart.ai" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--primary-main)]">www.tsmart.ai</a>
+            </p>
           </div>
         </div>
       </footer>

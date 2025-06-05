@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, MessageSquare, Send } from 'lucide-react';
+import { Mail, Phone, MapPin, MessageSquare, Send, Linkedin, Youtube, Globe } from 'lucide-react';
 import Card from '../ui/Card';
 import Button from '../ui/Button';
 import Input from '../ui/Input';
@@ -43,7 +43,7 @@ const ContactPage: React.FC = () => {
 
   const contactInfo = [
     {
-      icon: <Mail className="text-[var(--primary-main)]\" size={24} />,
+      icon: <Mail className="text-[var(--primary-main)]" size={24} />,
       title: 'Email',
       content: 'contact@tsmartquality.com',
       link: 'mailto:contact@tsmartquality.com'
@@ -55,7 +55,7 @@ const ContactPage: React.FC = () => {
       link: 'tel:+15551234567'
     },
     {
-      icon: <MapPin className="text-[var(--error-main)]\" size={24} />,
+      icon: <MapPin className="text-[var(--error-main)]" size={24} />,
       title: 'Address',
       content: '123 Quality Street, San Francisco, CA 94105',
       link: 'https://maps.google.com'
@@ -69,6 +69,18 @@ const ContactPage: React.FC = () => {
         <p className="text-[var(--text-secondary)] max-w-2xl mx-auto">
           Have questions? We're here to help. Reach out to our team for support or inquiries.
         </p>
+        <div className="flex justify-center space-x-4 mt-6">
+          <a href="https://www.linkedin.com/company/talya-smart/?viewAsMember=true" target="_blank" rel="noopener noreferrer" className="text-[var(--text-secondary)] hover:text-[var(--primary-main)]">
+            <Linkedin size={24} />
+          </a>
+          <a href="https://www.youtube.com/@TalyaSmart" target="_blank" rel="noopener noreferrer" className="text-[var(--text-secondary)] hover:text-[var(--primary-main)]">
+            <Youtube size={24} />
+          </a>
+          <a href="https://www.tsmart.ai" target="_blank" rel="noopener noreferrer" className="text-[var(--text-secondary)] hover:text-[var(--primary-main)] flex items-center">
+            <Globe size={24} />
+            <span className="ml-1">www.tsmart.ai</span>
+          </a>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">

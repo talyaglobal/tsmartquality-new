@@ -80,6 +80,7 @@ function App() {
     <Router>
       <Routes>
         {/* Public routes */}
+        <Route path="/" element={<LandingPage />} />
         <Route path="/landing" element={<LandingPage />} />
         <Route path="/login" element={<SignInPage />} />
         <Route path="/register" element={<SignUpPage />} />
@@ -101,7 +102,6 @@ function App() {
         {/* Protected routes */}
         {isAuthenticated ? (
           <Route element={<Layout />}>
-            <Route path="/" element={<Navigate to="/dashboard" replace />} />
             <Route path="/dashboard" element={<DashboardPage />} />
             <Route path="/quality-score" element={<QualityScorePage />} />
             <Route path="/products" element={<ProductPortal />} />
@@ -171,7 +171,7 @@ function App() {
           </Route>
         ) : (
           // Redirect to landing page if not authenticated
-          <Route path="*" element={<Navigate to="/landing" replace />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
         )}
         
         {/* 404 page */}

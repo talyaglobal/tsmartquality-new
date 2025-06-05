@@ -1,5 +1,5 @@
 import React from 'react';
-import { Building, Users, Globe, Award, Rocket } from 'lucide-react';
+import { Building, Users, Globe, Award, Rocket, Linkedin, Youtube } from 'lucide-react';
 import Card from '../ui/Card';
 import { useNavigate } from 'react-router-dom';
 import Button from '../ui/Button';
@@ -37,7 +37,7 @@ const AboutPage: React.FC = () => {
       description: 'We strive for excellence in everything we do'
     },
     {
-      icon: <Users className="text-[var(--success-main)]\" size={32} />,
+      icon: <Users className="text-[var(--success-main)]" size={32} />,
       title: 'Collaboration',
       description: 'Working together to achieve common goals'
     },
@@ -47,7 +47,7 @@ const AboutPage: React.FC = () => {
       description: 'Constantly pushing boundaries and embracing new ideas'
     },
     {
-      icon: <Rocket className="text-[var(--warning-main)]\" size={32} />,
+      icon: <Rocket className="text-[var(--warning-main)]" size={32} />,
       title: 'Integrity',
       description: 'Maintaining the highest standards of ethics and transparency'
     }
@@ -60,6 +60,18 @@ const AboutPage: React.FC = () => {
         <p className="text-[var(--text-secondary)] max-w-2xl mx-auto">
           Leading the way in quality management solutions with innovative technology and industry expertise.
         </p>
+        <div className="flex justify-center space-x-4 mt-6">
+          <a href="https://www.linkedin.com/company/talya-smart/?viewAsMember=true" target="_blank" rel="noopener noreferrer" className="text-[var(--text-secondary)] hover:text-[var(--primary-main)]">
+            <Linkedin size={24} />
+          </a>
+          <a href="https://www.youtube.com/@TalyaSmart" target="_blank" rel="noopener noreferrer" className="text-[var(--text-secondary)] hover:text-[var(--primary-main)]">
+            <Youtube size={24} />
+          </a>
+          <a href="https://www.tsmart.ai" target="_blank" rel="noopener noreferrer" className="text-[var(--text-secondary)] hover:text-[var(--primary-main)] flex items-center">
+            <Globe size={24} />
+            <span className="ml-1">www.tsmart.ai</span>
+          </a>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
