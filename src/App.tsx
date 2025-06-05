@@ -94,7 +94,7 @@ export default function App() {
           </Route>
         ) : (
           // Redirect to home page if not authenticated
-          <Route path="*" element={<Navigate to="/" replace />} />
+          <Route path="*" element={<Navigate to="/\" replace />} />
         )}
 
         {/* 404 Not Found route */}
