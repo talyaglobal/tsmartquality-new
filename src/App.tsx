@@ -20,13 +20,25 @@ import WarehousePage from './components/warehouse/WarehousePage';
 import WarehouseStock from './components/warehouse/WarehouseStock';
 import WarehouseInventory from './components/warehouse/WarehouseInventory';
 import LocationsPage from './components/warehouse/locations/LocationsPage';
-import ShelvesPage from './components/warehouse/shelves/ShelvesPage';
+import ShelvesPage from './components/warehouse/locations/ShelvesPage';
 import IntegrationsPage from './components/warehouse/integrations/IntegrationsPage';
 import CoursesPage from './components/academy/CoursesPage';
 import CertificationsPage from './components/academy/CertificationsPage';
 import EnrollmentsPage from './components/academy/EnrollmentsPage';
 import QualityScorePage from './components/quality/QualityScorePage';
 import WarningsPage from './components/warnings/WarningsPage';
+
+// Footer Pages
+import FeaturesPage from './components/footer/FeaturesPage';
+import PricingPage from './components/footer/PricingPage';
+import CaseStudiesPage from './components/footer/CaseStudiesPage';
+import DocumentationPage from './components/footer/DocumentationPage';
+import AboutPage from './components/footer/AboutPage';
+import CareersPage from './components/footer/CareersPage';
+import BlogPage from './components/footer/BlogPage';
+import ContactPage from './components/footer/ContactPage';
+import SecurityPage from './components/footer/SecurityPage';
+import TermsPage from './components/footer/TermsPage';
 
 export default function App() {
   // Check if user is authenticated
@@ -39,6 +51,18 @@ export default function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<SignInPage />} />
         <Route path="/register" element={<SignUpPage />} />
+        
+        {/* Footer Pages - Public */}
+        <Route path="/features" element={<FeaturesPage />} />
+        <Route path="/pricing" element={<PricingPage />} />
+        <Route path="/case-studies" element={<CaseStudiesPage />} />
+        <Route path="/documentation" element={<DocumentationPage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/careers" element={<CareersPage />} />
+        <Route path="/blog" element={<BlogPage />} />
+        <Route path="/contact" element={<ContactPage />} />
+        <Route path="/security" element={<SecurityPage />} />
+        <Route path="/terms" element={<TermsPage />} />
         
         {/* Protected routes */}
         {isAuthenticated ? (

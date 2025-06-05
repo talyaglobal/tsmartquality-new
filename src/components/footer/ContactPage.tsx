@@ -1,0 +1,130 @@
+import React from 'react';
+import { Mail, Phone, MapPin, MessageSquare } from 'lucide-react';
+import Card from '../ui/Card';
+import Button from '../ui/Button';
+import Input from '../ui/Input';
+
+const ContactPage: React.FC = () => {
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Handle form submission
+  };
+
+  const contactInfo = [
+    {
+      icon: <Mail className="text-[var(--primary-main)]" size={24} />,
+      title: 'Email',
+      content: 'contact@tsmartquality.com',
+      link: 'mailto:contact@tsmartquality.com'
+    },
+    {
+      icon: <Phone className="text-[var(--success-main)]" size={24} />,
+      title: 'Phone',
+      content: '+1 (555) 123-4567',
+      link: 'tel:+15551234567'
+    },
+    {
+      icon: <MapPin className="text-[var(--error-main)]" size={24} />,
+      title: 'Address',
+      content: '123 Quality Street, San Francisco, CA 94105',
+      link: 'https://maps.google.com'
+    }
+  ];
+
+  return (
+    <div className="container mx-auto px-6 py-12">
+      <div className="text-center mb-16">
+        <h1 className="text-4xl font-bold mb-4">Contact Us</h1>
+        <p className="text-[var(--text-secondary)] max-w-2xl mx-auto">
+          Have questions? We're here to help. Reach out to our team for support or inquiries.
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        {contactInfo.map((info, index) => (
+          <Card key={index}>
+            <a
+              href={info.link}
+              className="block text-center hover:bg-[var(--primary-light)] hover:bg-opacity-5 transition-colors rounded-lg p-4"
+            >
+              <div className="mb-4">{info.icon}</div>
+              <h3 className="font-semibold mb-2">{info.title}</h3>
+              <p className="text-[var(--text-secondary)]">{info.content}</p>
+            </a>
+          </Card>
+        ))}
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <Card>
+          <h2 className="text-2xl font-bold mb-6">Send us a Message</h2>
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <Input
+                label="First Name"
+                required
+              />
+              <Input
+                label="Last Name"
+                required
+              />
+            </div>
+            <Input
+              label="Email"
+              type="email"
+              required
+            />
+            <Input
+              label="Phone"
+              type="tel"
+            />
+            <Input
+              label="Subject"
+              required
+            />
+            <Input
+              label="Message"
+              multiline
+              rows={4}
+              required
+            />
+            <Button
+              type="submit"
+              icon={<MessageSquare size={20} />}
+            >
+              Send Message
+            </Button>
+          </form>
+        </Card>
+
+        <div>
+          <Card>
+            <h2 className="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
+            <div className="space-y-6">
+              <div>
+                <h3 className="font-semibold mb-2">How can I get started?</h3>
+                <p className="text-[var(--text-secondary)]">
+                  Getting started is easy! Simply sign up for a free trial and our team will guide you through the setup process.
+                </p>
+              </div>
+              <div>
+                <h3 className="font-semibold mb-2">What support options are available?</h3>
+                <p className="text-[var(--text-secondary)]">
+                  We offer 24/7 email support, phone support during business hours, and comprehensive documentation.
+                </p>
+              </div>
+              <div>
+                <h3 className="font-semibold mb-2">Do you offer custom solutions?</h3>
+                <p className="text-[var(--text-secondary)]">
+                  Yes, we can customize our platform to meet your specific needs. Contact our sales team to discuss your requirements.
+                </p>
+              </div>
+            </div>
+          </Card>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ContactPage;

@@ -38,7 +38,8 @@ import {
   BookOpenCheck,
   LayoutDashboard,
   Wrench,
-  Bell
+  Bell,
+  UserCheck
 } from 'lucide-react';
 import { NavItem } from '../ui/NavItem';
 
@@ -173,6 +174,14 @@ const Sidebar: React.FC<SidebarProps> = ({ collapsed, onToggle }) => {
             label="Suppliers"
             active={isActive('/suppliers')}
             onClick={() => navigate('/suppliers')}
+            collapsed={collapsed}
+          />
+
+          <NavItem
+            icon={<UserCheck size={20} />}
+            label="Customers"
+            active={isActive('/customers')}
+            onClick={() => navigate('/customers')}
             collapsed={collapsed}
           />
 
