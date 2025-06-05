@@ -60,12 +60,11 @@ export const NavItem: React.FC<NavItemProps> = ({
       {children && (
         <div
           className={classNames(
-            'overflow-hidden transition-all duration-200',
+            'overflow-hidden transition-all duration-300',
             {
               'ml-4 pl-4 border-l border-[var(--divider)]': !collapsed,
-              'max-h-0 opacity-0': !expanded && !collapsed,
-              'max-h-[1000px] opacity-100': expanded && !collapsed,
-              'max-h-0 opacity-0': collapsed
+              'max-h-0 opacity-0': !expanded || collapsed,
+              'max-h-[1000px] opacity-100': expanded && !collapsed
             }
           )}
         >
