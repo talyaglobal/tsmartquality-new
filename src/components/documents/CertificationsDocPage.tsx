@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Search, Plus, Filter, Download, FileText, Clock, Tag, User, Calendar, FileCertificate, Award } from 'lucide-react';
+import { Search, Plus, Filter, Download, FileText, Clock, Tag, User, Calendar, AlignCenterVertical as FileCertificate, Award } from 'lucide-react';
 import Card from '../ui/Card';
 import Button from '../ui/Button';
 import Input from '../ui/Input';
