@@ -57,6 +57,7 @@ import NotFoundPage from './components/NotFoundPage'
 import QualityScorePage from './components/quality/QualityScorePage'
 import WarningsPage from './components/warnings/WarningsPage'
 import ServicesPage from './components/services/ServicesPage'
+import TasksPage from './components/tasks/TasksPage'
 
 function App() {
   // Check if user is authenticated
@@ -87,7 +88,7 @@ function App() {
         {/* Protected routes */}
         {isAuthenticated ? (
           <Route element={<Layout />}>
-            <Route path="/" element={<Navigate to="/dashboard\" replace />} />
+            <Route path="/" element={<Navigate to="/dashboard" replace />} />
             <Route path="/dashboard" element={<DashboardPage />} />
             <Route path="/quality-score" element={<QualityScorePage />} />
             <Route path="/products" element={<ProductPortal />} />
@@ -95,6 +96,7 @@ function App() {
             <Route path="/documents" element={<DocumentManagement />} />
             <Route path="/complaints" element={<ComplaintManagement />} />
             <Route path="/warnings" element={<WarningsPage />} />
+            <Route path="/tasks" element={<TasksPage />} />
             <Route path="/audits" element={<AuditsPage />} />
             <Route path="/suppliers" element={<SuppliersPage />} />
             <Route path="/customers" element={<CustomersPage />} />
@@ -143,7 +145,7 @@ function App() {
           </Route>
         ) : (
           // Redirect to landing page if not authenticated
-          <Route path="*" element={<Navigate to="/landing\" replace />} />
+          <Route path="*" element={<Navigate to="/landing" replace />} />
         )}
         
         {/* 404 page */}

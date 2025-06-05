@@ -2,13 +2,13 @@ import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { 
   Menu, 
-  Box,
-  FileText,
-  AlertTriangle,
-  ClipboardCheck,
-  Users,
-  Settings,
-  Moon,
+  Box, 
+  FileText, 
+  AlertTriangle, 
+  ClipboardCheck, 
+  Users, 
+  Settings, 
+  Moon, 
   Sun,
   BarChart2,
   Utensils,
@@ -39,7 +39,8 @@ import {
   LayoutDashboard,
   Wrench,
   Bell,
-  UserCheck
+  UserCheck,
+  CheckSquare
 } from 'lucide-react';
 import { NavItem } from '../ui/NavItem';
 
@@ -155,9 +156,17 @@ const Sidebar: React.FC<SidebarProps> = ({ collapsed, onToggle }) => {
 
           <NavItem
             icon={<Bell size={20} />}
-            label="Warnings & Tasks"
+            label="Warnings"
             active={isActive('/warnings')}
             onClick={() => navigate('/warnings')}
+            collapsed={collapsed}
+          />
+
+          <NavItem
+            icon={<CheckSquare size={20} />}
+            label="Tasks"
+            active={isActive('/tasks')}
+            onClick={() => navigate('/tasks')}
             collapsed={collapsed}
           />
 
