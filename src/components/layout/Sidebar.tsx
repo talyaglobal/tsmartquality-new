@@ -51,7 +51,6 @@ import {
   FlaskConical,
   Braces,
   FileDigit,
-  FileCertificate,
   ClipboardList,
   FileBarChart
 } from 'lucide-react';
@@ -218,7 +217,7 @@ const Sidebar: React.FC<SidebarProps> = ({ collapsed, onToggle }) => {
               collapsed={collapsed}
             />
             <NavItem
-              icon={<FileCertificate size={16} />}
+              icon={<FileCheck size={16} />}
               label="Certifications"
               active={isActive('/documents/certifications')}
               onClick={() => navigate('/documents/certifications')}
