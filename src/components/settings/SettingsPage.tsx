@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Plus, Tag, Grid2X2, Settings as SettingsIcon, Users, Link2 } from 'lucide-react'
+import { Tag, Grid2X2, Settings as SettingsIcon, Users, Link2, Globe } from 'lucide-react'
 import Card from '../ui/Card'
 import Button from '../ui/Button'
 import Input from '../ui/Input'
@@ -7,16 +7,19 @@ import TagManagement from './TagManagement'
 import CategoryManagement from './CategoryManagement'
 import SupplierCategoryManagement from './SupplierCategoryManagement'
 import ImportSettings from './ImportSettings'
+import GeneralSettings from './GeneralSettings'
+import IntegrationsSettings from './IntegrationsSettings'
 
 const SettingsPage: React.FC = () => {
-  const [activeTab, setActiveTab] = useState('tags')
+  const [activeTab, setActiveTab] = useState('general')
 
   const tabs = [
+    { id: 'general', label: 'General', icon: <SettingsIcon size={20} /> },
+    { id: 'integrations', label: 'Integrations', icon: <Link2 size={20} /> },
     { id: 'tags', label: 'Tags', icon: <Tag size={20} /> },
     { id: 'categories', label: 'Categories', icon: <Grid2X2 size={20} /> },
     { id: 'supplier-categories', label: 'Supplier Categories', icon: <Users size={20} /> },
-    { id: 'import', label: 'Import Settings', icon: <Link2 size={20} /> },
-    { id: 'general', label: 'General', icon: <SettingsIcon size={20} /> }
+    { id: 'import', label: 'Import Settings', icon: <Globe size={20} /> }
   ]
 
   return (
@@ -46,20 +49,12 @@ const SettingsPage: React.FC = () => {
       </div>
 
       <div className="space-y-6">
+        {activeTab === 'general' && <GeneralSettings />}
+        {activeTab === 'integrations' && <IntegrationsSettings />}
         {activeTab === 'tags' && <TagManagement />}
         {activeTab === 'categories' && <CategoryManagement />}
         {activeTab === 'supplier-categories' && <SupplierCategoryManagement />}
         {activeTab === 'import' && <ImportSettings />}
-        {activeTab === 'general' && (
-          <Card>
-            <div className="text-center py-8">
-              <h2 className="text-xl font-semibold mb-2">General Settings Coming Soon</h2>
-              <p className="text-[var(--text-secondary)]">
-                Additional settings and configurations will be available here soon.
-              </p>
-            </div>
-          </Card>
-        )}
       </div>
     </div>
   )
