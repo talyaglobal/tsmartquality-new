@@ -33,6 +33,7 @@ import PalletCalculator from './components/palletizator/PalletCalculator'
 import Pallet80x120Calculator from './components/palletizator/Pallet80x120Calculator'
 import FloorLoadCalculator from './components/palletizator/FloorLoadCalculator'
 import CoursesPage from './components/academy/CoursesPage'
+import CreateCoursePage from './components/academy/CreateCoursePage'
 import CertificationsPage from './components/academy/CertificationsPage'
 import EnrollmentsPage from './components/academy/EnrollmentsPage'
 import ShopifyPage from './components/ecommerce/shopify/ShopifyPage'
@@ -130,6 +131,7 @@ function App() {
             
             {/* Academy routes */}
             <Route path="/academy/courses" element={<CoursesPage />} />
+            <Route path="/academy/courses/create" element={<CreateCoursePage />} />
             <Route path="/academy/certifications" element={<CertificationsPage />} />
             <Route path="/academy/enrollments" element={<EnrollmentsPage />} />
             

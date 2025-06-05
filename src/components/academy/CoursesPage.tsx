@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Plus, Search, BookOpen, Clock, Users } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import Card from '../ui/Card';
 import Button from '../ui/Button';
 import Input from '../ui/Input';
@@ -17,6 +18,7 @@ interface Course {
 }
 
 const CoursesPage: React.FC = () => {
+  const navigate = useNavigate();
   const [showFilters, setShowFilters] = useState(false);
 
   // Sample data - replace with actual data from your API
@@ -42,6 +44,28 @@ const CoursesPage: React.FC = () => {
       status: 'active',
       category: 'Standards',
       thumbnail: 'https://images.pexels.com/photos/3183153/pexels-photo-3183153.jpeg'
+    },
+    {
+      id: '3',
+      title: 'HACCP Principles and Application',
+      description: 'Master the principles of Hazard Analysis Critical Control Points',
+      instructor: 'Michael Brown',
+      duration: '10 hours',
+      enrolled: 28,
+      status: 'active',
+      category: 'Food Safety',
+      thumbnail: 'https://images.pexels.com/photos/8850731/pexels-photo-8850731.jpeg'
+    },
+    {
+      id: '4',
+      title: 'Good Manufacturing Practices (GMP)',
+      description: 'Essential guidelines for ensuring product quality and safety',
+      instructor: 'Emily Davis',
+      duration: '6 hours',
+      enrolled: 39,
+      status: 'draft',
+      category: 'Manufacturing',
+      thumbnail: 'https://images.pexels.com/photos/3862130/pexels-photo-3862130.jpeg'
     }
   ];
 
@@ -56,6 +80,7 @@ const CoursesPage: React.FC = () => {
         </div>
         <Button 
           icon={<Plus size={20} />}
+          onClick={() => navigate('/academy/courses/create')}
         >
           Create Course
         </Button>
@@ -76,6 +101,8 @@ const CoursesPage: React.FC = () => {
               <option value="standards">Standards</option>
               <option value="safety">Safety</option>
               <option value="compliance">Compliance</option>
+              <option value="manufacturing">Manufacturing</option>
+              <option value="food-safety">Food Safety</option>
             </select>
             <select className="border border-[var(--divider)] rounded-md px-3 py-2">
               <option value="">All Status</option>
@@ -83,8 +110,56 @@ const CoursesPage: React.FC = () => {
               <option value="draft">Draft</option>
               <option value="archived">Archived</option>
             </select>
+            <Button 
+              variant="outline"
+              onClick={() => setShowFilters(!showFilters)}
+            >
+              Filter
+            </Button>
           </div>
         </div>
+
+        {showFilters && (
+          <div className="mb-6 p-4 border border-[var(--divider)] rounded-lg">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div>
+                <label className="block text-sm font-medium text-[var(--text-secondary)] mb-1">
+                  Duration
+                </label>
+                <select className="w-full border border-[var(--divider)] rounded-md p-2">
+                  <option value="">Any Duration</option>
+                  <option value="short">Short (< 5 hours)</option>
+                  <option value="medium">Medium (5-10 hours)</option>
+                  <option value="long">Long (> 10 hours)</option>
+                </select>
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-[var(--text-secondary)] mb-1">
+                  Instructor
+                </label>
+                <select className="w-full border border-[var(--divider)] rounded-md p-2">
+                  <option value="">All Instructors</option>
+                  <option value="john-smith">John Smith</option>
+                  <option value="sarah-johnson">Sarah Johnson</option>
+                  <option value="michael-brown">Michael Brown</option>
+                  <option value="emily-davis">Emily Davis</option>
+                </select>
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-[var(--text-secondary)] mb-1">
+                  Created Date
+                </label>
+                <select className="w-full border border-[var(--divider)] rounded-md p-2">
+                  <option value="">Any Time</option>
+                  <option value="today">Today</option>
+                  <option value="week">This Week</option>
+                  <option value="month">This Month</option>
+                  <option value="year">This Year</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        )}
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {courses.map((course) => (
@@ -103,6 +178,7 @@ const CoursesPage: React.FC = () => {
                     variant="outline"
                     size="sm"
                     className="text-white border-white hover:bg-white hover:text-black"
+                    onClick={() => navigate(`/academy/courses/${course.id}`)}
                   >
                     View Course
                   </Button>
