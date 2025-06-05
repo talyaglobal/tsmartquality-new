@@ -43,7 +43,7 @@ const ContactPage: React.FC = () => {
 
   const contactInfo = [
     {
-      icon: <Mail className="text-[var(--primary-main)]" size={24} />,
+      icon: <Mail className="text-[var(--primary-main)]\" size={24} />,
       title: 'Email',
       content: 'contact@tsmartquality.com',
       link: 'mailto:contact@tsmartquality.com'
@@ -55,7 +55,7 @@ const ContactPage: React.FC = () => {
       link: 'tel:+15551234567'
     },
     {
-      icon: <MapPin className="text-[var(--error-main)]" size={24} />,
+      icon: <MapPin className="text-[var(--error-main)]\" size={24} />,
       title: 'Address',
       content: '123 Quality Street, San Francisco, CA 94105',
       link: 'https://maps.google.com'

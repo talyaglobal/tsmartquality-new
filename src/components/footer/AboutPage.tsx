@@ -37,7 +37,7 @@ const AboutPage: React.FC = () => {
       description: 'We strive for excellence in everything we do'
     },
     {
-      icon: <Users className="text-[var(--success-main)]" size={32} />,
+      icon: <Users className="text-[var(--success-main)]\" size={32} />,
       title: 'Collaboration',
       description: 'Working together to achieve common goals'
     },
@@ -47,7 +47,7 @@ const AboutPage: React.FC = () => {
       description: 'Constantly pushing boundaries and embracing new ideas'
     },
     {
-      icon: <Rocket className="text-[var(--warning-main)]" size={32} />,
+      icon: <Rocket className="text-[var(--warning-main)]\" size={32} />,
       title: 'Integrity',
       description: 'Maintaining the highest standards of ethics and transparency'
     }
