@@ -2,13 +2,17 @@ import pool from './index';
 
 export interface User {
   id: string;
+  username: string;
   name: string;
   surname: string;
   email: string;
   password: string;
   companyId: number;
   role: string;
+  is_active: boolean;
+  email_verified: boolean;
   created_at: Date;
+  last_login: Date | null;
   failed_login_attempts: number;
   locked_until: Date | null;
 }
@@ -29,10 +33,16 @@ export class UserModel {
     return result.rows[0] || null;
   }
 
-  static async create(userData: Omit<User, 'id' | 'created_at' | 'failed_login_attempts' | 'locked_until'>): Promise<User> {
+  static async findByUsername(username: string): Promise<User | null> {
+    const result = await pool.query('SELECT * FROM users WHERE username = $1', [username]);
+    return result.rows[0] || null;
+  }
+
+  static async create(userData: Omit<User, 'id' | 'created_at' | 'last_login' | 'failed_login_attempts' | 'locked_until' | 'is_active' | 'email_verified'>): Promise<User> {
     const result = await pool.query(
-      'INSERT INTO users (name, surname, email, password, companyId, role) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *',
-      [userData.name, userData.surname, userData.email, userData.password, userData.companyId, userData.role || 'user']
+      `INSERT INTO users (username, name, surname, email, password, company_id, role, is_active, email_verified, created_by) 
+       VALUES ($1, $2, $3, $4, $5, $6, $7, true, false, $1) RETURNING *`,
+      [userData.username, userData.name, userData.surname, userData.email, userData.password, userData.companyId, userData.role || 'user']
     );
     return result.rows[0];
   }
@@ -90,5 +100,30 @@ export class UserModel {
     if (!lockedUntil) return false;
     
     return new Date() < new Date(lockedUntil);
+  }
+
+  static async updateLastLogin(id: string): Promise<void> {
+    await pool.query(
+      'UPDATE users SET last_login = NOW() WHERE id = $1',
+      [id]
+    );
+  }
+
+  static async findAllPaginated(companyId: number, page: number, pageSize: number, offset: number): Promise<{items: User[], totalCount: number}> {
+    const countResult = await pool.query(
+      'SELECT COUNT(*) FROM users WHERE company_id = $1',
+      [companyId]
+    );
+
+    const result = await pool.query(
+      `SELECT * FROM users WHERE company_id = $1 
+       ORDER BY created_at DESC LIMIT $2 OFFSET $3`,
+      [companyId, pageSize, offset]
+    );
+
+    return {
+      items: result.rows,
+      totalCount: parseInt(countResult.rows[0].count)
+    };
   }
 }

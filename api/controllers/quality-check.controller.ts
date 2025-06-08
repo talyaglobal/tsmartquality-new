@@ -2,14 +2,120 @@ import { Request, Response } from 'express';
 import { QualityCheckModel } from '../models/quality-check.model';
 import { ProductModel } from '../models/product.model';
 import { AuthRequest } from '../middleware/auth.middleware';
+import { ControllerHelpers, ValidationError } from '../utils/controller-helpers';
+import { BusinessRules } from '../utils/business-rules';
+import { Logger } from '../startup';
 
 export class QualityCheckController {
-  static async getAllQualityChecks(req: Request, res: Response): Promise<any> {
+  static async getAllQualityChecks(req: AuthRequest, res: Response): Promise<any> {
     try {
-      const qualityChecks = await QualityCheckModel.findAll();
-      res.json({ qualityChecks });
+      const userRole = req.user?.role;
+      const companyId = req.companyId!;
+      const userId = req.userId!;
+      
+      // Check authorization
+      const access = BusinessRules.checkResourceAccess(userRole, 'quality_check:read');
+      if (!access.allowed) {
+        return ControllerHelpers.sendError(res, access.reason || 'Insufficient permissions', 403);
+      }
+
+      const { page, pageSize, offset } = ControllerHelpers.parsePagination(req.query);
+      const { orderBy, sortDirection } = ControllerHelpers.parseSorting(req.query, [
+        'check_date', 'status', 'overall_grade', 'score', 'created_at'
+      ]);
+
+      // Extract and validate filters
+      const filters: any = {};
+      
+      if (req.query.productId) {
+        filters.productId = req.query.productId;
+      }
+
+      if (req.query.inspectorId) {
+        filters.inspectorId = req.query.inspectorId;
+      }
+
+      if (req.query.status) {
+        const statusError = ControllerHelpers.validateEnum(
+          req.query.status as string, 
+          'status', 
+          ['pending', 'in_progress', 'passed', 'failed', 'conditional']
+        );
+        if (statusError) {
+          return ControllerHelpers.sendValidationError(res, [statusError]);
+        }
+        filters.status = req.query.status;
+      }
+
+      if (req.query.checkType) {
+        const typeError = ControllerHelpers.validateEnum(
+          req.query.checkType as string, 
+          'checkType', 
+          ['incoming', 'in_process', 'final', 'random']
+        );
+        if (typeError) {
+          return ControllerHelpers.sendValidationError(res, [typeError]);
+        }
+        filters.checkType = req.query.checkType;
+      }
+
+      if (req.query.overallGrade) {
+        const gradeError = ControllerHelpers.validateEnum(
+          req.query.overallGrade as string, 
+          'overallGrade', 
+          ['A', 'B', 'C', 'D', 'F']
+        );
+        if (gradeError) {
+          return ControllerHelpers.sendValidationError(res, [gradeError]);
+        }
+        filters.overallGrade = req.query.overallGrade;
+      }
+
+      // Date range filters
+      if (req.query.dateFrom) {
+        filters.dateFrom = req.query.dateFrom;
+      }
+
+      if (req.query.dateTo) {
+        filters.dateTo = req.query.dateTo;
+      }
+
+      // For inspectors, only show their own quality checks
+      if (userRole === 'inspector') {
+        filters.inspectorId = userId;
+      }
+
+      const result = await QualityCheckModel.findAllAdvanced(
+        companyId,
+        page,
+        pageSize,
+        offset,
+        filters,
+        orderBy,
+        sortDirection
+      );
+
+      Logger.info('Quality checks retrieved', {
+        userId,
+        companyId,
+        resultCount: result.items.length,
+        totalCount: result.totalCount,
+        filters
+      });
+
+      ControllerHelpers.sendPaginatedSuccess(
+        res,
+        result.items,
+        { page, pageSize, totalCount: result.totalCount },
+        'Quality checks retrieved successfully',
+        {
+          filters: filters,
+          sorting: { orderBy, sortDirection }
+        }
+      );
+
     } catch (error) {
-      res.status(500).json({ message: 'Server error' });
+      ControllerHelpers.handleError(res, error, 'QualityCheckController.getAllQualityChecks', req.userId, req.companyId);
     }
   }
   
@@ -49,36 +155,87 @@ export class QualityCheckController {
   
   static async createQualityCheck(req: AuthRequest, res: Response): Promise<any> {
     try {
-      const { product_id, check_date, status, notes } = req.body;
-      const inspector_id = req.user.id;
+      const { 
+        product_id, check_type, check_date, status, overall_grade, 
+        score, notes, measurements, attachments 
+      } = req.body;
+      const userRole = req.user?.role;
+      const inspector_id = req.userId!;
+      const companyId = req.companyId!;
       
-      if (!product_id || !check_date || !status) {
-        return res.status(400).json({ message: 'Product ID, check date, and status are required' });
+      // Check authorization
+      const access = BusinessRules.checkResourceAccess(userRole, 'quality_check:create');
+      if (!access.allowed) {
+        return ControllerHelpers.sendError(res, access.reason || 'Insufficient permissions', 403);
+      }
+
+      // Comprehensive validation using business rules
+      const validationErrors = BusinessRules.validateQualityCheckData({
+        productId: product_id,
+        checkType: check_type,
+        status,
+        overallGrade: overall_grade,
+        score,
+        notes,
+        checkDate: check_date ? new Date(check_date) : new Date()
+      });
+
+      if (validationErrors.length > 0) {
+        return ControllerHelpers.sendValidationError(res, validationErrors);
       }
       
-      // Validate product exists
-      const companyId = req.companyId!;
+      // Validate product exists and belongs to company
       const product = await ProductModel.findById(product_id, companyId);
       if (!product) {
-        return res.status(400).json({ message: 'Product not found' });
+        return ControllerHelpers.sendError(res, 'Product not found', 404);
+      }
+
+      // Validate attachments if provided
+      if (attachments && Array.isArray(attachments)) {
+        const attachmentErrors = ControllerHelpers.validateArray(attachments, 'attachments', { maxLength: 10 });
+        if (attachmentErrors.length > 0) {
+          return ControllerHelpers.sendValidationError(res, attachmentErrors);
+        }
       }
       
-      // Validate status
-      if (!['pending', 'passed', 'failed'].includes(status)) {
-        return res.status(400).json({ message: 'Status must be pending, passed, or failed' });
-      }
-      
-      const qualityCheck = await QualityCheckModel.create({
+      const qualityCheckData = {
         product_id,
         inspector_id,
-        check_date: new Date(check_date),
-        status,
-        notes: notes || ''
+        check_type: check_type || 'incoming',
+        status: status || 'pending',
+        overall_grade,
+        score,
+        check_date: check_date ? new Date(check_date) : new Date(),
+        notes: notes ? ControllerHelpers.sanitizeString(notes) : undefined,
+        measurements: measurements || {},
+        attachments: attachments || [],
+        company_id: companyId
+      };
+
+      const qualityCheck = await QualityCheckModel.createAdvanced(qualityCheckData);
+
+      Logger.info('Quality check created', {
+        userId: inspector_id,
+        qualityCheckId: qualityCheck.id,
+        productId: product_id,
+        companyId
       });
       
-      res.status(201).json({ qualityCheck });
+      ControllerHelpers.sendSuccess(res, {
+        qualityCheck: {
+          id: qualityCheck.id,
+          productId: qualityCheck.product_id,
+          checkType: qualityCheck.check_type,
+          status: qualityCheck.status,
+          overallGrade: qualityCheck.overall_grade,
+          score: qualityCheck.score,
+          checkDate: qualityCheck.check_date,
+          createdAt: qualityCheck.created_at
+        }
+      }, 'Quality check created successfully', 201);
+
     } catch (error) {
-      res.status(500).json({ message: 'Server error' });
+      ControllerHelpers.handleError(res, error, 'QualityCheckController.createQualityCheck', req.userId, req.companyId);
     }
   }
   
