@@ -1,12 +1,18 @@
 import express from 'express';
 import { UserController } from '../controllers/user.controller';
-import { auth } from '../middleware/auth.middleware';
+import { strictAuth, requirePermission } from '../middleware/enhanced-auth.middleware';
 
 const router = express.Router();
 
+// Registration (public)
 router.post('/register', UserController.register);
-router.post('/login', UserController.login);
-router.get('/me', auth, UserController.getProfile);
-router.patch('/me', auth, UserController.updateProfile);
+
+// Profile management (authenticated users)
+router.get('/me', strictAuth(), UserController.getProfile);
+router.patch('/me', strictAuth(), UserController.updateProfile);
+router.post('/change-password', strictAuth(), UserController.changePassword);
+
+// Admin operations
+router.get('/', requirePermission('user', 'read'), UserController.getAllUsers);
 
 export default router;

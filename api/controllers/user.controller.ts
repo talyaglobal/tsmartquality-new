@@ -1,11 +1,11 @@
 import { Request, Response } from 'express';
 import { UserModel } from '../models/user.model';
 import bcrypt from 'bcrypt';
-import jwt from 'jsonwebtoken';
-import { config } from '../config/config';
-import { AuthRequest } from '../middleware/auth.middleware';
+import { EnhancedAuthRequest } from '../middleware/enhanced-auth.middleware';
 import { ControllerHelpers, ValidationError } from '../utils/controller-helpers';
 import { BusinessRules } from '../utils/business-rules';
+import { AuditService } from '../services/audit.service';
+import { RBACService } from '../services/rbac.service';
 import { Logger } from '../startup';
 
 // Rate limiting storage for login attempts
@@ -81,19 +81,8 @@ export class UserController {
         role: role || 'user'
       });
       
-      // Generate JWT token with appropriate expiration
-      const tokenPayload = { 
-        userId: user.id, 
-        companyId: user.companyId, 
-        role: user.role,
-        username: user.username
-      };
-      
-      const token = jwt.sign(
-        tokenPayload,
-        config.jwt.secret, 
-        { expiresIn: '24h' }
-      );
+      // For registration, we'll use the new TokenService instead of direct JWT
+      // This is handled by the auth controller now
 
       Logger.info('User registered successfully', {
         userId: user.id,
@@ -103,7 +92,6 @@ export class UserController {
       });
       
       ControllerHelpers.sendSuccess(res, {
-        token,
         user: {
           id: user.id,
           username: user.username,
@@ -114,7 +102,7 @@ export class UserController {
           role: user.role,
           emailVerified: user.email_verified
         },
-        expiresIn: 24 * 3600 // 24 hours
+        message: 'User registered successfully. Please login to get your access token.'
       }, 'User registered successfully', 201);
 
     } catch (error) {
@@ -122,120 +110,9 @@ export class UserController {
     }
   }
   
-  static async login(req: Request, res: Response): Promise<any> {
-    try {
-      const { email, password, rememberMe } = req.body;
-      const clientIp = req.ip || req.connection.remoteAddress || 'unknown';
-      
-      // Validate required fields
-      const validationErrors = ControllerHelpers.validateRequiredFields(
-        { email, password },
-        ['email', 'password']
-      );
-
-      if (validationErrors.length > 0) {
-        return ControllerHelpers.sendValidationError(res, validationErrors);
-      }
-
-      // Email format validation
-      const emailError = ControllerHelpers.validateEmail(email);
-      if (emailError) {
-        return ControllerHelpers.sendValidationError(res, [emailError]);
-      }
-
-      // Rate limiting check
-      const rateLimit = ControllerHelpers.checkRateLimit(
-        `login:${clientIp}`,
-        5, // max 5 attempts
-        15 * 60 * 1000, // 15 minutes window
-        loginAttempts
-      );
-
-      if (!rateLimit.allowed) {
-        Logger.warn('Rate limit exceeded for login attempts', {
-          ip: clientIp,
-          email,
-          resetTime: new Date(rateLimit.resetTime)
-        });
-
-        return ControllerHelpers.sendError(res, 'Too many login attempts. Please try again later.', 429, undefined, {
-          retryAfter: Math.ceil((rateLimit.resetTime - Date.now()) / 1000)
-        });
-      }
-
-      // Check if account is locked
-      if (await UserModel.isAccountLocked(email)) {
-        Logger.warn('Login attempt on locked account', { email, ip: clientIp });
-        return ControllerHelpers.sendError(res, 'Account temporarily locked due to multiple failed login attempts', 423);
-      }
-      
-      const user = await UserModel.findByEmail(email.toLowerCase().trim());
-      if (!user) {
-        Logger.warn('Login attempt with non-existent email', { email, ip: clientIp });
-        return ControllerHelpers.sendError(res, 'Invalid credentials', 401);
-      }
-
-      // Check if user is active
-      if (!user.is_active) {
-        Logger.warn('Login attempt on inactive account', { userId: user.id, email, ip: clientIp });
-        return ControllerHelpers.sendError(res, 'Account is inactive. Please contact administrator.', 403);
-      }
-      
-      const isPasswordValid = await bcrypt.compare(password, user.password);
-      if (!isPasswordValid) {
-        await UserModel.incrementFailedLoginAttempts(email);
-        Logger.warn('Invalid password attempt', { userId: user.id, email, ip: clientIp });
-        return ControllerHelpers.sendError(res, 'Invalid credentials', 401);
-      }
-
-      // Reset failed login attempts on successful login
-      await UserModel.resetFailedLoginAttempts(email);
-      
-      // Generate JWT token with appropriate expiration
-      const expiresIn = rememberMe ? '30d' : '24h';
-      const tokenPayload = { 
-        userId: user.id, 
-        companyId: user.companyId, 
-        role: user.role,
-        username: user.username,
-        sessionId: Math.random().toString(36).substring(2) // Add session ID for token tracking
-      };
-      
-      const token = jwt.sign(tokenPayload, config.jwt.secret, { expiresIn });
-
-      // Update last login timestamp
-      await UserModel.updateLastLogin(user.id);
-
-      Logger.info('User logged in successfully', {
-        userId: user.id,
-        email: user.email,
-        ip: clientIp,
-        rememberMe: !!rememberMe
-      });
-      
-      ControllerHelpers.sendSuccess(res, {
-        token,
-        user: {
-          id: user.id,
-          username: user.username,
-          name: user.name,
-          surname: user.surname,
-          email: user.email,
-          companyId: user.companyId,
-          role: user.role,
-          emailVerified: user.email_verified,
-          lastLogin: user.last_login
-        },
-        expiresIn: rememberMe ? 30 * 24 * 3600 : 24 * 3600,
-        permissions: await this.getUserPermissions(user.role)
-      }, 'Login successful');
-
-    } catch (error) {
-      ControllerHelpers.handleError(res, error, 'UserController.login');
-    }
-  }
+  // Login functionality moved to AuthController
   
-  static async getProfile(req: AuthRequest, res: Response): Promise<any> {
+  static async getProfile(req: EnhancedAuthRequest, res: Response): Promise<any> {
     try {
       const userId = req.userId!;
       
@@ -258,7 +135,7 @@ export class UserController {
           createdAt: user.created_at,
           lastLogin: user.last_login
         },
-        permissions: await this.getUserPermissions(user.role)
+        permissions: RBACService.getRolePermissions(user.role)
       }, 'Profile retrieved successfully');
 
     } catch (error) {
@@ -266,7 +143,7 @@ export class UserController {
     }
   }
   
-  static async updateProfile(req: AuthRequest, res: Response): Promise<any> {
+  static async updateProfile(req: EnhancedAuthRequest, res: Response): Promise<any> {
     try {
       const userId = req.userId!;
       const { name, surname, email, currentPassword, newPassword } = req.body;
@@ -373,8 +250,36 @@ export class UserController {
       const updatedUser = await UserModel.update(userId, updateData);
       
       if (!updatedUser) {
+        await AuditService.logUserManagement({
+          userId,
+          action: 'user_update',
+          success: false,
+          ipAddress: req.securityContext?.ipAddress || 'unknown',
+          userAgent: req.securityContext?.userAgent || 'unknown',
+          errorMessage: 'Failed to update profile'
+        });
         return ControllerHelpers.sendError(res, 'Failed to update profile', 500);
       }
+
+      await AuditService.logUserManagement({
+        userId,
+        action: 'user_update',
+        resourceId: userId,
+        oldValues: { 
+          name: currentUser.name, 
+          surname: currentUser.surname, 
+          email: currentUser.email 
+        },
+        newValues: updateData,
+        success: true,
+        ipAddress: req.securityContext?.ipAddress || 'unknown',
+        userAgent: req.securityContext?.userAgent || 'unknown',
+        metadata: { 
+          updatedFields: Object.keys(updateData),
+          emailChanged: !!updateData.email,
+          passwordChanged: !!updateData.password
+        }
+      });
 
       Logger.info('User profile updated', {
         userId,
@@ -405,7 +310,7 @@ export class UserController {
   /**
    * Change password (alternative endpoint)
    */
-  static async changePassword(req: AuthRequest, res: Response): Promise<any> {
+  static async changePassword(req: EnhancedAuthRequest, res: Response): Promise<any> {
     try {
       const userId = req.userId!;
       const { currentPassword, newPassword, confirmPassword } = req.body;
@@ -451,6 +356,15 @@ export class UserController {
 
       await UserModel.update(userId, { password: hashedPassword });
 
+      await AuditService.logUserManagement({
+        userId,
+        action: 'password_change',
+        resourceId: userId,
+        success: true,
+        ipAddress: req.securityContext?.ipAddress || 'unknown',
+        userAgent: req.securityContext?.userAgent || 'unknown'
+      });
+
       Logger.info('User password changed', { userId });
 
       ControllerHelpers.sendSuccess(res, null, 'Password changed successfully');
@@ -460,53 +374,14 @@ export class UserController {
     }
   }
 
-  /**
-   * Logout user (invalidate token on client side)
-   */
-  static async logout(req: AuthRequest, res: Response): Promise<any> {
-    try {
-      const userId = req.userId!;
-      
-      Logger.info('User logged out', { userId });
-      
-      ControllerHelpers.sendSuccess(res, null, 'Logged out successfully');
+  // Logout functionality moved to AuthController
 
-    } catch (error) {
-      ControllerHelpers.handleError(res, error, 'UserController.logout', req.userId);
-    }
-  }
-
-  /**
-   * Get user permissions based on role
-   */
-  private static async getUserPermissions(role: string): Promise<string[]> {
-    const permissions: Record<string, string[]> = {
-      admin: [
-        'user:create', 'user:read', 'user:update', 'user:delete',
-        'product:create', 'product:read', 'product:update', 'product:delete',
-        'quality_check:create', 'quality_check:read', 'quality_check:update', 'quality_check:delete',
-        'report:read', 'report:create', 'company:manage'
-      ],
-      manager: [
-        'user:read', 'product:create', 'product:read', 'product:update', 'product:delete',
-        'quality_check:create', 'quality_check:read', 'quality_check:update',
-        'report:read', 'report:create'
-      ],
-      inspector: [
-        'product:read', 'quality_check:create', 'quality_check:read', 'quality_check:update'
-      ],
-      user: [
-        'product:read', 'quality_check:read'
-      ]
-    };
-
-    return permissions[role] || permissions.user;
-  }
+  // Permissions functionality moved to RBACService
 
   /**
    * Admin only: Get all users with pagination
    */
-  static async getAllUsers(req: AuthRequest, res: Response): Promise<any> {
+  static async getAllUsers(req: EnhancedAuthRequest, res: Response): Promise<any> {
     try {
       const userRole = req.user?.role;
       
@@ -520,6 +395,16 @@ export class UserController {
       const companyId = req.companyId!;
 
       const result = await UserModel.findAllPaginated(companyId, page, pageSize, offset);
+
+      await AuditService.logDataAccess({
+        userId: req.userId!,
+        companyId: req.companyId!,
+        action: 'list',
+        resource: 'user',
+        ipAddress: req.securityContext?.ipAddress || 'unknown',
+        userAgent: req.securityContext?.userAgent || 'unknown',
+        metadata: { page, pageSize, totalCount: result.totalCount }
+      });
 
       ControllerHelpers.sendPaginatedSuccess(
         res,

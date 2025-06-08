@@ -1,6 +1,7 @@
 import app from './app';
 import { config } from './config/config';
 import { initializeDatabase } from './utils/database';
+import { ServiceInitializer } from './services/service-initializer';
 
 // Enhanced logging utility
 class Logger {
@@ -114,6 +115,9 @@ class StartupHandler {
         Logger.error('Health check failed, cannot start server', healthCheck);
         throw new Error('Pre-startup health check failed');
       }
+
+      // Initialize authentication and security services
+      await ServiceInitializer.initializeAll();
 
       // Setup graceful shutdown handlers
       this.setupGracefulShutdown();

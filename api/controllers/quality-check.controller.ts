@@ -1,13 +1,14 @@
 import { Request, Response } from 'express';
 import { QualityCheckModel } from '../models/quality-check.model';
 import { ProductModel } from '../models/product.model';
-import { AuthRequest } from '../middleware/auth.middleware';
+import { EnhancedAuthRequest } from '../middleware/enhanced-auth.middleware';
+import { AuditService } from '../services/audit.service';
 import { ControllerHelpers, ValidationError } from '../utils/controller-helpers';
 import { BusinessRules } from '../utils/business-rules';
 import { Logger } from '../startup';
 
 export class QualityCheckController {
-  static async getAllQualityChecks(req: AuthRequest, res: Response): Promise<any> {
+  static async getAllQualityChecks(req: EnhancedAuthRequest, res: Response): Promise<any> {
     try {
       const userRole = req.user?.role;
       const companyId = req.companyId!;
@@ -95,6 +96,18 @@ export class QualityCheckController {
         sortDirection
       );
 
+      // Log data access
+      await AuditService.logDataAccess({
+        userId,
+        sessionId: req.sessionId,
+        companyId,
+        action: 'list',
+        resource: 'quality_check',
+        ipAddress: req.securityContext?.ipAddress,
+        userAgent: req.securityContext?.userAgent,
+        metadata: { resultCount: result.items.length, filters }
+      });
+
       Logger.info('Quality checks retrieved', {
         userId,
         companyId,
@@ -119,7 +132,7 @@ export class QualityCheckController {
     }
   }
   
-  static async getQualityCheckById(req: Request, res: Response): Promise<any> {
+  static async getQualityCheckById(req: EnhancedAuthRequest, res: Response): Promise<any> {
     try {
       const { id } = req.params;
       
@@ -128,6 +141,21 @@ export class QualityCheckController {
       if (!qualityCheck) {
         return res.status(404).json({ message: 'Quality check not found' });
       }
+
+      // Log data access
+      if (req.userId) {
+        await AuditService.logDataAccess({
+          userId: req.userId,
+          sessionId: req.sessionId,
+          companyId: req.companyId,
+          action: 'read',
+          resource: 'quality_check',
+          resourceId: id,
+          ipAddress: req.securityContext?.ipAddress,
+          userAgent: req.securityContext?.userAgent,
+          metadata: { productId: qualityCheck.product_id }
+        });
+      }
       
       res.json({ qualityCheck });
     } catch (error) {
@@ -135,7 +163,7 @@ export class QualityCheckController {
     }
   }
   
-  static async getQualityChecksByProduct(req: AuthRequest, res: Response): Promise<any> {
+  static async getQualityChecksByProduct(req: EnhancedAuthRequest, res: Response): Promise<any> {
     try {
       const { productId } = req.params;
       const companyId = req.companyId!;
@@ -147,13 +175,25 @@ export class QualityCheckController {
       
       const qualityChecks = await QualityCheckModel.findByProductId(productId);
       
+      // Log data access
+      await AuditService.logDataAccess({
+        userId: req.userId!,
+        sessionId: req.sessionId,
+        companyId,
+        action: 'list',
+        resource: 'quality_check',
+        ipAddress: req.securityContext?.ipAddress,
+        userAgent: req.securityContext?.userAgent,
+        metadata: { productId, resultCount: qualityChecks.length }
+      });
+      
       res.json({ qualityChecks });
     } catch (error) {
       res.status(500).json({ message: 'Server error' });
     }
   }
   
-  static async createQualityCheck(req: AuthRequest, res: Response): Promise<any> {
+  static async createQualityCheck(req: EnhancedAuthRequest, res: Response): Promise<any> {
     try {
       const { 
         product_id, check_type, check_date, status, overall_grade, 
@@ -214,6 +254,26 @@ export class QualityCheckController {
 
       const qualityCheck = await QualityCheckModel.createAdvanced(qualityCheckData);
 
+      // Log data modification
+      await AuditService.logDataModification({
+        userId: inspector_id,
+        sessionId: req.sessionId,
+        companyId,
+        action: 'create',
+        resource: 'quality_check',
+        resourceId: qualityCheck.id,
+        newValues: {
+          productId: product_id,
+          checkType: check_type,
+          status,
+          overallGrade: overall_grade,
+          score
+        },
+        success: true,
+        ipAddress: req.securityContext?.ipAddress,
+        userAgent: req.securityContext?.userAgent
+      });
+
       Logger.info('Quality check created', {
         userId: inspector_id,
         qualityCheckId: qualityCheck.id,
@@ -239,7 +299,7 @@ export class QualityCheckController {
     }
   }
   
-  static async updateQualityCheck(req: AuthRequest, res: Response): Promise<any> {
+  static async updateQualityCheck(req: EnhancedAuthRequest, res: Response): Promise<any> {
     try {
       const { id } = req.params;
       const { status, notes } = req.body;
@@ -266,13 +326,31 @@ export class QualityCheckController {
       
       const updatedCheck = await QualityCheckModel.update(id, updateData);
       
+      // Log data modification
+      await AuditService.logDataModification({
+        userId: req.userId!,
+        sessionId: req.sessionId,
+        companyId: req.companyId,
+        action: 'update',
+        resource: 'quality_check',
+        resourceId: id,
+        oldValues: {
+          status: existingCheck.status,
+          notes: existingCheck.notes
+        },
+        newValues: updateData,
+        success: true,
+        ipAddress: req.securityContext?.ipAddress,
+        userAgent: req.securityContext?.userAgent
+      });
+      
       res.json({ qualityCheck: updatedCheck });
     } catch (error) {
       res.status(500).json({ message: 'Server error' });
     }
   }
   
-  static async deleteQualityCheck(req: AuthRequest, res: Response) {
+  static async deleteQualityCheck(req: EnhancedAuthRequest, res: Response) {
     try {
       const { id } = req.params;
       
@@ -288,6 +366,24 @@ export class QualityCheckController {
       }
       
       const deleted = await QualityCheckModel.delete(id);
+      
+      // Log data modification
+      await AuditService.logDataModification({
+        userId: req.userId!,
+        sessionId: req.sessionId,
+        companyId: req.companyId,
+        action: 'delete',
+        resource: 'quality_check',
+        resourceId: id,
+        oldValues: {
+          productId: existingCheck.product_id,
+          status: existingCheck.status,
+          overallGrade: existingCheck.overall_grade
+        },
+        success: true,
+        ipAddress: req.securityContext?.ipAddress,
+        userAgent: req.securityContext?.userAgent
+      });
       
       res.status(204).send();
     } catch (error) {

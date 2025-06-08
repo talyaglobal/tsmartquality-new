@@ -1,13 +1,14 @@
 import { Request, Response } from 'express';
 import { ProductModel } from '../models/product.model';
-import { AuthRequest } from '../middleware/auth.middleware';
+import { EnhancedAuthRequest } from '../middleware/enhanced-auth.middleware';
 import { ControllerHelpers, ValidationError } from '../utils/controller-helpers';
 import { BusinessRules } from '../utils/business-rules';
+import { AuditService } from '../services/audit.service';
 import { Logger } from '../startup';
 import path from 'path';
 
 export class ProductController {
-  static async getAllProducts(req: AuthRequest, res: Response): Promise<any> {
+  static async getAllProducts(req: EnhancedAuthRequest, res: Response): Promise<any> {
     try {
       const userRole = req.user?.role;
       const companyId = req.companyId!;
@@ -72,6 +73,18 @@ export class ProductController {
         sortDirection
       );
 
+      // Log data access
+      await AuditService.logDataAccess({
+        userId: req.userId!,
+        sessionId: req.sessionId,
+        companyId,
+        action: 'list',
+        resource: 'product',
+        ipAddress: req.securityContext?.ipAddress,
+        userAgent: req.securityContext?.userAgent,
+        metadata: { resultCount: result.items.length, filters }
+      });
+
       Logger.info('Products retrieved', {
         userId: req.userId,
         companyId,
@@ -96,7 +109,7 @@ export class ProductController {
     }
   }
   
-  static async getProductById(req: AuthRequest, res: Response): Promise<any> {
+  static async getProductById(req: EnhancedAuthRequest, res: Response): Promise<any> {
     try {
       const { id } = req.params;
       const userRole = req.user?.role;
@@ -119,6 +132,19 @@ export class ProductController {
         return ControllerHelpers.sendError(res, 'Product not found', 404);
       }
 
+      // Log data access
+      await AuditService.logDataAccess({
+        userId: req.userId!,
+        sessionId: req.sessionId,
+        companyId,
+        action: 'read',
+        resource: 'product',
+        resourceId: id,
+        ipAddress: req.securityContext?.ipAddress,
+        userAgent: req.securityContext?.userAgent,
+        metadata: { productCode: product.code }
+      });
+
       Logger.info('Product retrieved', {
         userId: req.userId,
         productId: id,
@@ -132,7 +158,7 @@ export class ProductController {
     }
   }
   
-  static async createProduct(req: AuthRequest, res: Response): Promise<any> {
+  static async createProduct(req: EnhancedAuthRequest, res: Response): Promise<any> {
     try {
       const { 
         code, name, sellerId, brandId, productTypeId, description, 
@@ -220,6 +246,26 @@ export class ProductController {
 
       const product = await ProductModel.createAdvanced(productData);
 
+      // Log data modification
+      await AuditService.logDataModification({
+        userId,
+        sessionId: req.sessionId,
+        companyId,
+        action: 'create',
+        resource: 'product',
+        resourceId: product.id,
+        newValues: {
+          code: product.code,
+          name: product.name,
+          sellerId: product.sellerId,
+          brandId: product.brandId,
+          productTypeId: product.productTypeId
+        },
+        success: true,
+        ipAddress: req.securityContext?.ipAddress,
+        userAgent: req.securityContext?.userAgent
+      });
+
       Logger.info('Product created', {
         userId,
         productId: product.id,
@@ -245,7 +291,7 @@ export class ProductController {
     }
   }
   
-  static async updateProduct(req: AuthRequest, res: Response): Promise<any> {
+  static async updateProduct(req: EnhancedAuthRequest, res: Response): Promise<any> {
     try {
       const { id } = req.params;
       const { code, name, sellerId, brandId, description, weight, volume, criticalStockAmount } = req.body;
@@ -283,11 +329,35 @@ export class ProductController {
       if (volume !== undefined) updateData.volume = volume;
       if (criticalStockAmount !== undefined) updateData.criticalStockAmount = criticalStockAmount;
       
+      // Get old values before update for audit
+      const oldProduct = await ProductModel.findById(id, companyId);
+      
       const updatedProduct = await ProductModel.update(id, companyId, updateData);
       
       if (!updatedProduct) {
         return res.status(404).json({ message: 'Product not found' });
       }
+
+      // Log data modification
+      await AuditService.logDataModification({
+        userId,
+        sessionId: req.sessionId,
+        companyId,
+        action: 'update',
+        resource: 'product',
+        resourceId: id,
+        oldValues: oldProduct ? {
+          code: oldProduct.code,
+          name: oldProduct.name,
+          description: oldProduct.description,
+          weight: oldProduct.weight,
+          volume: oldProduct.volume
+        } : undefined,
+        newValues: updateData,
+        success: true,
+        ipAddress: req.securityContext?.ipAddress,
+        userAgent: req.securityContext?.userAgent
+      });
       
       res.json(updatedProduct);
     } catch (error) {
@@ -295,16 +365,37 @@ export class ProductController {
     }
   }
   
-  static async deleteProduct(req: AuthRequest, res: Response): Promise<any> {
+  static async deleteProduct(req: EnhancedAuthRequest, res: Response): Promise<any> {
     try {
       const { id } = req.params;
       const companyId = req.companyId!;
+      
+      // Get product details before deletion for audit
+      const product = await ProductModel.findById(id, companyId);
       
       const deleted = await ProductModel.softDelete(id, companyId);
       
       if (!deleted) {
         return res.status(404).json({ message: 'Product not found' });
       }
+
+      // Log data modification
+      await AuditService.logDataModification({
+        userId: req.userId!,
+        sessionId: req.sessionId,
+        companyId,
+        action: 'delete',
+        resource: 'product',
+        resourceId: id,
+        oldValues: product ? {
+          code: product.code,
+          name: product.name,
+          status: product.status
+        } : undefined,
+        success: true,
+        ipAddress: req.securityContext?.ipAddress,
+        userAgent: req.securityContext?.userAgent
+      });
       
       res.json({
         message: 'Product deactivated',
@@ -316,7 +407,7 @@ export class ProductController {
     }
   }
 
-  static async bulkUpdateStatus(req: AuthRequest, res: Response): Promise<any> {
+  static async bulkUpdateStatus(req: EnhancedAuthRequest, res: Response): Promise<any> {
     try {
       const { ids, updates } = req.body;
       const companyId = req.companyId!;
@@ -331,6 +422,20 @@ export class ProductController {
       
       const updatedCount = await ProductModel.bulkUpdateStatus(ids, companyId, updates);
       
+      // Log bulk data modification
+      await AuditService.logDataModification({
+        userId: req.userId!,
+        sessionId: req.sessionId,
+        companyId,
+        action: 'bulk_update',
+        resource: 'product',
+        newValues: { updates, affectedIds: ids },
+        success: true,
+        ipAddress: req.securityContext?.ipAddress,
+        userAgent: req.securityContext?.userAgent,
+        metadata: { updatedCount }
+      });
+      
       res.json({
         message: `${updatedCount} products updated`,
         updatedCount
@@ -340,7 +445,7 @@ export class ProductController {
     }
   }
 
-  static async uploadPhoto(req: AuthRequest, res: Response): Promise<any> {
+  static async uploadPhoto(req: EnhancedAuthRequest, res: Response): Promise<any> {
     try {
       const { id } = req.params;
       const companyId = req.companyId!;
@@ -356,6 +461,24 @@ export class ProductController {
       }
 
       const photoUrl = `/uploads/${req.file.filename}`;
+      
+      // Log data modification for photo upload
+      await AuditService.logDataModification({
+        userId: req.userId!,
+        sessionId: req.sessionId,
+        companyId,
+        action: 'update',
+        resource: 'product_photo',
+        resourceId: id,
+        newValues: {
+          photoUrl,
+          filename: req.file.filename,
+          size: req.file.size
+        },
+        success: true,
+        ipAddress: req.securityContext?.ipAddress,
+        userAgent: req.securityContext?.userAgent
+      });
       
       ControllerHelpers.sendSuccess(res, {
         photoUrl,
