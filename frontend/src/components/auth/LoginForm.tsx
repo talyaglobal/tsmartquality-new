@@ -3,12 +3,15 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { authAPI } from '@/lib/api';
+import Cookies from 'js-cookie';
 
 export default function LoginForm() {
   const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [isDemoLoading, setIsDemoLoading] = useState(false);
   const [error, setError] = useState('');
 
   async function handleSubmit(e: React.FormEvent) {
@@ -17,31 +20,54 @@ export default function LoginForm() {
     setIsLoading(true);
 
     try {
-      // In a real application, this would call your API
-      // const response = await fetch('/api/auth/login', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify({ email, password }),
-      // });
+      const response = await authAPI.login(email, password);
       
-      // if (!response.ok) {
-      //   const data = await response.json();
-      //   throw new Error(data.message || 'Login failed');
-      // }
-      
-      // For demo purposes, we'll just redirect after a delay
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      // Simulate successful login
-      console.log('Logged in with:', { email, password });
-      
-      // Redirect to dashboard
-      router.push('/dashboard');
+      if (response.success && response.tokens) {
+        // Store the access token
+        Cookies.set('auth_token', response.tokens.accessToken, { 
+          expires: 7, // 7 days
+          secure: process.env.NODE_ENV === 'production',
+          sameSite: 'strict'
+        });
+        
+        // Redirect to dashboard
+        router.push('/dashboard');
+      } else {
+        throw new Error(response.message || 'Login failed');
+      }
     } catch (err: any) {
       setError(err.message || 'Failed to login. Please try again.');
       console.error('Login error:', err);
     } finally {
       setIsLoading(false);
+    }
+  }
+
+  async function handleDemoLogin() {
+    setError('');
+    setIsDemoLoading(true);
+
+    try {
+      const response = await authAPI.demoLogin();
+      
+      if (response.success && response.tokens) {
+        // Store the access token
+        Cookies.set('auth_token', response.tokens.accessToken, { 
+          expires: 7, // 7 days
+          secure: process.env.NODE_ENV === 'production',
+          sameSite: 'strict'
+        });
+        
+        // Redirect to dashboard
+        router.push('/dashboard');
+      } else {
+        throw new Error(response.message || 'Demo login failed');
+      }
+    } catch (err: any) {
+      setError(err.message || 'Failed to demo login. Please try again.');
+      console.error('Demo login error:', err);
+    } finally {
+      setIsDemoLoading(false);
     }
   }
 
@@ -103,10 +129,30 @@ export default function LoginForm() {
       <div>
         <button
           type="submit"
-          disabled={isLoading}
+          disabled={isLoading || isDemoLoading}
           className="flex w-full justify-center rounded-md bg-primary-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600 disabled:bg-primary-400"
         >
           {isLoading ? 'Signing in...' : 'Sign in'}
+        </button>
+      </div>
+      
+      <div className="relative">
+        <div className="absolute inset-0 flex items-center">
+          <div className="w-full border-t border-gray-300" />
+        </div>
+        <div className="relative flex justify-center text-sm">
+          <span className="bg-white px-2 text-gray-500">Or</span>
+        </div>
+      </div>
+      
+      <div>
+        <button
+          type="button"
+          onClick={handleDemoLogin}
+          disabled={isLoading || isDemoLoading}
+          className="flex w-full justify-center rounded-md bg-gray-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-gray-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-600 disabled:bg-gray-400"
+        >
+          {isDemoLoading ? 'Signing in...' : 'Demo Login (No credentials needed)'}
         </button>
       </div>
     </form>

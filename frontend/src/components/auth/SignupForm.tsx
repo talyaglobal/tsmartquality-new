@@ -2,11 +2,15 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { authAPI } from '@/lib/api';
+import Cookies from 'js-cookie';
 
 export default function SignupForm() {
   const router = useRouter();
   const [formData, setFormData] = useState({
+    username: '',
     name: '',
+    surname: '',
     email: '',
     password: '',
     confirmPassword: '',
@@ -35,30 +39,40 @@ export default function SignupForm() {
     setIsLoading(true);
 
     try {
-      // In a real application, this would call your API
-      // const response = await fetch('/api/auth/signup', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify({
-      //     name: formData.name,
-      //     email: formData.email,
-      //     password: formData.password
-      //   }),
-      // });
+      // Create the user account
+      const response = await authAPI.register(
+        formData.username,
+        formData.name,
+        formData.surname,
+        formData.email,
+        formData.password
+      );
       
-      // if (!response.ok) {
-      //   const data = await response.json();
-      //   throw new Error(data.message || 'Signup failed');
-      // }
-      
-      // For demo purposes, we'll just redirect after a delay
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      // Simulate successful signup
-      console.log('Signed up with:', formData);
-      
-      // Redirect to dashboard
-      router.push('/dashboard');
+      if (response.success) {
+        // Auto-login after successful registration
+        try {
+          const loginResponse = await authAPI.login(formData.email, formData.password);
+          if (loginResponse.success && loginResponse.tokens) {
+            // Store the access token
+            Cookies.set('auth_token', loginResponse.tokens.accessToken, { 
+              expires: 7, // 7 days
+              secure: process.env.NODE_ENV === 'production',
+              sameSite: 'strict'
+            });
+            
+            // Redirect to dashboard
+            router.push('/dashboard');
+          } else {
+            // Registration successful but auto-login failed, redirect to login
+            router.push('/auth/login?message=Account created successfully. Please sign in.');
+          }
+        } catch (loginError: any) {
+          // Registration successful but auto-login failed, redirect to login
+          router.push('/auth/login?message=Account created successfully. Please sign in.');
+        }
+      } else {
+        throw new Error(response.message || 'Registration failed');
+      }
     } catch (err: any) {
       setError(err.message || 'Failed to sign up. Please try again.');
       console.error('Signup error:', err);
@@ -80,20 +94,58 @@ export default function SignupForm() {
       )}
       
       <div>
-        <label htmlFor="name" className="block text-sm font-medium leading-6 text-gray-900">
-          Full name
+        <label htmlFor="username" className="block text-sm font-medium leading-6 text-gray-900">
+          Username
         </label>
         <div className="mt-2">
           <input
-            id="name"
-            name="name"
+            id="username"
+            name="username"
             type="text"
-            autoComplete="name"
+            autoComplete="username"
             required
-            value={formData.name}
+            value={formData.username}
             onChange={handleChange}
             className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
           />
+        </div>
+      </div>
+      
+      <div className="grid grid-cols-2 gap-4">
+        <div>
+          <label htmlFor="name" className="block text-sm font-medium leading-6 text-gray-900">
+            First name
+          </label>
+          <div className="mt-2">
+            <input
+              id="name"
+              name="name"
+              type="text"
+              autoComplete="given-name"
+              required
+              value={formData.name}
+              onChange={handleChange}
+              className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
+            />
+          </div>
+        </div>
+        
+        <div>
+          <label htmlFor="surname" className="block text-sm font-medium leading-6 text-gray-900">
+            Last name
+          </label>
+          <div className="mt-2">
+            <input
+              id="surname"
+              name="surname"
+              type="text"
+              autoComplete="family-name"
+              required
+              value={formData.surname}
+              onChange={handleChange}
+              className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
+            />
+          </div>
         </div>
       </div>
       
