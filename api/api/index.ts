@@ -3,9 +3,16 @@ import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
 import path from 'path';
+import { createClient } from '@supabase/supabase-js';
 
-// Simple mock responses for deployment testing
-// In production, you would import your actual controllers
+// Supabase configuration for production
+const supabaseUrl = process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL;
+const supabaseKey = process.env.SUPABASE_ANON_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+let supabase: any = null;
+if (supabaseUrl && supabaseKey) {
+  supabase = createClient(supabaseUrl, supabaseKey);
+}
 
 const app = express();
 
@@ -29,9 +36,27 @@ app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
 // Enhanced health check endpoint for serverless
-app.get('/api/health', (req: Request, res: Response) => {
+app.get('/api/health', async (req: Request, res: Response) => {
   try {
     const memoryUsage = process.memoryUsage();
+    
+    // Test Supabase connection
+    let databaseStatus = { status: false, message: 'Supabase not configured' };
+    if (supabase) {
+      try {
+        const { data, error } = await supabase.from('users').select('count').limit(1);
+        databaseStatus = {
+          status: !error,
+          message: error ? `Database error: ${error.message}` : 'Supabase connection successful'
+        };
+      } catch (dbError: any) {
+        databaseStatus = {
+          status: false,
+          message: `Database connection failed: ${dbError.message}`
+        };
+      }
+    }
+    
     const healthStatus = {
       status: 'healthy',
       message: 'TSmart Quality API is running on Vercel',
@@ -50,11 +75,7 @@ app.get('/api/health', (req: Request, res: Response) => {
           message: 'Environment variables loaded',
           nodeVersion: process.version
         },
-        database: {
-          status: true,
-          message: 'Database connection ready (mock)',
-          note: 'Real database connection would be tested here'
-        },
+        database: databaseStatus,
         serverless: {
           status: true,
           message: 'Serverless function operational',

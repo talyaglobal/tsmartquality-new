@@ -37,7 +37,8 @@
     "utils/reportGenerator.ts",
     "utils/error-handler.ts",
     "test-*.js",
-    "test-*.ts"
+    "test-*.ts",
+    "tests/**/*"
   ],
   "ts-node": {
     "esm": false,

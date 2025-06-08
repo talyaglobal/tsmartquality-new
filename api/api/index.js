@@ -7,8 +7,14 @@ const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const helmet_1 = __importDefault(require("helmet"));
 const morgan_1 = __importDefault(require("morgan"));
-// Simple mock responses for deployment testing
-// In production, you would import your actual controllers
+const supabase_js_1 = require("@supabase/supabase-js");
+// Supabase configuration for production
+const supabaseUrl = process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL;
+const supabaseKey = process.env.SUPABASE_ANON_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+let supabase = null;
+if (supabaseUrl && supabaseKey) {
+    supabase = (0, supabase_js_1.createClient)(supabaseUrl, supabaseKey);
+}
 const app = (0, express_1.default)();
 // Middleware configuration for production
 app.use((0, cors_1.default)({
@@ -27,9 +33,26 @@ app.use((0, morgan_1.default)('combined'));
 app.use(express_1.default.json({ limit: '10mb' }));
 app.use(express_1.default.urlencoded({ extended: true, limit: '10mb' }));
 // Enhanced health check endpoint for serverless
-app.get('/api/health', (req, res) => {
+app.get('/api/health', async (req, res) => {
     try {
         const memoryUsage = process.memoryUsage();
+        // Test Supabase connection
+        let databaseStatus = { status: false, message: 'Supabase not configured' };
+        if (supabase) {
+            try {
+                const { data, error } = await supabase.from('users').select('count').limit(1);
+                databaseStatus = {
+                    status: !error,
+                    message: error ? `Database error: ${error.message}` : 'Supabase connection successful'
+                };
+            }
+            catch (dbError) {
+                databaseStatus = {
+                    status: false,
+                    message: `Database connection failed: ${dbError.message}`
+                };
+            }
+        }
         const healthStatus = {
             status: 'healthy',
             message: 'TSmart Quality API is running on Vercel',
@@ -48,11 +71,7 @@ app.get('/api/health', (req, res) => {
                     message: 'Environment variables loaded',
                     nodeVersion: process.version
                 },
-                database: {
-                    status: true,
-                    message: 'Database connection ready (mock)',
-                    note: 'Real database connection would be tested here'
-                },
+                database: databaseStatus,
                 serverless: {
                     status: true,
                     message: 'Serverless function operational',

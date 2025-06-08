@@ -168,7 +168,7 @@ export const mockDatabase = new MockDatabase();
 // Mock the database module
 export const createMockDatabase = () => {
   return {
-    query: jest.fn().mockImplementation((...args) => mockDatabase.query(...args)),
+    query: jest.fn().mockImplementation((...args: any[]) => mockDatabase.query(...args)),
     beginTransaction: jest.fn().mockImplementation(() => mockDatabase.beginTransaction()),
     end: jest.fn().mockResolvedValue(undefined)
   };
