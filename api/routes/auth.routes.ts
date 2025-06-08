@@ -49,6 +49,7 @@ const mfaRateLimit = rateLimit({
 // Public authentication routes
 router.post('/login', loginRateLimit, AuthController.login);
 router.post('/demo', AuthController.demoLogin);
+router.get('/demo', AuthController.demoLogin); // Allow GET for easy testing
 router.post('/refresh', authRateLimit, AuthController.refresh);
 
 // MFA verification (requires temporary token from login)

@@ -394,7 +394,7 @@ export class UserController {
       const { page, pageSize, offset } = ControllerHelpers.parsePagination(req.query);
       const companyId = req.companyId!;
 
-      const result = await UserModel.findAllPaginated(companyId, page, pageSize, offset);
+      const result = await UserModel.findAllPaginated(companyId, pageSize, offset);
 
       await AuditService.logDataAccess({
         userId: req.userId!,
