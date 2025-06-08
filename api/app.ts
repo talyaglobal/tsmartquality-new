@@ -2,9 +2,10 @@ import express, { Request, Response, NextFunction } from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
+import path from 'path';
 import { config } from './config/config';
 import routes from './routes';
-import { notFound, errorHandler } from './utils/error-handler';
+import { notFound, errorHandler } from './utils/simple-error-handler';
 
 // Initialize express app
 const app = express();
@@ -15,6 +16,9 @@ app.use(helmet());
 app.use(morgan(config.env === 'development' ? 'dev' : 'combined'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// Serve static files for uploads
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // API Routes
 app.use('/api', routes);

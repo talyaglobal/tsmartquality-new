@@ -8,9 +8,9 @@ import { AuthRequest } from '../middleware/auth.middleware';
 export class UserController {
   static async register(req: Request, res: Response) {
     try {
-      const { name, email, password } = req.body;
+      const { name, surname, email, password, companyId } = req.body;
       
-      if (!name || !email || !password) {
+      if (!name || !surname || !email || !password || !companyId) {
         return res.status(400).json({ message: 'All fields are required' });
       }
       
@@ -23,19 +23,29 @@ export class UserController {
       
       const user = await UserModel.create({
         name,
+        surname,
         email,
-        password: hashedPassword
+        password: hashedPassword,
+        companyId,
+        role: 'user'
       });
       
-      const token = jwt.sign({ id: user.id }, config.jwt.secret, { expiresIn: config.jwt.expiresIn });
+      const token = jwt.sign(
+        { userId: user.id, companyId: user.companyId, role: user.role }, 
+        config.jwt.secret, 
+        { expiresIn: '1h' }
+      );
       
       res.status(201).json({
+        token,
         user: {
           id: user.id,
           name: user.name,
-          email: user.email
+          surname: user.surname,
+          email: user.email,
+          companyId: user.companyId
         },
-        token
+        expiresIn: 3600
       });
     } catch (error) {
       res.status(500).json({ message: 'Server error' });
@@ -49,6 +59,11 @@ export class UserController {
       if (!email || !password) {
         return res.status(400).json({ message: 'Email and password are required' });
       }
+
+      // Check if account is locked
+      if (await UserModel.isAccountLocked(email)) {
+        return res.status(403).json({ message: 'Account locked after 3 failed attempts' });
+      }
       
       const user = await UserModel.findByEmail(email);
       if (!user) {
@@ -57,18 +72,29 @@ export class UserController {
       
       const isPasswordValid = await bcrypt.compare(password, user.password);
       if (!isPasswordValid) {
+        await UserModel.incrementFailedLoginAttempts(email);
         return res.status(401).json({ message: 'Invalid credentials' });
       }
+
+      // Reset failed login attempts on successful login
+      await UserModel.resetFailedLoginAttempts(email);
       
-      const token = jwt.sign({ id: user.id }, config.jwt.secret, { expiresIn: config.jwt.expiresIn });
+      const token = jwt.sign(
+        { userId: user.id, companyId: user.companyId, role: user.role }, 
+        config.jwt.secret, 
+        { expiresIn: '1h' }
+      );
       
-      res.json({
+      res.status(200).json({
+        token,
         user: {
           id: user.id,
           name: user.name,
-          email: user.email
+          surname: user.surname,
+          email: user.email,
+          companyId: user.companyId
         },
-        token
+        expiresIn: 3600
       });
     } catch (error) {
       res.status(500).json({ message: 'Server error' });

@@ -29,11 +29,12 @@ export class QualityCheckController {
     }
   }
   
-  static async getQualityChecksByProduct(req: Request, res: Response) {
+  static async getQualityChecksByProduct(req: AuthRequest, res: Response) {
     try {
       const { productId } = req.params;
+      const companyId = req.companyId!;
       
-      const product = await ProductModel.findById(productId);
+      const product = await ProductModel.findById(productId, companyId);
       if (!product) {
         return res.status(404).json({ message: 'Product not found' });
       }
@@ -56,7 +57,8 @@ export class QualityCheckController {
       }
       
       // Validate product exists
-      const product = await ProductModel.findById(product_id);
+      const companyId = req.companyId!;
+      const product = await ProductModel.findById(product_id, companyId);
       if (!product) {
         return res.status(400).json({ message: 'Product not found' });
       }

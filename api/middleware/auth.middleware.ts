@@ -5,6 +5,9 @@ import { UserModel } from '../models/user.model';
 
 export interface AuthRequest extends Request {
   user?: any;
+  companyId?: number;
+  userId?: string;
+  role?: string;
 }
 
 export const auth = async (req: AuthRequest, res: Response, next: NextFunction) => {
@@ -15,14 +18,22 @@ export const auth = async (req: AuthRequest, res: Response, next: NextFunction) 
       return res.status(401).json({ message: 'Authentication required' });
     }
     
-    const decoded = jwt.verify(token, config.jwt.secret) as { id: string };
-    const user = await UserModel.findById(decoded.id);
+    const decoded = jwt.verify(token, config.jwt.secret) as { 
+      userId: string; 
+      companyId: number; 
+      role: string; 
+    };
+    
+    const user = await UserModel.findById(decoded.userId);
     
     if (!user) {
       return res.status(401).json({ message: 'Invalid authentication token' });
     }
     
     req.user = user;
+    req.userId = decoded.userId;
+    req.companyId = decoded.companyId;
+    req.role = decoded.role;
     next();
   } catch (error) {
     res.status(401).json({ message: 'Authentication failed' });

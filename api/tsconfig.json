@@ -16,6 +16,10 @@
   "exclude": [
     "node_modules",
     "dist",
-    "**/*.test.ts"
+    "**/*.test.ts",
+    "utils/generateImages.ts",
+    "utils/importExport.ts",
+    "utils/reportGenerator.ts",
+    "utils/error-handler.ts"
   ]
 }
