@@ -126,7 +126,7 @@ export class AuditService {
   static async logAuthentication(params: {
     userId?: string;
     sessionId?: string;
-    action: 'login' | 'logout' | 'login_failed' | 'token_refresh' | 'mfa_setup' | 'mfa_verify';
+    action: 'login' | 'logout' | 'login_failed' | 'token_refresh' | 'mfa_setup' | 'mfa_verify' | 'demo_login';
     success: boolean;
     ipAddress?: string;
     userAgent?: string;

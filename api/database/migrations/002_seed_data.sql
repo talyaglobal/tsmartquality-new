@@ -24,6 +24,22 @@ INSERT INTO users (
     true
 ) ON CONFLICT (id) DO NOTHING;
 
+-- Insert demo user
+INSERT INTO users (
+    id, username, name, surname, email, password, company_id, role, is_active, email_verified
+) VALUES (
+    '00000000-0000-0000-0000-000000000002',
+    'demo',
+    'Demo',
+    'User', 
+    'demo@talyasmart.com',
+    '$2b$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', -- password
+    1001,
+    'user',
+    true,
+    true
+) ON CONFLICT (id) DO NOTHING;
+
 -- Insert default sellers
 INSERT INTO sellers (id, name, code, company_id, contact_person, is_active, created_by) VALUES
 (1, 'Default Supplier', 'SUP001', 1001, 'Contact Person', true, '00000000-0000-0000-0000-000000000001'),

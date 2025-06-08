@@ -12,13 +12,86 @@ import { Logger } from '../startup';
 
 export class AuthController {
   /**
+   * Demo login bypass for quick access
+   */
+  static async demoLogin(req: Request, res: Response): Promise<any> {
+    try {
+      const ipAddress = req.ip || req.connection.remoteAddress || 'unknown';
+      const userAgent = req.get('User-Agent') || 'unknown';
+
+      // Find demo user
+      const demoUser = await UserModel.findByEmail('demo@talyasmart.com');
+      if (!demoUser) {
+        return res.status(404).json({
+          success: false,
+          message: 'Demo user not found'
+        });
+      }
+
+      // Generate tokens for demo user (skip all security checks)
+      const tokens = TokenService.generateTokenPair(
+        {
+          userId: demoUser.id,
+          companyId: demoUser.companyId,
+          role: demoUser.role,
+          username: demoUser.username
+        },
+        {
+          rememberMe: false,
+          deviceId: 'demo-device',
+          ipAddress,
+          userAgent
+        }
+      );
+
+      // Log demo login
+      await AuditService.logAuthentication({
+        userId: demoUser.id,
+        action: 'demo_login',
+        success: true,
+        ipAddress,
+        userAgent,
+        metadata: { bypass: true }
+      });
+
+      res.status(200).json({
+        success: true,
+        message: 'Demo login successful',
+        user: {
+          id: demoUser.id,
+          username: demoUser.username,
+          email: demoUser.email,
+          role: demoUser.role,
+          companyId: demoUser.companyId,
+          isActive: demoUser.is_active
+        },
+        tokens,
+        demo: true
+      });
+
+    } catch (error: any) {
+      Logger.error('Demo login error', { error: error.message, stack: error.stack });
+      
+      res.status(500).json({
+        success: false,
+        message: 'Demo login failed'
+      });
+    }
+  }
+
+  /**
    * User login with comprehensive security checks
    */
   static async login(req: Request, res: Response): Promise<any> {
     try {
-      const { email, password, rememberMe = false, deviceId } = req.body;
+      const { email, password, rememberMe = false, deviceId, demo = false } = req.body;
       const ipAddress = req.ip || req.connection.remoteAddress || 'unknown';
       const userAgent = req.get('User-Agent') || 'unknown';
+
+      // Demo bypass
+      if (demo === true || email === 'demo@talyasmart.com') {
+        return this.demoLogin(req, res);
+      }
 
       // Validate input
       const validation = validateInput({ email, password }, {
