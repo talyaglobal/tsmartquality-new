@@ -1,4 +1,4 @@
-import pool from './index';
+import poolPromise from '../database/simple-pool';
 
 export interface User {
   id: string;
@@ -19,26 +19,36 @@ export interface User {
 
 export class UserModel {
   static async findAll(): Promise<User[]> {
+    const pool = await poolPromise;
+    if (!pool) throw new Error('Database not available');
     const result = await pool.query('SELECT * FROM users');
     return result.rows;
   }
 
   static async findById(id: string): Promise<User | null> {
+    const pool = await poolPromise;
+    if (!pool) throw new Error('Database not available');
     const result = await pool.query('SELECT * FROM users WHERE id = $1', [id]);
     return result.rows[0] || null;
   }
 
   static async findByEmail(email: string): Promise<User | null> {
+    const pool = await poolPromise;
+    if (!pool) throw new Error('Database not available');
     const result = await pool.query('SELECT * FROM users WHERE email = $1', [email]);
     return result.rows[0] || null;
   }
 
   static async findByUsername(username: string): Promise<User | null> {
+    const pool = await poolPromise;
+    if (!pool) throw new Error('Database not available');
     const result = await pool.query('SELECT * FROM users WHERE username = $1', [username]);
     return result.rows[0] || null;
   }
 
   static async create(userData: Omit<User, 'id' | 'created_at' | 'last_login' | 'failed_login_attempts' | 'locked_until' | 'is_active' | 'email_verified'>): Promise<User> {
+    const pool = await poolPromise;
+    if (!pool) throw new Error('Database not available');
     const result = await pool.query(
       `INSERT INTO users (username, name, surname, email, password, company_id, role, is_active, email_verified, created_by) 
        VALUES ($1, $2, $3, $4, $5, $6, $7, true, false, $1) RETURNING *`,
@@ -48,6 +58,8 @@ export class UserModel {
   }
 
   static async update(id: string, userData: Partial<Omit<User, 'id' | 'created_at'>>): Promise<User | null> {
+    const pool = await poolPromise;
+    if (!pool) throw new Error('Database not available');
     const keys = Object.keys(userData);
     const values = Object.values(userData);
     
@@ -64,11 +76,15 @@ export class UserModel {
   }
 
   static async delete(id: string): Promise<boolean> {
+    const pool = await poolPromise;
+    if (!pool) throw new Error('Database not available');
     const result = await pool.query('DELETE FROM users WHERE id = $1', [id]);
     return (result.rowCount ?? 0) > 0;
   }
 
   static async incrementFailedLoginAttempts(email: string): Promise<void> {
+    const pool = await poolPromise;
+    if (!pool) throw new Error('Database not available');
     await pool.query(
       `UPDATE users 
        SET failed_login_attempts = failed_login_attempts + 1,
@@ -82,6 +98,8 @@ export class UserModel {
   }
 
   static async resetFailedLoginAttempts(email: string): Promise<void> {
+    const pool = await poolPromise;
+    if (!pool) throw new Error('Database not available');
     await pool.query(
       'UPDATE users SET failed_login_attempts = 0, locked_until = NULL WHERE email = $1',
       [email]
@@ -89,6 +107,8 @@ export class UserModel {
   }
 
   static async isAccountLocked(email: string): Promise<boolean> {
+    const pool = await poolPromise;
+    if (!pool) throw new Error('Database not available');
     const result = await pool.query(
       'SELECT locked_until FROM users WHERE email = $1',
       [email]
@@ -103,13 +123,18 @@ export class UserModel {
   }
 
   static async updateLastLogin(id: string): Promise<void> {
+    const pool = await poolPromise;
+    if (!pool) throw new Error('Database not available');
     await pool.query(
       'UPDATE users SET last_login = NOW() WHERE id = $1',
       [id]
     );
   }
 
-  static async findAllPaginated(companyId: number, page: number, pageSize: number, offset: number): Promise<{items: User[], totalCount: number}> {
+  static async findAllPaginated(companyId: number, pageSize: number, offset: number): Promise<{items: User[], totalCount: number}> {
+    const pool = await poolPromise;
+    if (!pool) throw new Error('Database not available');
+    
     const countResult = await pool.query(
       'SELECT COUNT(*) FROM users WHERE company_id = $1',
       [companyId]

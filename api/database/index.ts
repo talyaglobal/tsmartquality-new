@@ -1,6 +1,7 @@
 import { DatabaseConnection } from './connection';
 import { DatabaseInitializer } from './initializer';
 import { getDatabaseConfig, validateEnvironment, printConfigSummary } from '../config/database.config';
+import { databaseManager } from '../config/database-connection';
 import { Logger } from '../startup';
 
 // Global database instance
@@ -16,10 +17,14 @@ export async function initializeDatabase(): Promise<DatabaseConnection> {
   }
 
   try {
-    // Validate environment configuration
+    // Try to connect using the new database manager (Supabase first, then local)
+    const pool = await databaseManager.connect();
+    Logger.info(`Database connected successfully${databaseManager.isUsingSupabase() ? ' (Supabase)' : ' (Local PostgreSQL)'}`);
+
+    // Validate environment configuration for legacy compatibility
     const validation = validateEnvironment();
     if (!validation.valid) {
-      throw new Error(`Database configuration errors: ${validation.errors.join(', ')}`);
+      Logger.warn(`Database configuration warnings: ${validation.errors.join(', ')}`);
     }
 
     // Get configuration for current environment
@@ -30,12 +35,14 @@ export async function initializeDatabase(): Promise<DatabaseConnection> {
       printConfigSummary();
     }
 
-    // Create database connection
+    // Create database connection using the connected pool
     dbInstance = new DatabaseConnection(config.database, Logger);
+    
+    // Override the pool with our connected instance
+    (dbInstance as any).pool = pool;
+    (dbInstance as any).isConnected = true;
+    
     initializerInstance = new DatabaseInitializer(dbInstance, Logger);
-
-    // Initialize connection
-    await dbInstance.initialize();
 
     // Run migrations if enabled
     if (config.features.enableMigrations) {

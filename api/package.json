@@ -31,6 +31,7 @@
     "local:test": "node test-deployment.js --local"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.50.0",
     "@types/bcryptjs": "^2.4.6",
     "@types/compression": "^1.8.1",
     "@types/crypto-js": "^4.2.2",
