@@ -6,11 +6,15 @@
   "scripts": {
     "start": "node dist/server.js",
     "dev": "nodemon --exec ts-node server.ts",
-    "build": "tsc",
-    "vercel-build": "echo 'Build completed'",
-    "postinstall": "npm run build",
+    "build": "tsc && npm run build:api",
+    "build:api": "tsc api/index.ts --outDir api --target es2020 --module commonjs --moduleResolution node --esModuleInterop --skipLibCheck --declaration false",
+    "vercel-build": "npm run build",
+    "postinstall": "echo 'Dependencies installed'",
+    "clean": "rm -rf dist && rm -rf api/index.js",
     "lint": "eslint . --ext .ts",
-    "test": "jest"
+    "test": "jest",
+    "local:dev": "ts-node api/index.ts",
+    "local:test": "node test-deployment.js --local"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",

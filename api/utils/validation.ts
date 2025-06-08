@@ -13,7 +13,7 @@ interface ValidationRules {
 }
 
 export const validate = (rules: ValidationRules) => {
-  return (req: Request, res: Response, next: NextFunction) => {
+  return (req: Request, res: Response, next: NextFunction): any => {
     const errors: { [key: string]: string } = {};
     
     for (const field in rules) {

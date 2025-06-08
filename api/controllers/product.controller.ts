@@ -4,7 +4,7 @@ import { AuthRequest } from '../middleware/auth.middleware';
 import path from 'path';
 
 export class ProductController {
-  static async getAllProducts(req: AuthRequest, res: Response) {
+  static async getAllProducts(req: AuthRequest, res: Response): Promise<any> {
     try {
       const { page = 1, pageSize = 20, sellerId, brandId, orderBy } = req.query;
       const companyId = req.companyId!;
@@ -28,7 +28,7 @@ export class ProductController {
     }
   }
   
-  static async getProductById(req: AuthRequest, res: Response) {
+  static async getProductById(req: AuthRequest, res: Response): Promise<any> {
     try {
       const { id } = req.params;
       const companyId = req.companyId!;
@@ -45,7 +45,7 @@ export class ProductController {
     }
   }
   
-  static async createProduct(req: AuthRequest, res: Response) {
+  static async createProduct(req: AuthRequest, res: Response): Promise<any> {
     try {
       const { code, name, sellerId, brandId, description, weight, volume, criticalStockAmount } = req.body;
       const companyId = req.companyId!;
@@ -104,7 +104,7 @@ export class ProductController {
     }
   }
   
-  static async updateProduct(req: AuthRequest, res: Response) {
+  static async updateProduct(req: AuthRequest, res: Response): Promise<any> {
     try {
       const { id } = req.params;
       const { code, name, sellerId, brandId, description, weight, volume, criticalStockAmount } = req.body;
@@ -154,7 +154,7 @@ export class ProductController {
     }
   }
   
-  static async deleteProduct(req: AuthRequest, res: Response) {
+  static async deleteProduct(req: AuthRequest, res: Response): Promise<any> {
     try {
       const { id } = req.params;
       const companyId = req.companyId!;
@@ -175,7 +175,7 @@ export class ProductController {
     }
   }
 
-  static async bulkUpdateStatus(req: AuthRequest, res: Response) {
+  static async bulkUpdateStatus(req: AuthRequest, res: Response): Promise<any> {
     try {
       const { ids, updates } = req.body;
       const companyId = req.companyId!;
@@ -199,7 +199,7 @@ export class ProductController {
     }
   }
 
-  static async uploadPhoto(req: AuthRequest, res: Response) {
+  static async uploadPhoto(req: AuthRequest, res: Response): Promise<any> {
     try {
       const { id } = req.params;
       const companyId = req.companyId!;

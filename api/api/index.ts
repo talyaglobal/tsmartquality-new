@@ -28,15 +28,51 @@ app.use(morgan('combined'));
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
-// Health check endpoint
+// Enhanced health check endpoint for serverless
 app.get('/api/health', (req: Request, res: Response) => {
-  res.status(200).json({ 
-    status: 'ok', 
-    message: 'TSmart Quality API is running on Vercel',
-    timestamp: new Date().toISOString(),
-    environment: process.env.NODE_ENV,
-    version: '1.0.0'
-  });
+  try {
+    const memoryUsage = process.memoryUsage();
+    const healthStatus = {
+      status: 'healthy',
+      message: 'TSmart Quality API is running on Vercel',
+      timestamp: new Date().toISOString(),
+      environment: process.env.NODE_ENV || 'production',
+      version: '1.0.0',
+      uptime: process.uptime(),
+      memory: {
+        rss: `${Math.round(memoryUsage.rss / 1024 / 1024)}MB`,
+        heapUsed: `${Math.round(memoryUsage.heapUsed / 1024 / 1024)}MB`,
+        heapTotal: `${Math.round(memoryUsage.heapTotal / 1024 / 1024)}MB`
+      },
+      checks: {
+        environment: {
+          status: true,
+          message: 'Environment variables loaded',
+          nodeVersion: process.version
+        },
+        database: {
+          status: true,
+          message: 'Database connection ready (mock)',
+          note: 'Real database connection would be tested here'
+        },
+        serverless: {
+          status: true,
+          message: 'Serverless function operational',
+          platform: 'Vercel'
+        }
+      }
+    };
+
+    res.status(200).json(healthStatus);
+  } catch (error: any) {
+    res.status(503).json({
+      status: 'unhealthy',
+      message: 'Health check failed',
+      error: error.message,
+      timestamp: new Date().toISOString(),
+      environment: process.env.NODE_ENV || 'production'
+    });
+  }
 });
 
 // Authentication endpoints
@@ -44,7 +80,8 @@ app.post('/api/auth/login', (req: Request, res: Response) => {
   const { email, password } = req.body;
   
   if (!email || !password) {
-    return res.status(400).json({ message: 'Email and password are required' });
+    res.status(400).json({ message: 'Email and password are required' });
+    return;
   }
   
   // Mock authentication - replace with real auth logic
@@ -150,15 +187,17 @@ app.post('/api/products', (req: Request, res: Response) => {
   
   // Validation
   if (!code || !name || !sellerId || !brandId || criticalStockAmount === undefined) {
-    return res.status(400).json({ 
+    res.status(400).json({ 
       message: 'Code, name, sellerId, brandId, and criticalStockAmount are required' 
     });
+    return;
   }
   
   if (criticalStockAmount <= 0) {
-    return res.status(400).json({ 
+    res.status(400).json({ 
       message: 'criticalStockAmount must be greater than 0' 
     });
+    return;
   }
   
   const newProduct = {
@@ -207,7 +246,8 @@ app.patch('/api/products/bulk-status', (req: Request, res: Response) => {
   const { ids, updates } = req.body;
   
   if (!ids || !Array.isArray(ids) || ids.length === 0) {
-    return res.status(400).json({ message: 'Product IDs array is required' });
+    res.status(400).json({ message: 'Product IDs array is required' });
+    return;
   }
   
   res.json({

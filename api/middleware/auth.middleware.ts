@@ -10,12 +10,13 @@ export interface AuthRequest extends Request {
   role?: string;
 }
 
-export const auth = async (req: AuthRequest, res: Response, next: NextFunction) => {
+export const auth = async (req: AuthRequest, res: Response, next: NextFunction): Promise<any> => {
   try {
     const token = req.header('Authorization')?.replace('Bearer ', '');
     
     if (!token) {
-      return res.status(401).json({ message: 'Authentication required' });
+      res.status(401).json({ message: 'Authentication required' });
+      return;
     }
     
     const decoded = jwt.verify(token, config.jwt.secret) as { 
@@ -27,7 +28,8 @@ export const auth = async (req: AuthRequest, res: Response, next: NextFunction) 
     const user = await UserModel.findById(decoded.userId);
     
     if (!user) {
-      return res.status(401).json({ message: 'Invalid authentication token' });
+      res.status(401).json({ message: 'Invalid authentication token' });
+      return;
     }
     
     req.user = user;

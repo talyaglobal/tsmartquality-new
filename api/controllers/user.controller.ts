@@ -6,7 +6,7 @@ import { config } from '../config/config';
 import { AuthRequest } from '../middleware/auth.middleware';
 
 export class UserController {
-  static async register(req: Request, res: Response) {
+  static async register(req: Request, res: Response): Promise<any> {
     try {
       const { name, surname, email, password, companyId } = req.body;
       
@@ -52,7 +52,7 @@ export class UserController {
     }
   }
   
-  static async login(req: Request, res: Response) {
+  static async login(req: Request, res: Response): Promise<any> {
     try {
       const { email, password } = req.body;
       
@@ -101,7 +101,7 @@ export class UserController {
     }
   }
   
-  static async getProfile(req: AuthRequest, res: Response) {
+  static async getProfile(req: AuthRequest, res: Response): Promise<any> {
     try {
       res.json({
         user: {
@@ -115,7 +115,7 @@ export class UserController {
     }
   }
   
-  static async updateProfile(req: AuthRequest, res: Response) {
+  static async updateProfile(req: AuthRequest, res: Response): Promise<any> {
     try {
       const { name, email, password } = req.body;
       

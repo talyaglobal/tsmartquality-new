@@ -4,7 +4,7 @@ import { ProductModel } from '../models/product.model';
 import { AuthRequest } from '../middleware/auth.middleware';
 
 export class QualityCheckController {
-  static async getAllQualityChecks(req: Request, res: Response) {
+  static async getAllQualityChecks(req: Request, res: Response): Promise<any> {
     try {
       const qualityChecks = await QualityCheckModel.findAll();
       res.json({ qualityChecks });
@@ -13,7 +13,7 @@ export class QualityCheckController {
     }
   }
   
-  static async getQualityCheckById(req: Request, res: Response) {
+  static async getQualityCheckById(req: Request, res: Response): Promise<any> {
     try {
       const { id } = req.params;
       
@@ -29,7 +29,7 @@ export class QualityCheckController {
     }
   }
   
-  static async getQualityChecksByProduct(req: AuthRequest, res: Response) {
+  static async getQualityChecksByProduct(req: AuthRequest, res: Response): Promise<any> {
     try {
       const { productId } = req.params;
       const companyId = req.companyId!;
@@ -47,7 +47,7 @@ export class QualityCheckController {
     }
   }
   
-  static async createQualityCheck(req: AuthRequest, res: Response) {
+  static async createQualityCheck(req: AuthRequest, res: Response): Promise<any> {
     try {
       const { product_id, check_date, status, notes } = req.body;
       const inspector_id = req.user.id;
@@ -82,7 +82,7 @@ export class QualityCheckController {
     }
   }
   
-  static async updateQualityCheck(req: AuthRequest, res: Response) {
+  static async updateQualityCheck(req: AuthRequest, res: Response): Promise<any> {
     try {
       const { id } = req.params;
       const { status, notes } = req.body;
