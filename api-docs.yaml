@@ -14,6 +14,8 @@ paths:
     get:
       summary: Get all users
       description: Retrieve a list of all users
+      security:
+        - bearerAuth: []
       responses:
         '200':
           description: A list of users
@@ -58,13 +60,284 @@ paths:
               schema:
                 $ref: '#/components/schemas/User'
 
+  /users/register:
+    post:
+      summary: Register a new user
+      description: Register a new user account
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisterInput'
+      responses:
+        '201':
+          description: User registered successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthResponse'
+
+  /users/login:
+    post:
+      summary: Login a user
+      description: Authenticate a user and get a token
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginInput'
+      responses:
+        '200':
+          description: Login successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthResponse'
+
+  /users/me:
+    get:
+      summary: Get current user profile
+      description: Get the profile of the currently authenticated user
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: User profile
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+    patch:
+      summary: Update current user profile
+      description: Update the profile of the currently authenticated user
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserUpdateInput'
+      responses:
+        '200':
+          description: User profile updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+
+  /products:
+    get:
+      summary: Get all products
+      description: Retrieve a list of all products
+      responses:
+        '200':
+          description: A list of products
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
+    post:
+      summary: Create a product
+      description: Create a new product
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductInput'
+      responses:
+        '201':
+          description: Product created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+
+  /products/{productId}:
+    get:
+      summary: Get a product
+      description: Retrieve a product by ID
+      parameters:
+        - name: productId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A product
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+    put:
+      summary: Update a product
+      description: Update a product by ID
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: productId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductInput'
+      responses:
+        '200':
+          description: Product updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+    delete:
+      summary: Delete a product
+      description: Delete a product by ID
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: productId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Product deleted successfully
+
+  /quality-checks:
+    get:
+      summary: Get all quality checks
+      description: Retrieve a list of all quality checks
+      responses:
+        '200':
+          description: A list of quality checks
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/QualityCheck'
+    post:
+      summary: Create a quality check
+      description: Create a new quality check
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QualityCheckInput'
+      responses:
+        '201':
+          description: Quality check created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QualityCheck'
+
+  /quality-checks/{checkId}:
+    get:
+      summary: Get a quality check
+      description: Retrieve a quality check by ID
+      parameters:
+        - name: checkId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A quality check
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QualityCheck'
+    put:
+      summary: Update a quality check
+      description: Update a quality check by ID
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: checkId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QualityCheckUpdateInput'
+      responses:
+        '200':
+          description: Quality check updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QualityCheck'
+    delete:
+      summary: Delete a quality check
+      description: Delete a quality check by ID
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: checkId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Quality check deleted successfully
+
+  /quality-checks/product/{productId}:
+    get:
+      summary: Get quality checks by product
+      description: Retrieve quality checks for a specific product
+      parameters:
+        - name: productId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A list of quality checks
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/QualityCheck'
+
 components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  
   schemas:
     User:
       type: object
       properties:
         id:
           type: string
+          format: uuid
           description: The user ID
         name:
           type: string
@@ -73,7 +346,11 @@ components:
           type: string
           format: email
           description: The user's email
-        createdAt:
+        role:
+          type: string
+          enum: [user, admin]
+          description: The user's role
+        created_at:
           type: string
           format: date-time
           description: When the user was created
@@ -81,6 +358,7 @@ components:
         - id
         - name
         - email
+        - role
     
     UserInput:
       type: object
@@ -92,6 +370,190 @@ components:
           type: string
           format: email
           description: The user's email
+        password:
+          type: string
+          format: password
+          description: The user's password
       required:
         - name
         - email
+        - password
+
+    UserUpdateInput:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The user's name
+        email:
+          type: string
+          format: email
+          description: The user's email
+        password:
+          type: string
+          format: password
+          description: The user's password
+
+    RegisterInput:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The user's name
+        email:
+          type: string
+          format: email
+          description: The user's email
+        password:
+          type: string
+          format: password
+          description: The user's password
+      required:
+        - name
+        - email
+        - password
+
+    LoginInput:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+          description: The user's email
+        password:
+          type: string
+          format: password
+          description: The user's password
+      required:
+        - email
+        - password
+
+    AuthResponse:
+      type: object
+      properties:
+        user:
+          $ref: '#/components/schemas/User'
+        token:
+          type: string
+          description: JWT token for authentication
+      required:
+        - user
+        - token
+
+    Product:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: The product ID
+        name:
+          type: string
+          description: The product name
+        sku:
+          type: string
+          description: The product SKU
+        description:
+          type: string
+          description: The product description
+        category:
+          type: string
+          description: The product category
+        created_at:
+          type: string
+          format: date-time
+          description: When the product was created
+      required:
+        - id
+        - name
+        - sku
+
+    ProductInput:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The product name
+        sku:
+          type: string
+          description: The product SKU
+        description:
+          type: string
+          description: The product description
+        category:
+          type: string
+          description: The product category
+      required:
+        - name
+        - sku
+
+    QualityCheck:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: The quality check ID
+        product_id:
+          type: string
+          format: uuid
+          description: The product ID
+        inspector_id:
+          type: string
+          format: uuid
+          description: The inspector (user) ID
+        check_date:
+          type: string
+          format: date-time
+          description: When the check was performed
+        status:
+          type: string
+          enum: [pending, passed, failed]
+          description: The status of the quality check
+        notes:
+          type: string
+          description: Additional notes about the quality check
+        created_at:
+          type: string
+          format: date-time
+          description: When the quality check record was created
+      required:
+        - id
+        - product_id
+        - inspector_id
+        - check_date
+        - status
+
+    QualityCheckInput:
+      type: object
+      properties:
+        product_id:
+          type: string
+          format: uuid
+          description: The product ID
+        check_date:
+          type: string
+          format: date-time
+          description: When the check was performed
+        status:
+          type: string
+          enum: [pending, passed, failed]
+          description: The status of the quality check
+        notes:
+          type: string
+          description: Additional notes about the quality check
+      required:
+        - product_id
+        - check_date
+        - status
+
+    QualityCheckUpdateInput:
+      type: object
+      properties:
+        status:
+          type: string
+          enum: [pending, passed, failed]
+          description: The status of the quality check
+        notes:
+          type: string
+          description: Additional notes about the quality check

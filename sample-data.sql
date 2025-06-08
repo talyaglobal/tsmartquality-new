@@ -1,686 +1,299 @@
-<<<<<<< Updated upstream
--- TSmart Quality Sample Data Generation
--- Project: tsmartquality-new
--- Team: tsmart
--- User: info@tsmart.ai
+-- TSmart Quality Management System Database Schema
+-- This file sets up the complete database schema for the application
 
--- This script inserts 100 sample records into each table
+-- Drop existing tables if they exist
+DROP TABLE IF EXISTS parameter_readings CASCADE;
+DROP TABLE IF EXISTS quality_checks CASCADE;
+DROP TABLE IF EXISTS inventory CASCADE;
+DROP TABLE IF EXISTS products CASCADE;
+DROP TABLE IF EXISTS quality_parameters CASCADE;
+DROP TABLE IF EXISTS quality_types CASCADE;
+DROP TABLE IF EXISTS brands CASCADE;
+DROP TABLE IF EXISTS product_types CASCADE;
+DROP TABLE IF EXISTS users CASCADE;
 
--- Insert fake data into companies
-INSERT INTO companies (name, code, status)
-SELECT 
-  'Company ' || i,
-  'COMP' || LPAD(i::TEXT, 3, '0'),
-  TRUE
-FROM generate_series(1, 100) AS i;
+-- Create Users table
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  email VARCHAR(100) UNIQUE NOT NULL,
+  password VARCHAR(255) NOT NULL,
+  role VARCHAR(20) NOT NULL DEFAULT 'user', -- 'admin', 'inspector', 'user'
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
 
--- Get the admin user ID from Supabase auth
-DO $$
-DECLARE 
-  admin_id UUID;
+-- Create Product Types table
+CREATE TABLE product_types (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  code VARCHAR(10) UNIQUE NOT NULL,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Create Brands table
+CREATE TABLE brands (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(100) UNIQUE NOT NULL,
+  logo_url VARCHAR(255),
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Create Quality Types table
+CREATE TABLE quality_types (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(100) UNIQUE NOT NULL,
+  grade VARCHAR(10) NOT NULL,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Create Products table
+CREATE TABLE products (
+  id SERIAL PRIMARY KEY,
+  stock_code VARCHAR(20) UNIQUE NOT NULL,
+  name VARCHAR(100) NOT NULL,
+  product_type_id INTEGER REFERENCES product_types(id),
+  brand_id INTEGER REFERENCES brands(id),
+  quality_type_id INTEGER REFERENCES quality_types(id),
+  description TEXT,
+  weight DECIMAL(10, 2),
+  volume DECIMAL(10, 2),
+  critical_stock_amount INTEGER,
+  shelflife_limit INTEGER, -- in days
+  stock_tracking BOOLEAN DEFAULT TRUE,
+  bbd_tracking BOOLEAN DEFAULT TRUE,
+  lot_tracking BOOLEAN DEFAULT TRUE,
+  image_path VARCHAR(255),
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Create Inventory table
+CREATE TABLE inventory (
+  id SERIAL PRIMARY KEY,
+  product_id INTEGER REFERENCES products(id),
+  lot_number VARCHAR(50),
+  production_date TIMESTAMP WITH TIME ZONE,
+  best_before_date TIMESTAMP WITH TIME ZONE,
+  quantity DECIMAL(10, 2) NOT NULL,
+  location VARCHAR(100),
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+  CONSTRAINT unique_product_lot UNIQUE (product_id, lot_number)
+);
+
+-- Create Quality Parameters table
+CREATE TABLE quality_parameters (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(100) UNIQUE NOT NULL,
+  unit VARCHAR(20) NOT NULL,
+  min_value DECIMAL(10, 2),
+  max_value DECIMAL(10, 2),
+  target_value DECIMAL(10, 2),
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Create Quality Checks table
+CREATE TABLE quality_checks (
+  id SERIAL PRIMARY KEY,
+  product_id INTEGER REFERENCES products(id),
+  inspector_id INTEGER REFERENCES users(id),
+  check_date TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+  status VARCHAR(20) NOT NULL, -- 'pending', 'passed', 'failed'
+  notes TEXT,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Create Parameter Readings table
+CREATE TABLE parameter_readings (
+  id SERIAL PRIMARY KEY,
+  quality_check_id INTEGER REFERENCES quality_checks(id),
+  parameter_id INTEGER REFERENCES quality_parameters(id),
+  value DECIMAL(10, 2) NOT NULL,
+  is_within_spec BOOLEAN NOT NULL,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+  CONSTRAINT unique_check_parameter UNIQUE (quality_check_id, parameter_id)
+);
+
+-- Create indexes for better performance
+CREATE INDEX idx_products_stock_code ON products(stock_code);
+CREATE INDEX idx_products_name ON products(name);
+CREATE INDEX idx_inventory_product_id ON inventory(product_id);
+CREATE INDEX idx_inventory_lot_number ON inventory(lot_number);
+CREATE INDEX idx_inventory_best_before_date ON inventory(best_before_date);
+CREATE INDEX idx_quality_checks_product_id ON quality_checks(product_id);
+CREATE INDEX idx_quality_checks_inspector_id ON quality_checks(inspector_id);
+CREATE INDEX idx_quality_checks_status ON quality_checks(status);
+CREATE INDEX idx_parameter_readings_quality_check_id ON parameter_readings(quality_check_id);
+CREATE INDEX idx_parameter_readings_parameter_id ON parameter_readings(parameter_id);
+
+-- Create a trigger to update the updated_at timestamp
+CREATE OR REPLACE FUNCTION update_timestamp()
+RETURNS TRIGGER AS $$
 BEGIN
-  -- Get the admin user ID if it exists
-  SELECT id INTO admin_id FROM auth.users WHERE email = 'info@tsmart.ai' LIMIT 1;
-  
-  IF admin_id IS NULL THEN
-    -- If no admin user exists, use a placeholder UUID (you'll need to replace this later)
-    admin_id := '00000000-0000-0000-0000-000000000000'::UUID;
-  END IF;
+  NEW.updated_at = CURRENT_TIMESTAMP;
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
 
-  -- Insert fake user data for the admin user
-  INSERT INTO users (id, full_name, company_id, is_active)
-  VALUES (admin_id, 'TSmart Admin', 1, TRUE)
-  ON CONFLICT (id) DO NOTHING;
+-- Apply the trigger to all tables
+CREATE TRIGGER update_users_timestamp BEFORE UPDATE ON users FOR EACH ROW EXECUTE FUNCTION update_timestamp();
+CREATE TRIGGER update_product_types_timestamp BEFORE UPDATE ON product_types FOR EACH ROW EXECUTE FUNCTION update_timestamp();
+CREATE TRIGGER update_brands_timestamp BEFORE UPDATE ON brands FOR EACH ROW EXECUTE FUNCTION update_timestamp();
+CREATE TRIGGER update_quality_types_timestamp BEFORE UPDATE ON quality_types FOR EACH ROW EXECUTE FUNCTION update_timestamp();
+CREATE TRIGGER update_products_timestamp BEFORE UPDATE ON products FOR EACH ROW EXECUTE FUNCTION update_timestamp();
+CREATE TRIGGER update_inventory_timestamp BEFORE UPDATE ON inventory FOR EACH ROW EXECUTE FUNCTION update_timestamp();
+CREATE TRIGGER update_quality_parameters_timestamp BEFORE UPDATE ON quality_parameters FOR EACH ROW EXECUTE FUNCTION update_timestamp();
+CREATE TRIGGER update_quality_checks_timestamp BEFORE UPDATE ON quality_checks FOR EACH ROW EXECUTE FUNCTION update_timestamp();
+CREATE TRIGGER update_parameter_readings_timestamp BEFORE UPDATE ON parameter_readings FOR EACH ROW EXECUTE FUNCTION update_timestamp();
 
-  -- Insert into brands
-  FOR i IN 1..100 LOOP
-    INSERT INTO brands (name, company_id, status, created_by)
-    VALUES ('Brand ' || i, (i % 100) + 1, TRUE, admin_id);
-  END LOOP;
-  
-  -- Insert into product_groups
-  FOR i IN 1..100 LOOP
-    INSERT INTO product_groups (name, description, company_id, status, created_by)
-    VALUES (
-      'Product Group ' || i,
-      'Description for product group ' || i,
-      (i % 100) + 1,
-      TRUE,
-      admin_id
-    );
-  END LOOP;
-  
-  -- Insert into product_types
-  FOR i IN 1..100 LOOP
-    INSERT INTO product_types (name, description, company_id, status, created_by)
-    VALUES (
-      'Product Type ' || i,
-      'Description for product type ' || i,
-      (i % 100) + 1,
-      TRUE,
-      admin_id
-    );
-  END LOOP;
-  
-  -- Insert into color_types
-  FOR i IN 1..100 LOOP
-    INSERT INTO color_types (name, hex_code, company_id, status, created_by)
-    VALUES (
-      'Color ' || i,
-      '#' || LPAD(TO_HEX((i * 2) % 255), 2, '0') || LPAD(TO_HEX((i * 3) % 255), 2, '0') || LPAD(TO_HEX((i * 5) % 255), 2, '0'),
-      (i % 100) + 1,
-      TRUE,
-      admin_id
-    );
-  END LOOP;
-  
-  -- Insert into cutting_types
-  FOR i IN 1..100 LOOP
-    INSERT INTO cutting_types (name, description, company_id, status, created_by)
-    VALUES (
-      'Cutting Type ' || i,
-      'Description for cutting type ' || i,
-      (i % 100) + 1,
-      TRUE,
-      admin_id
-    );
-  END LOOP;
-  
-  -- Insert into storage_conditions
-  FOR i IN 1..100 LOOP
-    INSERT INTO storage_conditions (
-      name, 
-      description, 
-      min_temperature, 
-      max_temperature, 
-      min_humidity, 
-      max_humidity, 
-      company_id, 
-      status, 
-      created_by
-    )
-    VALUES (
-      'Storage Condition ' || i,
-      'Description for storage condition ' || i,
-      (RANDOM() * 10)::DECIMAL(5,2),
-      (RANDOM() * 30 + 10)::DECIMAL(5,2),
-      (RANDOM() * 40)::DECIMAL(5,2),
-      (RANDOM() * 40 + 40)::DECIMAL(5,2),
-      (i % 100) + 1,
-      TRUE,
-      admin_id
-    );
-  END LOOP;
-  
-  -- Insert into quality_types
-  FOR i IN 1..100 LOOP
-    INSERT INTO quality_types (name, description, company_id, status, created_by)
-    VALUES (
-      'Quality Type ' || i,
-      'Description for quality type ' || i,
-      (i % 100) + 1,
-      TRUE,
-      admin_id
-    );
-  END LOOP;
-  
-  -- Insert into sellers
-  FOR i IN 1..100 LOOP
-    INSERT INTO sellers (
-      name, 
-      code, 
-      contact_person, 
-      email, 
-      phone, 
-      address, 
-      company_id, 
-      status, 
-      created_by
-    )
-    VALUES (
-      'Seller ' || i,
-      'SLR' || LPAD(i::TEXT, 3, '0'),
-      'Contact Person ' || i,
-      'seller' || i || '@example.com',
-      '+1-555-' || LPAD(i::TEXT, 3, '0') || '-' || LPAD((i * 7)::TEXT, 4, '0'),
-      'Address for seller ' || i,
-      (i % 100) + 1,
-      TRUE,
-      admin_id
-    );
-  END LOOP;
-  
-  -- Insert into countries
-  FOR i IN 1..100 LOOP
-    INSERT INTO countries (name, code, company_id, status, created_by)
-    VALUES (
-      'Country ' || i,
-      'C' || LPAD(i::TEXT, 2, '0'),
-      (i % 100) + 1,
-      TRUE,
-      admin_id
-    );
-  END LOOP;
-  
-  -- Insert into warehouses
-  FOR i IN 1..100 LOOP
-    INSERT INTO warehouses (
-      name, 
-      code, 
-      address, 
-      country_id, 
-      company_id, 
-      status, 
-      created_by
-    )
-    VALUES (
-      'Warehouse ' || i,
-      'WH' || LPAD(i::TEXT, 3, '0'),
-      'Address for warehouse ' || i,
-      (i % 100) + 1,
-      (i % 100) + 1,
-      TRUE,
-      admin_id
-    );
-  END LOOP;
-  
-  -- Insert into packagings
-  FOR i IN 1..100 LOOP
-    INSERT INTO packagings (
-      name, 
-      description, 
-      width, 
-      length, 
-      height, 
-      company_id, 
-      status, 
-      created_by
-    )
-    VALUES (
-      'Packaging ' || i,
-      'Description for packaging ' || i,
-      (RANDOM() * 50 + 10)::DECIMAL(10,2),
-      (RANDOM() * 50 + 10)::DECIMAL(10,2),
-      (RANDOM() * 50 + 10)::DECIMAL(10,2),
-      (i % 100) + 1,
-      TRUE,
-      admin_id
-    );
-  END LOOP;
-  
-  -- Insert into raw_material_groups
-  FOR i IN 1..100 LOOP
-    INSERT INTO raw_material_groups (name, description, company_id, status, created_by)
-    VALUES (
-      'Raw Material Group ' || i,
-      'Description for raw material group ' || i,
-      (i % 100) + 1,
-      TRUE,
-      admin_id
-    );
-  END LOOP;
-  
-  -- Insert into raw_materials
-  FOR i IN 1..100 LOOP
-    INSERT INTO raw_materials (
-      code, 
-      name, 
-      description, 
-      raw_material_group_id, 
-      critical_stock_amount, 
-      stock_tracking, 
-      bbd_tracking, 
-      lot_tracking, 
-      company_id, 
-      status, 
-      created_by
-    )
-    VALUES (
-      'RM' || LPAD(i::TEXT, 3, '0'),
-      'Raw Material ' || i,
-      'Description for raw material ' || i,
-      (i % 100) + 1,
-      (RANDOM() * 1000)::DECIMAL(10,2),
-      i % 2 = 0,
-      i % 3 = 0,
-      i % 4 = 0,
-      (i % 100) + 1,
-      TRUE,
-      admin_id
-    );
-  END LOOP;
-  
-  -- Insert into semi_product_groups
-  FOR i IN 1..100 LOOP
-    INSERT INTO semi_product_groups (name, description, company_id, status, created_by)
-    VALUES (
-      'Semi Product Group ' || i,
-      'Description for semi product group ' || i,
-      (i % 100) + 1,
-      TRUE,
-      admin_id
-    );
-  END LOOP;
-  
-  -- Insert into semi_products
-  FOR i IN 1..100 LOOP
-    INSERT INTO semi_products (
-      code, 
-      name, 
-      description, 
-      semi_product_group_id, 
-      critical_stock_amount, 
-      stock_tracking, 
-      bbd_tracking, 
-      lot_tracking, 
-      company_id, 
-      status, 
-      created_by
-    )
-    VALUES (
-      'SP' || LPAD(i::TEXT, 3, '0'),
-      'Semi Product ' || i,
-      'Description for semi product ' || i,
-      (i % 100) + 1,
-      (RANDOM() * 500)::DECIMAL(10,2),
-      i % 2 = 0,
-      i % 3 = 0,
-      i % 4 = 0,
-      (i % 100) + 1,
-      TRUE,
-      admin_id
-    );
-  END LOOP;
-  
-  -- Insert into products
-  FOR i IN 1..100 LOOP
-    INSERT INTO products (
-      code, 
-      name, 
-      description, 
-      weight, 
-      volume, 
-      density, 
-      width, 
-      length, 
-      height, 
-      critical_stock_amount, 
-      shelflife_limit, 
-      max_stack, 
-      stock_tracking, 
-      bbd_tracking, 
-      lot_tracking, 
-      is_blocked, 
-      is_setted_product, 
-      seller_id, 
-      product_group_id, 
-      brand_id, 
-      product_type_id, 
-      storage_condition_id, 
-      color_type_id, 
-      cutting_type_id, 
-      quality_type_id, 
-      company_id, 
-      status, 
-      created_by
-    )
-    VALUES (
-      'P' || LPAD(i::TEXT, 3, '0'),
-      'Product ' || i,
-      'Description for product ' || i,
-      (RANDOM() * 10 + 0.5)::DECIMAL(10,2),
-      (RANDOM() * 5 + 0.2)::DECIMAL(10,2),
-      (RANDOM() * 2 + 0.8)::DECIMAL(10,2),
-      (RANDOM() * 30 + 5)::DECIMAL(10,2),
-      (RANDOM() * 30 + 5)::DECIMAL(10,2),
-      (RANDOM() * 30 + 5)::DECIMAL(10,2),
-      (RANDOM() * 200 + 10)::DECIMAL(10,2),
-      (RANDOM() * 365 + 30)::INTEGER,
-      (RANDOM() * 10 + 1)::INTEGER,
-      i % 2 = 0,
-      i % 3 = 0,
-      i % 4 = 0,
-      i % 20 = 0,
-      i % 5 = 0,
-      (i % 100) + 1,
-      (i % 100) + 1,
-      (i % 100) + 1,
-      (i % 100) + 1,
-      (i % 100) + 1,
-      (i % 100) + 1,
-      (i % 100) + 1,
-      (i % 100) + 1,
-      (i % 100) + 1,
-      TRUE,
-      admin_id
-    );
-  END LOOP;
-  
-  -- Insert into product_history
-  FOR i IN 1..100 LOOP
-    INSERT INTO product_history (
-      product_id, 
-      change_description, 
-      old_value, 
-      new_value, 
-      company_id, 
-      status, 
-      created_by
-    )
-    VALUES (
-      (i % 100) + 1,
-      'Changed ' || (CASE WHEN i % 5 = 0 THEN 'name' WHEN i % 5 = 1 THEN 'price' WHEN i % 5 = 2 THEN 'weight' WHEN i % 5 = 3 THEN 'dimensions' ELSE 'status' END),
-      'Old value ' || i,
-      'New value ' || i,
-      (i % 100) + 1,
-      TRUE,
-      admin_id
-    );
-  END LOOP;
-  
-  -- Insert into customers
-  FOR i IN 1..100 LOOP
-    INSERT INTO customers (
-      name, 
-      code, 
-      category, 
-      rating, 
-      strategic, 
-      contact_person, 
-      email, 
-      phone, 
-      address, 
-      last_order, 
-      company_id, 
-      status, 
-      created_by
-    )
-    VALUES (
-      'Customer ' || i,
-      'CUST' || LPAD(i::TEXT, 3, '0'),
-      (CASE WHEN i % 4 = 0 THEN 'cash-cow' WHEN i % 4 = 1 THEN 'star' WHEN i % 4 = 2 THEN 'problem-child' ELSE 'dog' END),
-      (i % 5) + 1,
-      i % 10 = 0,
-      'Contact Person ' || i,
-      'customer' || i || '@example.com',
-      '+1-555-' || LPAD(i::TEXT, 3, '0') || '-' || LPAD((i * 3)::TEXT, 4, '0'),
-      'Address for customer ' || i,
-      NOW() - (i % 365) * INTERVAL '1 day',
-      (i % 100) + 1,
-      TRUE,
-      admin_id
-    );
-  END LOOP;
-  
-  -- Insert into product_to_customers
-  FOR i IN 1..100 LOOP
-    INSERT INTO product_to_customers (
-      product_id, 
-      customer_id, 
-      custom_product_code, 
-      custom_product_name, 
-      company_id, 
-      status, 
-      created_by
-    )
-    VALUES (
-      (i % 100) + 1,
-      (i % 100) + 1,
-      'CUST-P' || LPAD(i::TEXT, 3, '0'),
-      'Custom Product Name ' || i,
-      (i % 100) + 1,
-      TRUE,
-      admin_id
-    );
-  END LOOP;
-  
-  -- Insert into photos
-  FOR i IN 1..100 LOOP
-    INSERT INTO photos (
-      file_name, 
-      file_type, 
-      file_path, 
-      product_id, 
-      company_id, 
-      status, 
-      created_by
-    )
-    VALUES (
-      'photo_' || i || '.jpg',
-      'image/jpeg',
-      '/uploads/photos/photo_' || i || '.jpg',
-      (i % 100) + 1,
-      (i % 100) + 1,
-      TRUE,
-      admin_id
-    );
-  END LOOP;
-  
-  -- Insert into recipes
-  FOR i IN 1..100 LOOP
-    INSERT INTO recipes (
-      code, 
-      name, 
-      description, 
-      product_id, 
-      semi_product_id, 
-      total_quantity, 
-      company_id, 
-      status, 
-      created_by
-    )
-    VALUES (
-      'R' || LPAD(i::TEXT, 3, '0'),
-      'Recipe ' || i,
-      'Description for recipe ' || i,
-      CASE WHEN i % 2 = 0 THEN (i % 100) + 1 ELSE NULL END,
-      CASE WHEN i % 2 = 1 THEN (i % 100) + 1 ELSE NULL END,
-      (RANDOM() * 100 + 1)::DECIMAL(10,2),
-      (i % 100) + 1,
-      TRUE,
-      admin_id
-    );
-  END LOOP;
-  
-  -- Insert into recipe_details
-  FOR i IN 1..100 LOOP
-    INSERT INTO recipe_details (
-      recipe_id, 
-      raw_material_id, 
-      semi_product_id, 
-      quantity, 
-      unit, 
-      sequence, 
-      company_id, 
-      status, 
-      created_by
-    )
-    VALUES (
-      (i % 100) + 1,
-      CASE WHEN i % 2 = 0 THEN (i % 100) + 1 ELSE NULL END,
-      CASE WHEN i % 2 = 1 THEN (i % 100) + 1 ELSE NULL END,
-      (RANDOM() * 10 + 0.1)::DECIMAL(10,2),
-      (CASE WHEN i % 4 = 0 THEN 'kg' WHEN i % 4 = 1 THEN 'g' WHEN i % 4 = 2 THEN 'l' ELSE 'ml' END),
-      i,
-      (i % 100) + 1,
-      TRUE,
-      admin_id
-    );
-  END LOOP;
-  
-  -- Insert into specs
-  FOR i IN 1..100 LOOP
-    INSERT INTO specs (
-      code, 
-      name, 
-      description, 
-      product_id, 
-      company_id, 
-      status, 
-      created_by
-    )
-    VALUES (
-      'SPEC' || LPAD(i::TEXT, 3, '0'),
-      'Spec ' || i,
-      'Description for spec ' || i,
-      (i % 100) + 1,
-      (i % 100) + 1,
-      TRUE,
-      admin_id
-    );
-  END LOOP;
-  
-  -- Insert into spec_details
-  FOR i IN 1..100 LOOP
-    INSERT INTO spec_details (
-      spec_id, 
-      parameter_name, 
-      min_value, 
-      max_value, 
-      target_value, 
-      unit, 
-      is_mandatory, 
-      sequence, 
-      company_id, 
-      status, 
-      created_by
-    )
-    VALUES (
-      (i % 100) + 1,
-      'Parameter ' || i,
-      (RANDOM() * 10)::DECIMAL(10,2),
-      (RANDOM() * 10 + 10)::DECIMAL(10,2),
-      (RANDOM() * 10 + 5)::DECIMAL(10,2),
-      (CASE WHEN i % 5 = 0 THEN 'kg' WHEN i % 5 = 1 THEN 'g' WHEN i % 5 = 2 THEN 'l' WHEN i % 5 = 3 THEN 'ml' ELSE 'cm' END),
-      i % 3 = 0,
-      i,
-      (i % 100) + 1,
-      TRUE,
-      admin_id
-    );
-  END LOOP;
-  
-  -- Insert into roles
-  FOR i IN 1..100 LOOP
-    INSERT INTO roles (
-      name, 
-      description, 
-      company_id, 
-      status
-    )
-    VALUES (
-      'Role ' || i,
-      'Description for role ' || i,
-      (i % 100) + 1,
-      TRUE
-    );
-  END LOOP;
-  
-  -- Insert into groups
-  FOR i IN 1..100 LOOP
-    INSERT INTO groups (
-      name, 
-      description, 
-      company_id, 
-      status
-    )
-    VALUES (
-      'Group ' || i,
-      'Description for group ' || i,
-      (i % 100) + 1,
-      TRUE
-    );
-  END LOOP;
-  
-  -- Insert into group_in_roles
-  FOR i IN 1..100 LOOP
-    INSERT INTO group_in_roles (
-      group_id, 
-      role_id, 
-      company_id, 
-      status
-    )
-    VALUES (
-      (i % 100) + 1,
-      (i % 100) + 1,
-      (i % 100) + 1,
-      TRUE
-    );
-  END LOOP;
-  
-  -- Insert into user_in_groups
-  INSERT INTO user_in_groups (
-    user_id, 
-    group_id, 
-    company_id, 
-    status
-  )
-  VALUES (
-    admin_id,
-    1,
-    1,
-    TRUE
-  );
-  
-  -- Insert into localizations
-  FOR i IN 1..100 LOOP
-    INSERT INTO localizations (
-      key, 
-      value_tr, 
-      value_en, 
-      value_es, 
-      value_fr, 
-      value_it, 
-      value_ru, 
-      value_de, 
-      company_id, 
-      status, 
-      created_by
-    )
-    VALUES (
-      'key.' || i,
-      'Turkish value ' || i,
-      'English value ' || i,
-      'Spanish value ' || i,
-      'French value ' || i,
-      'Italian value ' || i,
-      'Russian value ' || i,
-      'German value ' || i,
-      (i % 100) + 1,
-      TRUE,
-      admin_id
-    );
-  END LOOP;
-  
-  -- Insert into erp_settings
-  FOR i IN 1..100 LOOP
-    INSERT INTO erp_settings (
-      system_name, 
-      connection_string, 
-      username, 
-      password, 
-      db1_name, 
-      db2_name, 
-      db3_name, 
-      company_id, 
-      status, 
-      created_by
-    )
-    VALUES (
-      'ERP System ' || i,
-      'Server=server' || i || '.example.com;Database=db' || i || ';User Id=user' || i || ';Password=****;',
-      'user' || i,
-      '********', -- placeholder for password, would be properly hashed in a real system
-      'database1_' || i,
-      CASE WHEN i % 2 = 0 THEN 'database2_' || i ELSE NULL END,
-      CASE WHEN i % 3 = 0 THEN 'database3_' || i ELSE NULL END,
-      (i % 100) + 1,
-      TRUE,
-      admin_id
-    );
-  END LOOP;
-  
-END $$;
-=======
+-- Create views for common queries
+CREATE OR REPLACE VIEW vw_product_details AS
+SELECT 
+  p.id, 
+  p.stock_code, 
+  p.name, 
+  pt.name AS product_type, 
+  pt.code AS product_type_code,
+  b.name AS brand,
+  qt.name AS quality_type,
+  qt.grade AS quality_grade,
+  p.description,
+  p.weight,
+  p.volume,
+  p.critical_stock_amount,
+  p.shelflife_limit,
+  p.stock_tracking,
+  p.bbd_tracking,
+  p.lot_tracking,
+  p.image_path
+FROM 
+  products p
+JOIN 
+  product_types pt ON p.product_type_id = pt.id
+JOIN 
+  brands b ON p.brand_id = b.id
+JOIN 
+  quality_types qt ON p.quality_type_id = qt.id;
 
->>>>>>> Stashed changes
+CREATE OR REPLACE VIEW vw_inventory_details AS
+SELECT 
+  i.id,
+  p.stock_code,
+  p.name AS product_name,
+  i.lot_number,
+  i.production_date,
+  i.best_before_date,
+  i.quantity,
+  i.location,
+  (i.best_before_date < CURRENT_TIMESTAMP) AS is_expired,
+  (i.best_before_date - CURRENT_TIMESTAMP) AS days_until_expiry
+FROM 
+  inventory i
+JOIN 
+  products p ON i.product_id = p.id;
+
+CREATE OR REPLACE VIEW vw_quality_check_details AS
+SELECT 
+  qc.id,
+  p.stock_code,
+  p.name AS product_name,
+  u.name AS inspector_name,
+  qc.check_date,
+  qc.status,
+  qc.notes,
+  COUNT(pr.id) AS parameter_count,
+  SUM(CASE WHEN pr.is_within_spec THEN 1 ELSE 0 END) AS parameters_within_spec
+FROM 
+  quality_checks qc
+JOIN 
+  products p ON qc.product_id = p.id
+JOIN 
+  users u ON qc.inspector_id = u.id
+LEFT JOIN 
+  parameter_readings pr ON qc.id = pr.quality_check_id
+GROUP BY 
+  qc.id, p.stock_code, p.name, u.name, qc.check_date, qc.status, qc.notes;
+
+-- Create functions for common operations
+CREATE OR REPLACE FUNCTION get_product_inventory(product_id_param INTEGER)
+RETURNS TABLE (
+  lot_number VARCHAR(50),
+  production_date TIMESTAMP WITH TIME ZONE,
+  best_before_date TIMESTAMP WITH TIME ZONE,
+  quantity DECIMAL(10, 2),
+  location VARCHAR(100),
+  is_expired BOOLEAN,
+  days_until_expiry INTERVAL
+) AS $$
+BEGIN
+  RETURN QUERY
+  SELECT 
+    i.lot_number,
+    i.production_date,
+    i.best_before_date,
+    i.quantity,
+    i.location,
+    (i.best_before_date < CURRENT_TIMESTAMP) AS is_expired,
+    (i.best_before_date - CURRENT_TIMESTAMP) AS days_until_expiry
+  FROM 
+    inventory i
+  WHERE 
+    i.product_id = product_id_param
+  ORDER BY 
+    i.best_before_date ASC;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION get_product_quality_history(product_id_param INTEGER)
+RETURNS TABLE (
+  check_id INTEGER,
+  check_date TIMESTAMP WITH TIME ZONE,
+  inspector_name VARCHAR(100),
+  status VARCHAR(20),
+  parameter_count INTEGER,
+  pass_rate DECIMAL(5, 2)
+) AS $$
+BEGIN
+  RETURN QUERY
+  SELECT 
+    qc.id AS check_id,
+    qc.check_date,
+    u.name AS inspector_name,
+    qc.status,
+    COUNT(pr.id)::INTEGER AS parameter_count,
+    (SUM(CASE WHEN pr.is_within_spec THEN 1 ELSE 0 END)::DECIMAL / COUNT(pr.id)::DECIMAL * 100)::DECIMAL(5,2) AS pass_rate
+  FROM 
+    quality_checks qc
+  JOIN 
+    users u ON qc.inspector_id = u.id
+  LEFT JOIN 
+    parameter_readings pr ON qc.id = pr.quality_check_id
+  WHERE 
+    qc.product_id = product_id_param
+  GROUP BY 
+    qc.id, qc.check_date, u.name, qc.status
+  ORDER BY 
+    qc.check_date DESC;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Ensure the schema and functions have appropriate privileges
+-- (Usually handled by your API application's database user)
+
+-- Comment on database objects for documentation
+COMMENT ON TABLE users IS 'Stores user information including roles for authentication and authorization';
+COMMENT ON TABLE product_types IS 'Categorizes products into types (raw materials, semi-finished, finished products, etc.)';
+COMMENT ON TABLE brands IS 'Represents different brands or manufacturers';
+COMMENT ON TABLE quality_types IS 'Defines quality grades or classifications for products';
+COMMENT ON TABLE products IS 'Central product catalog with all product details';
+COMMENT ON TABLE inventory IS 'Tracks inventory levels, lot numbers, and expiration dates';
+COMMENT ON TABLE quality_parameters IS 'Defines measurable quality parameters with acceptable ranges';
+COMMENT ON TABLE quality_checks IS 'Records quality inspection events';
+COMMENT ON TABLE parameter_readings IS 'Stores individual parameter measurements from quality checks';
