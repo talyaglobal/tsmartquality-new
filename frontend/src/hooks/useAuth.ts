@@ -94,11 +94,11 @@ export function useAuth() {
     }
   };
 
-  const register = async (name: string, email: string, password: string) => {
+  const register = async (username: string, name: string, surname: string, email: string, password: string) => {
     try {
       setAuthState((prev) => ({ ...prev, isLoading: true, error: null }));
       
-      const response = await authAPI.register(name, email, password);
+      const response = await authAPI.register(username, name, surname, email, password);
       
       Cookies.set('auth_token', response.token, { expires: 7 }); // 7 days
       
