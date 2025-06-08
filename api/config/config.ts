@@ -1,16 +1,20 @@
+// Legacy config file - redirects to new configuration system
+// This file is kept for backward compatibility
+import { config as newConfig } from './config-manager';
+
 export const config = {
-  port: process.env.PORT || 3000,
-  env: process.env.NODE_ENV || 'development',
+  port: newConfig.port,
+  env: newConfig.nodeEnv,
   db: {
-    host: process.env.DB_HOST || 'localhost',
-    port: parseInt(process.env.DB_PORT || '5432'),
-    database: process.env.DB_NAME || 'tsmartquality',
-    user: process.env.DB_USER || 'postgres',
-    password: process.env.DB_PASSWORD || 'password'
+    host: newConfig.database.host,
+    port: newConfig.database.port,
+    database: newConfig.database.name,
+    user: newConfig.database.user,
+    password: newConfig.database.password
   },
   jwt: {
-    secret: process.env.JWT_SECRET || 'your-secret-key',
-    refreshSecret: process.env.JWT_REFRESH_SECRET || 'your-refresh-secret-key',
-    expiresIn: process.env.JWT_EXPIRES_IN || '1d'
+    secret: newConfig.jwt.secret,
+    refreshSecret: newConfig.jwt.refreshSecret,
+    expiresIn: newConfig.jwt.expiresIn
   }
 };
