@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.17" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="8.0.0" />
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="8.2.1" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.2.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="DTOs\CustomerComplaintManagementDTOs\" />
+    <Folder Include="DTOs\DocumentManagementDTOs\" />
+    <Folder Include="DTOs\ExternalAuditDTOs\" />
+    <Folder Include="DTOs\InternalAuditDTOs\" />
+    <Folder Include="DTOs\TrainingManagementDTOs\" />
+    <Folder Include="DTOs\SupplierManagementDTOs\" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,3594 @@
+[
+  {
+    "ContainingType": "Quality.API.Controllers.BrandsController",
+    "Method": "All",
+    "RelativePath": "api/Brands",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.BrandsController",
+    "Method": "Save",
+    "RelativePath": "api/Brands",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "brandDto",
+        "Type": "Quality.Core.DTOs.ProductPortalDTOs.ProductPortalDefinitionDTOs.BrandDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.BrandsController",
+    "Method": "GetById",
+    "RelativePath": "api/Brands/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.BrandsController",
+    "Method": "Remove",
+    "RelativePath": "api/Brands/Remove/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.BrandsController",
+    "Method": "Update",
+    "RelativePath": "api/Brands/Update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "brandDto",
+        "Type": "Quality.Core.DTOs.UpdateDTOs.ProductPortalUpdateDTOs.ProductPortalDefinitionUpdateDtos.BrandUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.BudgetGroupsController",
+    "Method": "All",
+    "RelativePath": "api/BudgetGroups",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.BudgetGroupsController",
+    "Method": "Save",
+    "RelativePath": "api/BudgetGroups",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "budgetGroupDto",
+        "Type": "Quality.Core.DTOs.ProductPortalDTOs.ProductPortalDefinitionDTOs.BudgetGroupDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.BudgetGroupsController",
+    "Method": "GetById",
+    "RelativePath": "api/BudgetGroups/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.BudgetGroupsController",
+    "Method": "Remove",
+    "RelativePath": "api/BudgetGroups/Remove/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.BudgetGroupsController",
+    "Method": "Update",
+    "RelativePath": "api/BudgetGroups/Update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "budgetGroupDto",
+        "Type": "Quality.Core.DTOs.UpdateDTOs.ProductPortalUpdateDTOs.ProductPortalDefinitionUpdateDtos.BudgetGroupUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.ColorTypesController",
+    "Method": "All",
+    "RelativePath": "api/ColorTypes",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.ColorTypesController",
+    "Method": "Save",
+    "RelativePath": "api/ColorTypes",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "colorTypeDto",
+        "Type": "Quality.Core.DTOs.ProductPortalDTOs.ProductPortalDefinitionDTOs.ColorTypeDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.ColorTypesController",
+    "Method": "GetById",
+    "RelativePath": "api/ColorTypes/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.ColorTypesController",
+    "Method": "Remove",
+    "RelativePath": "api/ColorTypes/Remove/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.ColorTypesController",
+    "Method": "Update",
+    "RelativePath": "api/ColorTypes/Update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "colorTypeDto",
+        "Type": "Quality.Core.DTOs.UpdateDTOs.ProductPortalUpdateDTOs.ProductPortalDefinitionUpdateDtos.ColorTypeUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.CountriesController",
+    "Method": "All",
+    "RelativePath": "api/Countries",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.CountriesController",
+    "Method": "Save",
+    "RelativePath": "api/Countries",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "countryDto",
+        "Type": "Quality.Core.DTOs.ProductPortalDTOs.ProductPortalDefinitionDTOs.CountryDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.CountriesController",
+    "Method": "GetById",
+    "RelativePath": "api/Countries/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.CountriesController",
+    "Method": "Remove",
+    "RelativePath": "api/Countries/Remove/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.CountriesController",
+    "Method": "Update",
+    "RelativePath": "api/Countries/Update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "countryDto",
+        "Type": "Quality.Core.DTOs.UpdateDTOs.ProductPortalUpdateDTOs.ProductPortalDefinitionUpdateDtos.CountryUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.CustomersController",
+    "Method": "All",
+    "RelativePath": "api/Customers",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.CustomersController",
+    "Method": "Save",
+    "RelativePath": "api/Customers",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "customerDto",
+        "Type": "Quality.Core.DTOs.ProductPortalDTOs.ProductPortalDefinitionDTOs.CustomerDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.CustomersController",
+    "Method": "GetById",
+    "RelativePath": "api/Customers/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.CustomersController",
+    "Method": "Remove",
+    "RelativePath": "api/Customers/Remove/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.CustomersController",
+    "Method": "Update",
+    "RelativePath": "api/Customers/Update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "customerDto",
+        "Type": "Quality.Core.DTOs.UpdateDTOs.ProductPortalUpdateDTOs.ProductPortalDefinitionUpdateDtos.CustomerUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.CuttingTypesController",
+    "Method": "All",
+    "RelativePath": "api/CuttingTypes",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.CuttingTypesController",
+    "Method": "Save",
+    "RelativePath": "api/CuttingTypes",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cuttingTypeDto",
+        "Type": "Quality.Core.DTOs.ProductPortalDTOs.ProductPortalDefinitionDTOs.CuttingTypeDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.CuttingTypesController",
+    "Method": "GetById",
+    "RelativePath": "api/CuttingTypes/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.CuttingTypesController",
+    "Method": "Remove",
+    "RelativePath": "api/CuttingTypes/Remove/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.CuttingTypesController",
+    "Method": "Update",
+    "RelativePath": "api/CuttingTypes/Update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cuttingTypeDto",
+        "Type": "Quality.Core.DTOs.UpdateDTOs.ProductPortalUpdateDTOs.ProductPortalDefinitionUpdateDtos.CuttingTypeUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.ERPSettingsController",
+    "Method": "All",
+    "RelativePath": "api/ERPSettings",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.ERPSettingsController",
+    "Method": "Save",
+    "RelativePath": "api/ERPSettings",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "erpSettingDto",
+        "Type": "Quality.Core.DTOs.BaseDTOs.DefinitionDTOs.ERPSettingDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.ERPSettingsController",
+    "Method": "GetById",
+    "RelativePath": "api/ERPSettings/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.ERPSettingsController",
+    "Method": "Remove",
+    "RelativePath": "api/ERPSettings/Remove/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.ERPSettingsController",
+    "Method": "Update",
+    "RelativePath": "api/ERPSettings/Update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "erpSettingDto",
+        "Type": "Quality.Core.DTOs.UpdateDTOs.BaseUpdateDTOs.DefinitionUpdateDTOs.ERPSettingUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.GroupInRolesController",
+    "Method": "All",
+    "RelativePath": "api/GroupInRoles",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.GroupInRolesController",
+    "Method": "Save",
+    "RelativePath": "api/GroupInRoles",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "groupInRoleDto",
+        "Type": "Quality.Core.DTOs.BaseDTOs.DefinitionDTOs.GroupInRoleDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.GroupInRolesController",
+    "Method": "GetById",
+    "RelativePath": "api/GroupInRoles/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.GroupInRolesController",
+    "Method": "Remove",
+    "RelativePath": "api/GroupInRoles/Remove/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.GroupInRolesController",
+    "Method": "Update",
+    "RelativePath": "api/GroupInRoles/Update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "groupInRoleDto",
+        "Type": "Quality.Core.DTOs.UpdateDTOs.BaseUpdateDTOs.DefinitionUpdateDTOs.GroupInRoleUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.GroupsController",
+    "Method": "All",
+    "RelativePath": "api/Groups",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.GroupsController",
+    "Method": "Save",
+    "RelativePath": "api/Groups",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "groupDto",
+        "Type": "Quality.Core.DTOs.BaseDTOs.DefinitionDTOs.GroupDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.GroupsController",
+    "Method": "GetById",
+    "RelativePath": "api/Groups/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.GroupsController",
+    "Method": "Remove",
+    "RelativePath": "api/Groups/Remove/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.GroupsController",
+    "Method": "Update",
+    "RelativePath": "api/Groups/Update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "groupDto",
+        "Type": "Quality.Core.DTOs.UpdateDTOs.BaseUpdateDTOs.DefinitionUpdateDTOs.GroupUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.LocalizationsController",
+    "Method": "All",
+    "RelativePath": "api/Localizations",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.LocalizationsController",
+    "Method": "Save",
+    "RelativePath": "api/Localizations",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "localizationDto",
+        "Type": "Quality.Core.DTOs.BaseDTOs.DefinitionDTOs.LocalizationDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.LocalizationsController",
+    "Method": "GetById",
+    "RelativePath": "api/Localizations/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.LocalizationsController",
+    "Method": "Remove",
+    "RelativePath": "api/Localizations/Remove/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.LocalizationsController",
+    "Method": "Update",
+    "RelativePath": "api/Localizations/Update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "localizationDto",
+        "Type": "Quality.Core.DTOs.UpdateDTOs.BaseUpdateDTOs.DefinitionUpdateDTOs.LocalizationUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.NormDetailsController",
+    "Method": "All",
+    "RelativePath": "api/NormDetails",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.NormDetailsController",
+    "Method": "Save",
+    "RelativePath": "api/NormDetails",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "normDetailDto",
+        "Type": "Quality.Core.DTOs.ProductPortalDTOs.ProductPortalDefinitionDTOs.NormDetailDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.NormDetailsController",
+    "Method": "GetById",
+    "RelativePath": "api/NormDetails/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.NormDetailsController",
+    "Method": "Remove",
+    "RelativePath": "api/NormDetails/Remove/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.NormDetailsController",
+    "Method": "Update",
+    "RelativePath": "api/NormDetails/Update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "normDetailDto",
+        "Type": "Quality.Core.DTOs.UpdateDTOs.ProductPortalUpdateDTOs.ProductPortalDefinitionUpdateDtos.NormDetailUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.NormsController",
+    "Method": "All",
+    "RelativePath": "api/Norms",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.NormsController",
+    "Method": "Save",
+    "RelativePath": "api/Norms",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "normDto",
+        "Type": "Quality.Core.DTOs.ProductPortalDTOs.ProductPortalDefinitionDTOs.NormDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.NormsController",
+    "Method": "GetById",
+    "RelativePath": "api/Norms/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.NormsController",
+    "Method": "GetAllWithDetails",
+    "RelativePath": "api/Norms/GetAllWithDetails",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.NormsController",
+    "Method": "GetSpecByIdWithDetailsAsync",
+    "RelativePath": "api/Norms/GetWithDetails/{normId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "normId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.NormsController",
+    "Method": "Remove",
+    "RelativePath": "api/Norms/Remove/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.NormsController",
+    "Method": "Update",
+    "RelativePath": "api/Norms/Update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "normDto",
+        "Type": "Quality.Core.DTOs.UpdateDTOs.ProductPortalUpdateDTOs.ProductPortalDefinitionUpdateDtos.NormUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.NotificationTokensController",
+    "Method": "All",
+    "RelativePath": "api/NotificationTokens",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.NotificationTokensController",
+    "Method": "Save",
+    "RelativePath": "api/NotificationTokens",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "notificationTokenDto",
+        "Type": "Quality.Core.DTOs.BaseDTOs.NotificationTokenDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.NotificationTokensController",
+    "Method": "GetById",
+    "RelativePath": "api/NotificationTokens/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.NotificationTokensController",
+    "Method": "Remove",
+    "RelativePath": "api/NotificationTokens/Remove/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.NotificationTokensController",
+    "Method": "Update",
+    "RelativePath": "api/NotificationTokens/Update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "notificationTokenDto",
+        "Type": "Quality.Core.DTOs.UpdateDTOs.BaseUpdateDTOs.DefinitionUpdateDTOs.NotificationTokenUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.PackagingsController",
+    "Method": "All",
+    "RelativePath": "api/Packagings",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.PackagingsController",
+    "Method": "Save",
+    "RelativePath": "api/Packagings",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "packagingDto",
+        "Type": "Quality.Core.DTOs.ProductPortalDTOs.ProductPortalDefinitionDTOs.PackagingDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.PackagingsController",
+    "Method": "GetById",
+    "RelativePath": "api/Packagings/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.PackagingsController",
+    "Method": "Remove",
+    "RelativePath": "api/Packagings/Remove/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.PackagingsController",
+    "Method": "Update",
+    "RelativePath": "api/Packagings/Update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "packagingDto",
+        "Type": "Quality.Core.DTOs.UpdateDTOs.ProductPortalUpdateDTOs.ProductPortalDefinitionUpdateDtos.PackagingUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.PhotosController",
+    "Method": "All",
+    "RelativePath": "api/Photos",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.PhotosController",
+    "Method": "Save",
+    "RelativePath": "api/Photos",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PhotoUrl",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ProductId",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "PhotoFiles",
+        "Type": "System.Collections.Generic.List\u00601[[Microsoft.AspNetCore.Http.IFormFile, Microsoft.AspNetCore.Http.Features, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "CreatedBy",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "CreatedDate",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.PhotosController",
+    "Method": "GetById",
+    "RelativePath": "api/Photos/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.PhotosController",
+    "Method": "Remove",
+    "RelativePath": "api/Photos/Remove/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.PhotosController",
+    "Method": "Update",
+    "RelativePath": "api/Photos/Update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "PhotoUrl",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ProductId",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "PhotoFiles",
+        "Type": "System.Collections.Generic.List\u00601[[Microsoft.AspNetCore.Http.IFormFile, Microsoft.AspNetCore.Http.Features, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.PhotoTypesController",
+    "Method": "All",
+    "RelativePath": "api/PhotoTypes",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.PhotoTypesController",
+    "Method": "Save",
+    "RelativePath": "api/PhotoTypes",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "photoTypeDto",
+        "Type": "Quality.Core.DTOs.BaseDTOs.DefinitionDTOs.PhotoTypeDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.PhotoTypesController",
+    "Method": "GetById",
+    "RelativePath": "api/PhotoTypes/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.PhotoTypesController",
+    "Method": "Remove",
+    "RelativePath": "api/PhotoTypes/Remove/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.PhotoTypesController",
+    "Method": "Update",
+    "RelativePath": "api/PhotoTypes/Update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "photoTypeDto",
+        "Type": "Quality.Core.DTOs.UpdateDTOs.BaseUpdateDTOs.DefinitionUpdateDTOs.PhotoTypeUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.ProductGroupsController",
+    "Method": "All",
+    "RelativePath": "api/ProductGroups",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.ProductGroupsController",
+    "Method": "Save",
+    "RelativePath": "api/ProductGroups",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productGroupDto",
+        "Type": "Quality.Core.DTOs.ProductPortalDTOs.ProductPortalDefinitionDTOs.ProductGroupDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.ProductGroupsController",
+    "Method": "GetById",
+    "RelativePath": "api/ProductGroups/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.ProductGroupsController",
+    "Method": "Remove",
+    "RelativePath": "api/ProductGroups/Remove/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.ProductGroupsController",
+    "Method": "Update",
+    "RelativePath": "api/ProductGroups/Update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productGroupDto",
+        "Type": "Quality.Core.DTOs.UpdateDTOs.ProductPortalUpdateDTOs.ProductPortalDefinitionUpdateDtos.ProductGroupUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.ProductGroupTypeDefinitionsController",
+    "Method": "All",
+    "RelativePath": "api/ProductGroupTypeDefinitions",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.ProductGroupTypeDefinitionsController",
+    "Method": "Save",
+    "RelativePath": "api/ProductGroupTypeDefinitions",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productGroupTypeDefinitionDto",
+        "Type": "Quality.Core.DTOs.ProductPortalDTOs.ProductPortalDefinitionDTOs.ProductGroupTypeDefinitionDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.ProductGroupTypeDefinitionsController",
+    "Method": "GetById",
+    "RelativePath": "api/ProductGroupTypeDefinitions/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.ProductGroupTypeDefinitionsController",
+    "Method": "Remove",
+    "RelativePath": "api/ProductGroupTypeDefinitions/Remove/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.ProductGroupTypeDefinitionsController",
+    "Method": "Update",
+    "RelativePath": "api/ProductGroupTypeDefinitions/Update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productGroupTypeDefinitionDto",
+        "Type": "Quality.Core.DTOs.UpdateDTOs.ProductPortalUpdateDTOs.ProductPortalDefinitionUpdateDtos.ProductGroupTypeDefinitionUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.ProductGroupTypesController",
+    "Method": "All",
+    "RelativePath": "api/ProductGroupTypes",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.ProductGroupTypesController",
+    "Method": "Save",
+    "RelativePath": "api/ProductGroupTypes",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productGroupTypeDto",
+        "Type": "Quality.Core.DTOs.ProductPortalDTOs.ProductPortalDefinitionDTOs.ProductGroupTypeDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.ProductGroupTypesController",
+    "Method": "GetById",
+    "RelativePath": "api/ProductGroupTypes/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.ProductGroupTypesController",
+    "Method": "GetAllWithDetailsAsync",
+    "RelativePath": "api/ProductGroupTypes/GetAllWithDetails",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.ProductGroupTypesController",
+    "Method": "GetWithDetailsAsync",
+    "RelativePath": "api/ProductGroupTypes/GetWithDetails/{productGroupTypeId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productGroupTypeId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.ProductGroupTypesController",
+    "Method": "Remove",
+    "RelativePath": "api/ProductGroupTypes/Remove/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.ProductGroupTypesController",
+    "Method": "Update",
+    "RelativePath": "api/ProductGroupTypes/Update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productGroupTypeDto",
+        "Type": "Quality.Core.DTOs.UpdateDTOs.ProductPortalUpdateDTOs.ProductPortalDefinitionUpdateDtos.ProductGroupTypeUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.ProductHistoriesController",
+    "Method": "All",
+    "RelativePath": "api/ProductHistories",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.ProductHistoriesController",
+    "Method": "Save",
+    "RelativePath": "api/ProductHistories",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productHistoryDto",
+        "Type": "Quality.Core.DTOs.ProductPortalDTOs.ProductHistoryDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.ProductHistoriesController",
+    "Method": "GetById",
+    "RelativePath": "api/ProductHistories/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.ProductHistoriesController",
+    "Method": "GetProductsWithDetailsAsync",
+    "RelativePath": "api/ProductHistories/GetAllWithDetails/{limit}/{offset}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "limit",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "offset",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.ProductHistoriesController",
+    "Method": "Remove",
+    "RelativePath": "api/ProductHistories/Remove/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.ProductionPlacesController",
+    "Method": "All",
+    "RelativePath": "api/ProductionPlaces",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.ProductionPlacesController",
+    "Method": "Save",
+    "RelativePath": "api/ProductionPlaces",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productionPlaceDto",
+        "Type": "Quality.Core.DTOs.ProductPortalDTOs.ProductPortalDefinitionDTOs.ProductionPlaceDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.ProductionPlacesController",
+    "Method": "GetById",
+    "RelativePath": "api/ProductionPlaces/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.ProductionPlacesController",
+    "Method": "Remove",
+    "RelativePath": "api/ProductionPlaces/Remove/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.ProductionPlacesController",
+    "Method": "Update",
+    "RelativePath": "api/ProductionPlaces/Update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productionPlaceDto",
+        "Type": "Quality.Core.DTOs.UpdateDTOs.ProductPortalUpdateDTOs.ProductPortalDefinitionUpdateDtos.ProductionPlaceUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.ProductsController",
+    "Method": "All",
+    "RelativePath": "api/Products",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.ProductsController",
+    "Method": "Save",
+    "RelativePath": "api/Products",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productDto",
+        "Type": "Quality.Core.DTOs.ProductDTOs.ProductDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.ProductsController",
+    "Method": "GetById",
+    "RelativePath": "api/Products/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.ProductsController",
+    "Method": "Dashboard",
+    "RelativePath": "api/Products/Dashboard",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.ProductsController",
+    "Method": "FilteredList",
+    "RelativePath": "api/Products/FilteredList",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productListFilterDto",
+        "Type": "Quality.Core.DTOs.ProductPortalDTOs.FilterDTOs.ProductListFilterDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.ProductsController",
+    "Method": "GetProductsWithDetailsAsync",
+    "RelativePath": "api/Products/GetAllWithDetails",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.ProductsController",
+    "Method": "GetProductsWithDetailsAsync",
+    "RelativePath": "api/Products/GetAllWithDetails/{limit}/{offset}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "limit",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "offset",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.ProductsController",
+    "Method": "GetProductsWithDetailsForWebAsync",
+    "RelativePath": "api/Products/GetAllWithDetailsForWeb",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.ProductsController",
+    "Method": "GetProductFilterItems",
+    "RelativePath": "api/Products/GetProductFilterItems",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.ProductsController",
+    "Method": "GetProductsWithDetailsWithFilterAsync",
+    "RelativePath": "api/Products/GetProductsWithDetailsWithFilter/{limit}/{offset}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "limit",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "offset",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "Code",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Name",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Name2",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Seller",
+        "Type": "System.Collections.Generic.List\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Brand",
+        "Type": "System.Collections.Generic.List\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "BudgetGroup",
+        "Type": "System.Collections.Generic.List\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "SalesGroup",
+        "Type": "System.Collections.Generic.List\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "ProductionPlace",
+        "Type": "System.Collections.Generic.List\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "RawMaterialGroup",
+        "Type": "System.Collections.Generic.List\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Packaging",
+        "Type": "System.Collections.Generic.List\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "StorageCondition",
+        "Type": "System.Collections.Generic.List\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "SalesBased",
+        "Type": "System.Collections.Generic.List\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "CuttingType",
+        "Type": "System.Collections.Generic.List\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "QualityType",
+        "Type": "System.Collections.Generic.List\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "ColorType",
+        "Type": "System.Collections.Generic.List\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "ProductStatus",
+        "Type": "System.Collections.Generic.List\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "ProductGroup",
+        "Type": "System.Collections.Generic.List\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "SemiProductGroup",
+        "Type": "System.Collections.Generic.List\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "ProductGroupTypeDefinition",
+        "Type": "System.Collections.Generic.List\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "CreatedBy",
+        "Type": "System.Collections.Generic.List\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "UpdatedBy",
+        "Type": "System.Collections.Generic.List\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "OrderBy",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "OrderType",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.ProductsController",
+    "Method": "GetProductByIdWithDetailsAsync",
+    "RelativePath": "api/Products/GetWithDetails/{productId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.ProductsController",
+    "Method": "Remove",
+    "RelativePath": "api/Products/Remove/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.ProductsController",
+    "Method": "Update",
+    "RelativePath": "api/Products/Update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productDto",
+        "Type": "Quality.Core.DTOs.UpdateDTOs.ProductPortalUpdateDTOs.ProductUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.ProductStatusesController",
+    "Method": "All",
+    "RelativePath": "api/ProductStatuses",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.ProductStatusesController",
+    "Method": "Save",
+    "RelativePath": "api/ProductStatuses",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productStatusDto",
+        "Type": "Quality.Core.DTOs.ProductPortalDTOs.ProductPortalDefinitionDTOs.ProductStatusDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.ProductStatusesController",
+    "Method": "GetById",
+    "RelativePath": "api/ProductStatuses/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.ProductStatusesController",
+    "Method": "Remove",
+    "RelativePath": "api/ProductStatuses/Remove/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.ProductStatusesController",
+    "Method": "Update",
+    "RelativePath": "api/ProductStatuses/Update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productStatusDto",
+        "Type": "Quality.Core.DTOs.UpdateDTOs.ProductPortalUpdateDTOs.ProductPortalDefinitionUpdateDtos.ProductStatusUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.ProductToCustomersController",
+    "Method": "All",
+    "RelativePath": "api/ProductToCustomers",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.ProductToCustomersController",
+    "Method": "Save",
+    "RelativePath": "api/ProductToCustomers",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productToCustomerDto",
+        "Type": "Quality.Core.DTOs.ProductPortalDTOs.ProductToCustomerDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.ProductToCustomersController",
+    "Method": "GetById",
+    "RelativePath": "api/ProductToCustomers/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.ProductToCustomersController",
+    "Method": "Remove",
+    "RelativePath": "api/ProductToCustomers/Remove/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.ProductToCustomersController",
+    "Method": "Update",
+    "RelativePath": "api/ProductToCustomers/Update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productToCustomerDto",
+        "Type": "Quality.Core.DTOs.UpdateDTOs.ProductPortalUpdateDTOs.ProductToCustomerUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.ProductToProductGroupTypeDefinitionsController",
+    "Method": "All",
+    "RelativePath": "api/ProductToProductGroupTypeDefinitions",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.ProductToProductGroupTypeDefinitionsController",
+    "Method": "Save",
+    "RelativePath": "api/ProductToProductGroupTypeDefinitions",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productToProductGroupTypeDefinitionDto",
+        "Type": "Quality.Core.DTOs.ProductPortalDTOs.ProductPortalDefinitionDTOs.ProductToProductGroupTypeDefinitionDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.ProductToProductGroupTypeDefinitionsController",
+    "Method": "GetById",
+    "RelativePath": "api/ProductToProductGroupTypeDefinitions/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.ProductToProductGroupTypeDefinitionsController",
+    "Method": "Remove",
+    "RelativePath": "api/ProductToProductGroupTypeDefinitions/Remove/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.ProductToProductGroupTypeDefinitionsController",
+    "Method": "Update",
+    "RelativePath": "api/ProductToProductGroupTypeDefinitions/Update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productToProductGroupTypeDefinitionDto",
+        "Type": "Quality.Core.DTOs.UpdateDTOs.ProductPortalUpdateDTOs.ProductPortalDefinitionUpdateDtos.ProductToProductGroupTypeDefinitionUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.ProductTypesController",
+    "Method": "All",
+    "RelativePath": "api/ProductTypes",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.ProductTypesController",
+    "Method": "Save",
+    "RelativePath": "api/ProductTypes",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productTypeDto",
+        "Type": "Quality.Core.DTOs.ProductPortalDTOs.ProductPortalDefinitionDTOs.ProductTypeDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.ProductTypesController",
+    "Method": "GetById",
+    "RelativePath": "api/ProductTypes/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.ProductTypesController",
+    "Method": "Remove",
+    "RelativePath": "api/ProductTypes/Remove/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.ProductTypesController",
+    "Method": "Update",
+    "RelativePath": "api/ProductTypes/Update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productTypeDto",
+        "Type": "Quality.Core.DTOs.UpdateDTOs.ProductPortalUpdateDTOs.ProductPortalDefinitionUpdateDtos.ProductTypeUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.QualityTypesController",
+    "Method": "All",
+    "RelativePath": "api/QualityTypes",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.QualityTypesController",
+    "Method": "Save",
+    "RelativePath": "api/QualityTypes",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "qualityTypeDto",
+        "Type": "Quality.Core.DTOs.ProductPortalDTOs.ProductPortalDefinitionDTOs.QualityTypeDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.QualityTypesController",
+    "Method": "GetById",
+    "RelativePath": "api/QualityTypes/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.QualityTypesController",
+    "Method": "Remove",
+    "RelativePath": "api/QualityTypes/Remove/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.QualityTypesController",
+    "Method": "Update",
+    "RelativePath": "api/QualityTypes/Update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "qualityTypeDto",
+        "Type": "Quality.Core.DTOs.UpdateDTOs.ProductPortalUpdateDTOs.ProductPortalDefinitionUpdateDtos.QualityTypeUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.RawMaterialGroupsController",
+    "Method": "All",
+    "RelativePath": "api/RawMaterialGroups",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.RawMaterialGroupsController",
+    "Method": "Save",
+    "RelativePath": "api/RawMaterialGroups",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "rawMaterialGroupDto",
+        "Type": "Quality.Core.DTOs.ProductPortalDTOs.ProductPortalDefinitionDTOs.RawMaterialGroupDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.RawMaterialGroupsController",
+    "Method": "GetById",
+    "RelativePath": "api/RawMaterialGroups/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.RawMaterialGroupsController",
+    "Method": "Remove",
+    "RelativePath": "api/RawMaterialGroups/Remove/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.RawMaterialGroupsController",
+    "Method": "Update",
+    "RelativePath": "api/RawMaterialGroups/Update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "rawMaterialGroupDto",
+        "Type": "Quality.Core.DTOs.UpdateDTOs.ProductPortalUpdateDTOs.ProductPortalDefinitionUpdateDtos.RawMaterialGroupUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.RawMaterialsController",
+    "Method": "All",
+    "RelativePath": "api/RawMaterials",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.RawMaterialsController",
+    "Method": "Save",
+    "RelativePath": "api/RawMaterials",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "rawMaterialPortalDto",
+        "Type": "Quality.Core.DTOs.ProductPortalDTOs.ProductPortalDefinitionDTOs.RawMaterialDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.RawMaterialsController",
+    "Method": "GetById",
+    "RelativePath": "api/RawMaterials/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.RawMaterialsController",
+    "Method": "Remove",
+    "RelativePath": "api/RawMaterials/Remove/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.RawMaterialsController",
+    "Method": "Update",
+    "RelativePath": "api/RawMaterials/Update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "rawMaterialPortalDto",
+        "Type": "Quality.Core.DTOs.UpdateDTOs.ProductPortalUpdateDTOs.ProductPortalDefinitionUpdateDtos.RawMaterialUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.RecipeDetailsController",
+    "Method": "All",
+    "RelativePath": "api/RecipeDetails",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.RecipeDetailsController",
+    "Method": "Save",
+    "RelativePath": "api/RecipeDetails",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "recipeDetailDto",
+        "Type": "Quality.Core.DTOs.ProductPortalDTOs.ProductPortalDefinitionDTOs.RecipeDetailDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.RecipeDetailsController",
+    "Method": "GetById",
+    "RelativePath": "api/RecipeDetails/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.RecipeDetailsController",
+    "Method": "Remove",
+    "RelativePath": "api/RecipeDetails/Remove/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.RecipeDetailsController",
+    "Method": "Update",
+    "RelativePath": "api/RecipeDetails/Update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "recipeDetailDto",
+        "Type": "Quality.Core.DTOs.UpdateDTOs.ProductPortalUpdateDTOs.ProductPortalDefinitionUpdateDtos.RecipeDetailUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.RecipesController",
+    "Method": "All",
+    "RelativePath": "api/Recipes",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.RecipesController",
+    "Method": "Save",
+    "RelativePath": "api/Recipes",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "recipeDto",
+        "Type": "Quality.Core.DTOs.ProductPortalDTOs.ProductPortalDefinitionDTOs.RecipeDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.RecipesController",
+    "Method": "GetById",
+    "RelativePath": "api/Recipes/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.RecipesController",
+    "Method": "GetAllWithDetails",
+    "RelativePath": "api/Recipes/GetAllWithDetails",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.RecipesController",
+    "Method": "GetSpecByIdWithDetailsAsync",
+    "RelativePath": "api/Recipes/GetWithDetails/{recipeId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "recipeId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.RecipesController",
+    "Method": "Remove",
+    "RelativePath": "api/Recipes/Remove/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.RecipesController",
+    "Method": "Update",
+    "RelativePath": "api/Recipes/Update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "recipeDto",
+        "Type": "Quality.Core.DTOs.UpdateDTOs.ProductPortalUpdateDTOs.ProductPortalDefinitionUpdateDtos.RecipeUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.RolesController",
+    "Method": "All",
+    "RelativePath": "api/Roles",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.RolesController",
+    "Method": "Save",
+    "RelativePath": "api/Roles",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "roleDto",
+        "Type": "Quality.Core.DTOs.BaseDTOs.DefinitionDTOs.RoleDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.RolesController",
+    "Method": "GetById",
+    "RelativePath": "api/Roles/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.RolesController",
+    "Method": "Remove",
+    "RelativePath": "api/Roles/Remove/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.RolesController",
+    "Method": "Update",
+    "RelativePath": "api/Roles/Update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "roleDto",
+        "Type": "Quality.Core.DTOs.UpdateDTOs.BaseUpdateDTOs.DefinitionUpdateDTOs.RoleUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.SalesBasedsController",
+    "Method": "All",
+    "RelativePath": "api/SalesBaseds",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.SalesBasedsController",
+    "Method": "Save",
+    "RelativePath": "api/SalesBaseds",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "salesBasedDto",
+        "Type": "Quality.Core.DTOs.ProductPortalDTOs.ProductPortalDefinitionDTOs.SalesBasedDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.SalesBasedsController",
+    "Method": "GetById",
+    "RelativePath": "api/SalesBaseds/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.SalesBasedsController",
+    "Method": "Remove",
+    "RelativePath": "api/SalesBaseds/Remove/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.SalesBasedsController",
+    "Method": "Update",
+    "RelativePath": "api/SalesBaseds/Update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "salesBasedDto",
+        "Type": "Quality.Core.DTOs.UpdateDTOs.ProductPortalUpdateDTOs.ProductPortalDefinitionUpdateDtos.SalesBasedUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.SalesGroupsController",
+    "Method": "All",
+    "RelativePath": "api/SalesGroups",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.SalesGroupsController",
+    "Method": "Save",
+    "RelativePath": "api/SalesGroups",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "salesGroupDto",
+        "Type": "Quality.Core.DTOs.ProductPortalDTOs.ProductPortalDefinitionDTOs.SalesGroupDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.SalesGroupsController",
+    "Method": "GetById",
+    "RelativePath": "api/SalesGroups/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.SalesGroupsController",
+    "Method": "Remove",
+    "RelativePath": "api/SalesGroups/Remove/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.SalesGroupsController",
+    "Method": "Update",
+    "RelativePath": "api/SalesGroups/Update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "salesGroupDto",
+        "Type": "Quality.Core.DTOs.UpdateDTOs.ProductPortalUpdateDTOs.ProductPortalDefinitionUpdateDtos.SalesGroupUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.SellersController",
+    "Method": "All",
+    "RelativePath": "api/Sellers",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.SellersController",
+    "Method": "Save",
+    "RelativePath": "api/Sellers",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "sellerDto",
+        "Type": "Quality.Core.DTOs.ProductPortalDTOs.ProductPortalDefinitionDTOs.SellerDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.SellersController",
+    "Method": "GetById",
+    "RelativePath": "api/Sellers/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.SellersController",
+    "Method": "Remove",
+    "RelativePath": "api/Sellers/Remove/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.SellersController",
+    "Method": "Update",
+    "RelativePath": "api/Sellers/Update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "sellerDto",
+        "Type": "Quality.Core.DTOs.UpdateDTOs.ProductPortalUpdateDTOs.ProductPortalDefinitionUpdateDtos.SellerUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.SemiProductGroupsController",
+    "Method": "All",
+    "RelativePath": "api/SemiProductGroups",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.SemiProductGroupsController",
+    "Method": "Save",
+    "RelativePath": "api/SemiProductGroups",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "semiProductGroupDto",
+        "Type": "Quality.Core.DTOs.ProductPortalDTOs.ProductPortalDefinitionDTOs.SemiProductGroupDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.SemiProductGroupsController",
+    "Method": "GetById",
+    "RelativePath": "api/SemiProductGroups/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.SemiProductGroupsController",
+    "Method": "Remove",
+    "RelativePath": "api/SemiProductGroups/Remove/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.SemiProductGroupsController",
+    "Method": "Update",
+    "RelativePath": "api/SemiProductGroups/Update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "semiProductGroupDto",
+        "Type": "Quality.Core.DTOs.UpdateDTOs.ProductPortalUpdateDTOs.ProductPortalDefinitionUpdateDtos.SemiProductGroupUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.SemiProductsController",
+    "Method": "All",
+    "RelativePath": "api/SemiProducts",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.SemiProductsController",
+    "Method": "Save",
+    "RelativePath": "api/SemiProducts",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "semiProductDto",
+        "Type": "Quality.Core.DTOs.ProductPortalDTOs.ProductPortalDefinitionDTOs.SemiProductDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.SemiProductsController",
+    "Method": "GetById",
+    "RelativePath": "api/SemiProducts/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.SemiProductsController",
+    "Method": "GetSemiProductByIdWithDetailsAsync",
+    "RelativePath": "api/SemiProducts/GetWithDetails/{semiProductId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "semiProductId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.SemiProductsController",
+    "Method": "Remove",
+    "RelativePath": "api/SemiProducts/Remove/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.SemiProductsController",
+    "Method": "Update",
+    "RelativePath": "api/SemiProducts/Update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "semiProductDto",
+        "Type": "Quality.Core.DTOs.UpdateDTOs.ProductPortalUpdateDTOs.ProductPortalDefinitionUpdateDtos.SemiProductUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.SKUFollowTypesController",
+    "Method": "All",
+    "RelativePath": "api/SKUFollowTypes",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.SKUFollowTypesController",
+    "Method": "Save",
+    "RelativePath": "api/SKUFollowTypes",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "skuFollowTypeDto",
+        "Type": "Quality.Core.DTOs.ProductPortalDTOs.ProductPortalDefinitionDTOs.SKUFollowTypeDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.SKUFollowTypesController",
+    "Method": "GetById",
+    "RelativePath": "api/SKUFollowTypes/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.SKUFollowTypesController",
+    "Method": "Remove",
+    "RelativePath": "api/SKUFollowTypes/Remove/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.SKUFollowTypesController",
+    "Method": "Update",
+    "RelativePath": "api/SKUFollowTypes/Update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "skuFollowTypeDto",
+        "Type": "Quality.Core.DTOs.UpdateDTOs.ProductPortalUpdateDTOs.ProductPortalDefinitionUpdateDtos.SKUFollowTypeUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.SKUFollowUnitsController",
+    "Method": "All",
+    "RelativePath": "api/SKUFollowUnits",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.SKUFollowUnitsController",
+    "Method": "Save",
+    "RelativePath": "api/SKUFollowUnits",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "skuFollowUnitDto",
+        "Type": "Quality.Core.DTOs.ProductPortalDTOs.ProductPortalDefinitionDTOs.SKUFollowUnitDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.SKUFollowUnitsController",
+    "Method": "GetById",
+    "RelativePath": "api/SKUFollowUnits/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.SKUFollowUnitsController",
+    "Method": "Remove",
+    "RelativePath": "api/SKUFollowUnits/Remove/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.SKUFollowUnitsController",
+    "Method": "Update",
+    "RelativePath": "api/SKUFollowUnits/Update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "skuFollowUnitDto",
+        "Type": "Quality.Core.DTOs.UpdateDTOs.ProductPortalUpdateDTOs.ProductPortalDefinitionUpdateDtos.SKUFollowUnitUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.SpecDetailsController",
+    "Method": "All",
+    "RelativePath": "api/SpecDetails",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.SpecDetailsController",
+    "Method": "Save",
+    "RelativePath": "api/SpecDetails",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "specDetailDto",
+        "Type": "Quality.Core.DTOs.ProductPortalDTOs.ProductPortalDefinitionDTOs.SpecDetailDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.SpecDetailsController",
+    "Method": "GetById",
+    "RelativePath": "api/SpecDetails/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.SpecDetailsController",
+    "Method": "Remove",
+    "RelativePath": "api/SpecDetails/Remove/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.SpecDetailsController",
+    "Method": "Update",
+    "RelativePath": "api/SpecDetails/Update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "specDetailDto",
+        "Type": "Quality.Core.DTOs.UpdateDTOs.ProductPortalUpdateDTOs.ProductPortalDefinitionUpdateDtos.SpecDetailUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.SpecsController",
+    "Method": "All",
+    "RelativePath": "api/Specs",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.SpecsController",
+    "Method": "Save",
+    "RelativePath": "api/Specs",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "specDto",
+        "Type": "Quality.Core.DTOs.ProductPortalDTOs.ProductPortalDefinitionDTOs.SpecDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.SpecsController",
+    "Method": "GetById",
+    "RelativePath": "api/Specs/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.SpecsController",
+    "Method": "GetAllWithDetails",
+    "RelativePath": "api/Specs/GetAllWithDetails",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.SpecsController",
+    "Method": "GetSpecByIdWithDetailsAsync",
+    "RelativePath": "api/Specs/GetWithDetails/{specId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "specId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.SpecsController",
+    "Method": "Remove",
+    "RelativePath": "api/Specs/Remove/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.SpecsController",
+    "Method": "Update",
+    "RelativePath": "api/Specs/Update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "specDto",
+        "Type": "Quality.Core.DTOs.UpdateDTOs.ProductPortalUpdateDTOs.ProductPortalDefinitionUpdateDtos.SpecUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.StorageConditionsController",
+    "Method": "All",
+    "RelativePath": "api/StorageConditions",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.StorageConditionsController",
+    "Method": "Save",
+    "RelativePath": "api/StorageConditions",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "storageConditionDto",
+        "Type": "Quality.Core.DTOs.ProductPortalDTOs.ProductPortalDefinitionDTOs.StorageConditionDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.StorageConditionsController",
+    "Method": "GetById",
+    "RelativePath": "api/StorageConditions/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.StorageConditionsController",
+    "Method": "Remove",
+    "RelativePath": "api/StorageConditions/Remove/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.StorageConditionsController",
+    "Method": "Update",
+    "RelativePath": "api/StorageConditions/Update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "storageConditionDto",
+        "Type": "Quality.Core.DTOs.UpdateDTOs.ProductPortalUpdateDTOs.ProductPortalDefinitionUpdateDtos.StorageConditionUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.UsersController",
+    "Method": "Login",
+    "RelativePath": "api/Users/Login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userLoginDto",
+        "Type": "Quality.Core.DTOs.BaseDTOs.UserLoginDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.WarehousesController",
+    "Method": "All",
+    "RelativePath": "api/Warehouses",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.WarehousesController",
+    "Method": "Save",
+    "RelativePath": "api/Warehouses",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "warehouseDto",
+        "Type": "Quality.Core.DTOs.ProductPortalDTOs.ProductPortalDefinitionDTOs.WarehouseDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.WarehousesController",
+    "Method": "GetById",
+    "RelativePath": "api/Warehouses/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.WarehousesController",
+    "Method": "Remove",
+    "RelativePath": "api/Warehouses/Remove/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Quality.API.Controllers.WarehousesController",
+    "Method": "Update",
+    "RelativePath": "api/Warehouses/Update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "warehouseDto",
+        "Type": "Quality.Core.DTOs.UpdateDTOs.ProductPortalUpdateDTOs.ProductPortalDefinitionUpdateDtos.WarehouseUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

@@ -1,0 +1,391 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\IT\\Projects\\tsmartQuality\\API\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{5946863E-8235-4CAE-A183-E34E4A5EE7F4}|Quality.API\\Quality.API.csproj|c:\\it\\projects\\tsmartquality\\api\\quality.api\\appsettings.production.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{5946863E-8235-4CAE-A183-E34E4A5EE7F4}|Quality.API\\Quality.API.csproj|solutionrelative:quality.api\\appsettings.production.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5946863E-8235-4CAE-A183-E34E4A5EE7F4}|Quality.API\\Quality.API.csproj|c:\\it\\projects\\tsmartquality\\api\\quality.api\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{5946863E-8235-4CAE-A183-E34E4A5EE7F4}|Quality.API\\Quality.API.csproj|solutionrelative:quality.api\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FEF891EE-030B-4B9A-BD7D-0D66A657040B}|Quality.Service\\Quality.Service.csproj|c:\\it\\projects\\tsmartquality\\api\\quality.service\\services\\semiproductservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FEF891EE-030B-4B9A-BD7D-0D66A657040B}|Quality.Service\\Quality.Service.csproj|solutionrelative:quality.service\\services\\semiproductservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FEF891EE-030B-4B9A-BD7D-0D66A657040B}|Quality.Service\\Quality.Service.csproj|c:\\it\\projects\\tsmartquality\\api\\quality.service\\services\\rawmaterialservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FEF891EE-030B-4B9A-BD7D-0D66A657040B}|Quality.Service\\Quality.Service.csproj|solutionrelative:quality.service\\services\\rawmaterialservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FEF891EE-030B-4B9A-BD7D-0D66A657040B}|Quality.Service\\Quality.Service.csproj|c:\\it\\projects\\tsmartquality\\api\\quality.service\\services\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FEF891EE-030B-4B9A-BD7D-0D66A657040B}|Quality.Service\\Quality.Service.csproj|solutionrelative:quality.service\\services\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FEF891EE-030B-4B9A-BD7D-0D66A657040B}|Quality.Service\\Quality.Service.csproj|c:\\it\\projects\\tsmartquality\\api\\quality.service\\services\\producttoproductgrouptypedefinitionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FEF891EE-030B-4B9A-BD7D-0D66A657040B}|Quality.Service\\Quality.Service.csproj|solutionrelative:quality.service\\services\\producttoproductgrouptypedefinitionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FEF891EE-030B-4B9A-BD7D-0D66A657040B}|Quality.Service\\Quality.Service.csproj|c:\\it\\projects\\tsmartquality\\api\\quality.service\\services\\sellerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FEF891EE-030B-4B9A-BD7D-0D66A657040B}|Quality.Service\\Quality.Service.csproj|solutionrelative:quality.service\\services\\sellerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FEF891EE-030B-4B9A-BD7D-0D66A657040B}|Quality.Service\\Quality.Service.csproj|c:\\it\\projects\\tsmartquality\\api\\quality.service\\services\\productgroupservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FEF891EE-030B-4B9A-BD7D-0D66A657040B}|Quality.Service\\Quality.Service.csproj|solutionrelative:quality.service\\services\\productgroupservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FEF891EE-030B-4B9A-BD7D-0D66A657040B}|Quality.Service\\Quality.Service.csproj|c:\\it\\projects\\tsmartquality\\api\\quality.service\\services\\notificationtokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FEF891EE-030B-4B9A-BD7D-0D66A657040B}|Quality.Service\\Quality.Service.csproj|solutionrelative:quality.service\\services\\notificationtokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FEF891EE-030B-4B9A-BD7D-0D66A657040B}|Quality.Service\\Quality.Service.csproj|c:\\it\\projects\\tsmartquality\\api\\quality.service\\services\\cuttingtypeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FEF891EE-030B-4B9A-BD7D-0D66A657040B}|Quality.Service\\Quality.Service.csproj|solutionrelative:quality.service\\services\\cuttingtypeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FEF891EE-030B-4B9A-BD7D-0D66A657040B}|Quality.Service\\Quality.Service.csproj|c:\\it\\projects\\tsmartquality\\api\\quality.service\\services\\countryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FEF891EE-030B-4B9A-BD7D-0D66A657040B}|Quality.Service\\Quality.Service.csproj|solutionrelative:quality.service\\services\\countryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FEF891EE-030B-4B9A-BD7D-0D66A657040B}|Quality.Service\\Quality.Service.csproj|c:\\it\\projects\\tsmartquality\\api\\quality.service\\services\\brandservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FEF891EE-030B-4B9A-BD7D-0D66A657040B}|Quality.Service\\Quality.Service.csproj|solutionrelative:quality.service\\services\\brandservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FEF891EE-030B-4B9A-BD7D-0D66A657040B}|Quality.Service\\Quality.Service.csproj|c:\\it\\projects\\tsmartquality\\api\\quality.service\\services\\warehouseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FEF891EE-030B-4B9A-BD7D-0D66A657040B}|Quality.Service\\Quality.Service.csproj|solutionrelative:quality.service\\services\\warehouseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FEF891EE-030B-4B9A-BD7D-0D66A657040B}|Quality.Service\\Quality.Service.csproj|c:\\it\\projects\\tsmartquality\\api\\quality.service\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FEF891EE-030B-4B9A-BD7D-0D66A657040B}|Quality.Service\\Quality.Service.csproj|solutionrelative:quality.service\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FEF891EE-030B-4B9A-BD7D-0D66A657040B}|Quality.Service\\Quality.Service.csproj|c:\\it\\projects\\tsmartquality\\api\\quality.service\\services\\tokenhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FEF891EE-030B-4B9A-BD7D-0D66A657040B}|Quality.Service\\Quality.Service.csproj|solutionrelative:quality.service\\services\\tokenhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FEF891EE-030B-4B9A-BD7D-0D66A657040B}|Quality.Service\\Quality.Service.csproj|c:\\it\\projects\\tsmartquality\\api\\quality.service\\services\\specservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FEF891EE-030B-4B9A-BD7D-0D66A657040B}|Quality.Service\\Quality.Service.csproj|solutionrelative:quality.service\\services\\specservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FEF891EE-030B-4B9A-BD7D-0D66A657040B}|Quality.Service\\Quality.Service.csproj|c:\\it\\projects\\tsmartquality\\api\\quality.service\\services\\salesgroupservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FEF891EE-030B-4B9A-BD7D-0D66A657040B}|Quality.Service\\Quality.Service.csproj|solutionrelative:quality.service\\services\\salesgroupservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FEF891EE-030B-4B9A-BD7D-0D66A657040B}|Quality.Service\\Quality.Service.csproj|c:\\it\\projects\\tsmartquality\\api\\quality.service\\services\\productgrouptypedefinitionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FEF891EE-030B-4B9A-BD7D-0D66A657040B}|Quality.Service\\Quality.Service.csproj|solutionrelative:quality.service\\services\\productgrouptypedefinitionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FEF891EE-030B-4B9A-BD7D-0D66A657040B}|Quality.Service\\Quality.Service.csproj|c:\\it\\projects\\tsmartquality\\api\\quality.service\\services\\localizationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FEF891EE-030B-4B9A-BD7D-0D66A657040B}|Quality.Service\\Quality.Service.csproj|solutionrelative:quality.service\\services\\localizationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5946863E-8235-4CAE-A183-E34E4A5EE7F4}|Quality.API\\Quality.API.csproj|c:\\it\\projects\\tsmartquality\\api\\quality.api\\controllers\\sellercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5946863E-8235-4CAE-A183-E34E4A5EE7F4}|Quality.API\\Quality.API.csproj|solutionrelative:quality.api\\controllers\\sellercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5946863E-8235-4CAE-A183-E34E4A5EE7F4}|Quality.API\\Quality.API.csproj|c:\\it\\projects\\tsmartquality\\api\\quality.api\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5946863E-8235-4CAE-A183-E34E4A5EE7F4}|Quality.API\\Quality.API.csproj|solutionrelative:quality.api\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5946863E-8235-4CAE-A183-E34E4A5EE7F4}|Quality.API\\Quality.API.csproj|c:\\it\\projects\\tsmartquality\\api\\quality.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5946863E-8235-4CAE-A183-E34E4A5EE7F4}|Quality.API\\Quality.API.csproj|solutionrelative:quality.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5946863E-8235-4CAE-A183-E34E4A5EE7F4}|Quality.API\\Quality.API.csproj|c:\\it\\projects\\tsmartquality\\api\\quality.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{5946863E-8235-4CAE-A183-E34E4A5EE7F4}|Quality.API\\Quality.API.csproj|solutionrelative:quality.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 1026,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "appsettings.Production.json",
+              "DocumentMoniker": "C:\\IT\\Projects\\tsmartQuality\\API\\Quality.API\\appsettings.Production.json",
+              "RelativeDocumentMoniker": "Quality.API\\appsettings.Production.json",
+              "ToolTip": "C:\\IT\\Projects\\tsmartQuality\\API\\Quality.API\\appsettings.Production.json",
+              "RelativeToolTip": "Quality.API\\appsettings.Production.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-06-11T09:52:38.108Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "SemiProductService.cs",
+              "DocumentMoniker": "C:\\IT\\Projects\\tsmartQuality\\API\\Quality.Service\\Services\\SemiProductService.cs",
+              "RelativeDocumentMoniker": "Quality.Service\\Services\\SemiProductService.cs",
+              "ToolTip": "C:\\IT\\Projects\\tsmartQuality\\API\\Quality.Service\\Services\\SemiProductService.cs",
+              "RelativeToolTip": "Quality.Service\\Services\\SemiProductService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-08T01:54:27.718Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ProductService.cs",
+              "DocumentMoniker": "C:\\IT\\Projects\\tsmartQuality\\API\\Quality.Service\\Services\\ProductService.cs",
+              "RelativeDocumentMoniker": "Quality.Service\\Services\\ProductService.cs",
+              "ToolTip": "C:\\IT\\Projects\\tsmartQuality\\API\\Quality.Service\\Services\\ProductService.cs",
+              "RelativeToolTip": "Quality.Service\\Services\\ProductService.cs",
+              "ViewState": "AgIAAE0AAAAAAAAAAAAwwNkCAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-08T01:53:16.653Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ProductToProductGroupTypeDefinitionService.cs",
+              "DocumentMoniker": "C:\\IT\\Projects\\tsmartQuality\\API\\Quality.Service\\Services\\ProductToProductGroupTypeDefinitionService.cs",
+              "RelativeDocumentMoniker": "Quality.Service\\Services\\ProductToProductGroupTypeDefinitionService.cs",
+              "ToolTip": "C:\\IT\\Projects\\tsmartQuality\\API\\Quality.Service\\Services\\ProductToProductGroupTypeDefinitionService.cs",
+              "RelativeToolTip": "Quality.Service\\Services\\ProductToProductGroupTypeDefinitionService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-08T01:53:14.889Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "SellerService.cs",
+              "DocumentMoniker": "C:\\IT\\Projects\\tsmartQuality\\API\\Quality.Service\\Services\\SellerService.cs",
+              "RelativeDocumentMoniker": "Quality.Service\\Services\\SellerService.cs",
+              "ToolTip": "C:\\IT\\Projects\\tsmartQuality\\API\\Quality.Service\\Services\\SellerService.cs",
+              "RelativeToolTip": "Quality.Service\\Services\\SellerService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-08T01:53:13.559Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "NotificationTokenService.cs",
+              "DocumentMoniker": "C:\\IT\\Projects\\tsmartQuality\\API\\Quality.Service\\Services\\NotificationTokenService.cs",
+              "RelativeDocumentMoniker": "Quality.Service\\Services\\NotificationTokenService.cs",
+              "ToolTip": "C:\\IT\\Projects\\tsmartQuality\\API\\Quality.Service\\Services\\NotificationTokenService.cs",
+              "RelativeToolTip": "Quality.Service\\Services\\NotificationTokenService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-08T01:53:10.507Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "CuttingTypeService.cs",
+              "DocumentMoniker": "C:\\IT\\Projects\\tsmartQuality\\API\\Quality.Service\\Services\\CuttingTypeService.cs",
+              "RelativeDocumentMoniker": "Quality.Service\\Services\\CuttingTypeService.cs",
+              "ToolTip": "C:\\IT\\Projects\\tsmartQuality\\API\\Quality.Service\\Services\\CuttingTypeService.cs",
+              "RelativeToolTip": "Quality.Service\\Services\\CuttingTypeService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-08T01:53:08.727Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "C:\\IT\\Projects\\tsmartQuality\\API\\Quality.API\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "Quality.API\\appsettings.Development.json",
+              "ToolTip": "C:\\IT\\Projects\\tsmartQuality\\API\\Quality.API\\appsettings.Development.json",
+              "RelativeToolTip": "Quality.API\\appsettings.Development.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-04-22T11:47:57.914Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "RawMaterialService.cs",
+              "DocumentMoniker": "C:\\IT\\Projects\\tsmartQuality\\API\\Quality.Service\\Services\\RawMaterialService.cs",
+              "RelativeDocumentMoniker": "Quality.Service\\Services\\RawMaterialService.cs",
+              "ToolTip": "C:\\IT\\Projects\\tsmartQuality\\API\\Quality.Service\\Services\\RawMaterialService.cs",
+              "RelativeToolTip": "Quality.Service\\Services\\RawMaterialService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-08T01:54:25.185Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "CountryService.cs",
+              "DocumentMoniker": "C:\\IT\\Projects\\tsmartQuality\\API\\Quality.Service\\Services\\CountryService.cs",
+              "RelativeDocumentMoniker": "Quality.Service\\Services\\CountryService.cs",
+              "ToolTip": "C:\\IT\\Projects\\tsmartQuality\\API\\Quality.Service\\Services\\CountryService.cs",
+              "RelativeToolTip": "Quality.Service\\Services\\CountryService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-08T01:53:07.325Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "BrandService.cs",
+              "DocumentMoniker": "C:\\IT\\Projects\\tsmartQuality\\API\\Quality.Service\\Services\\BrandService.cs",
+              "RelativeDocumentMoniker": "Quality.Service\\Services\\BrandService.cs",
+              "ToolTip": "C:\\IT\\Projects\\tsmartQuality\\API\\Quality.Service\\Services\\BrandService.cs",
+              "RelativeToolTip": "Quality.Service\\Services\\BrandService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-08T01:53:06.292Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "WarehouseService.cs",
+              "DocumentMoniker": "C:\\IT\\Projects\\tsmartQuality\\API\\Quality.Service\\Services\\WarehouseService.cs",
+              "RelativeDocumentMoniker": "Quality.Service\\Services\\WarehouseService.cs",
+              "ToolTip": "C:\\IT\\Projects\\tsmartQuality\\API\\Quality.Service\\Services\\WarehouseService.cs",
+              "RelativeToolTip": "Quality.Service\\Services\\WarehouseService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-08T01:53:02.768Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "TokenHandler.cs",
+              "DocumentMoniker": "C:\\IT\\Projects\\tsmartQuality\\API\\Quality.Service\\Services\\TokenHandler.cs",
+              "RelativeDocumentMoniker": "Quality.Service\\Services\\TokenHandler.cs",
+              "ToolTip": "C:\\IT\\Projects\\tsmartQuality\\API\\Quality.Service\\Services\\TokenHandler.cs",
+              "RelativeToolTip": "Quality.Service\\Services\\TokenHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-08T01:53:00.245Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "SpecService.cs",
+              "DocumentMoniker": "C:\\IT\\Projects\\tsmartQuality\\API\\Quality.Service\\Services\\SpecService.cs",
+              "RelativeDocumentMoniker": "Quality.Service\\Services\\SpecService.cs",
+              "ToolTip": "C:\\IT\\Projects\\tsmartQuality\\API\\Quality.Service\\Services\\SpecService.cs",
+              "RelativeToolTip": "Quality.Service\\Services\\SpecService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-08T01:52:59.143Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "SalesGroupService.cs",
+              "DocumentMoniker": "C:\\IT\\Projects\\tsmartQuality\\API\\Quality.Service\\Services\\SalesGroupService.cs",
+              "RelativeDocumentMoniker": "Quality.Service\\Services\\SalesGroupService.cs",
+              "ToolTip": "C:\\IT\\Projects\\tsmartQuality\\API\\Quality.Service\\Services\\SalesGroupService.cs",
+              "RelativeToolTip": "Quality.Service\\Services\\SalesGroupService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-08T01:52:57.232Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ProductGroupService.cs",
+              "DocumentMoniker": "C:\\IT\\Projects\\tsmartQuality\\API\\Quality.Service\\Services\\ProductGroupService.cs",
+              "RelativeDocumentMoniker": "Quality.Service\\Services\\ProductGroupService.cs",
+              "ToolTip": "C:\\IT\\Projects\\tsmartQuality\\API\\Quality.Service\\Services\\ProductGroupService.cs",
+              "RelativeToolTip": "Quality.Service\\Services\\ProductGroupService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-08T01:52:53.883Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "ProductGroupTypeDefinitionService.cs",
+              "DocumentMoniker": "C:\\IT\\Projects\\tsmartQuality\\API\\Quality.Service\\Services\\ProductGroupTypeDefinitionService.cs",
+              "RelativeDocumentMoniker": "Quality.Service\\Services\\ProductGroupTypeDefinitionService.cs",
+              "ToolTip": "C:\\IT\\Projects\\tsmartQuality\\API\\Quality.Service\\Services\\ProductGroupTypeDefinitionService.cs",
+              "RelativeToolTip": "Quality.Service\\Services\\ProductGroupTypeDefinitionService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-08T01:52:56.102Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "LocalizationService.cs",
+              "DocumentMoniker": "C:\\IT\\Projects\\tsmartQuality\\API\\Quality.Service\\Services\\LocalizationService.cs",
+              "RelativeDocumentMoniker": "Quality.Service\\Services\\LocalizationService.cs",
+              "ToolTip": "C:\\IT\\Projects\\tsmartQuality\\API\\Quality.Service\\Services\\LocalizationService.cs",
+              "RelativeToolTip": "Quality.Service\\Services\\LocalizationService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-08T01:52:54.905Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "SellerController.cs",
+              "DocumentMoniker": "C:\\IT\\Projects\\tsmartQuality\\API\\Quality.API\\Controllers\\SellerController.cs",
+              "RelativeDocumentMoniker": "Quality.API\\Controllers\\SellerController.cs",
+              "ToolTip": "C:\\IT\\Projects\\tsmartQuality\\API\\Quality.API\\Controllers\\SellerController.cs",
+              "RelativeToolTip": "Quality.API\\Controllers\\SellerController.cs",
+              "ViewState": "AgIAAC4AAAAAAAAAAAAwwE4AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-04T17:33:28.94Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "UsersController.cs",
+              "DocumentMoniker": "C:\\IT\\Projects\\tsmartQuality\\API\\Quality.API\\Controllers\\UsersController.cs",
+              "RelativeDocumentMoniker": "Quality.API\\Controllers\\UsersController.cs",
+              "ToolTip": "C:\\IT\\Projects\\tsmartQuality\\API\\Quality.API\\Controllers\\UsersController.cs",
+              "RelativeToolTip": "Quality.API\\Controllers\\UsersController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-10T14:56:55.155Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "UserService.cs",
+              "DocumentMoniker": "C:\\IT\\Projects\\tsmartQuality\\API\\Quality.Service\\Services\\UserService.cs",
+              "RelativeDocumentMoniker": "Quality.Service\\Services\\UserService.cs",
+              "ToolTip": "C:\\IT\\Projects\\tsmartQuality\\API\\Quality.Service\\Services\\UserService.cs",
+              "RelativeToolTip": "Quality.Service\\Services\\UserService.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAADwvxQAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-22T11:49:01.145Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\IT\\Projects\\tsmartQuality\\API\\Quality.API\\Program.cs",
+              "RelativeDocumentMoniker": "Quality.API\\Program.cs",
+              "ToolTip": "C:\\IT\\Projects\\tsmartQuality\\API\\Quality.API\\Program.cs",
+              "RelativeToolTip": "Quality.API\\Program.cs",
+              "ViewState": "AgIAADUAAAAAAAAAAAAAAGYAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-22T11:48:14.99Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\IT\\Projects\\tsmartQuality\\API\\Quality.API\\appsettings.json",
+              "RelativeDocumentMoniker": "Quality.API\\appsettings.json",
+              "ToolTip": "C:\\IT\\Projects\\tsmartQuality\\API\\Quality.API\\appsettings.json",
+              "RelativeToolTip": "Quality.API\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAACKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-04-22T11:48:01.352Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
